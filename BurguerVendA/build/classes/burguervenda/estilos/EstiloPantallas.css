@@ -1,0 +1,31 @@
+.fondo{
+     -fx-background-color:#FBDCE6;
+}
+
+.botonesGrandes{
+    -fx-font-family: 'Arial Black';
+    -fx-font-size: 15px; 
+    -fx-background-color:#CC0000;
+    -fx-text-fill:#FFFFFF;
+}
+
+.botonesGrandes:hover{
+    -fx-font-family: 'Arial Black';
+    -fx-font-size: 18px; 
+    -fx-background-color: #A50021;
+    -fx-text-fill:#FFFFFF;
+}
+
+.littleButton{
+    -fx-font-family: 'Arial Black';
+    -fx-font-size: 13px; 
+    -fx-background-color:#FF6A8A;
+    -fx-text-fill:#FFFFFF;
+}
+
+.littleButton:hover{
+    -fx-font-family: 'Arial Black';
+    -fx-font-size: 15px; 
+    -fx-background-color: #FF3B65;
+    -fx-text-fill:#FFFFFF;
+}

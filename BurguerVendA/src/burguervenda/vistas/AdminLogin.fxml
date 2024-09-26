@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="480.0" styleClass="fondo" stylesheets="@../estilos/EstiloPantallas.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="burguervenda.controllers.AdminLoginController">
+   <children>
+      <Text layoutX="153.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenido" textAlignment="CENTER" wrappingWidth="173.13671875">
+         <font>
+            <Font name="Arial Black" size="20.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="222.0" fitWidth="180.0" layoutX="150.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/Ajolote.png" />
+         </image>
+      </ImageView>
+      <PasswordField layoutX="91.0" layoutY="386.0" prefHeight="51.0" prefWidth="296.0" promptText="Cotraseña" />
+      <TextField layoutX="91.0" layoutY="313.0" prefHeight="51.0" prefWidth="296.0" promptText="Username" />
+      <Button layoutX="146.0" layoutY="505.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="180.0" styleClass="littleButton" text="Login" />
+   </children>
+</AnchorPane>
