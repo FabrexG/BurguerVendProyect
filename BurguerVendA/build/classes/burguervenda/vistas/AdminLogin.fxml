@@ -9,8 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="480.0" styleClass="fondo" stylesheets="@../estilos/EstiloPantallas.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="burguervenda.controllers.AdminLoginController">
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="480.0" styleClass="fondo" stylesheets="@../estilos/EstiloPantallas.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="burguervenda.controllers.AdminLoginController">
    <children>
       <Text layoutX="153.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenido" textAlignment="CENTER" wrappingWidth="173.13671875">
          <font>
@@ -22,8 +21,8 @@
             <Image url="@../imagenes/Ajolote.png" />
          </image>
       </ImageView>
-      <PasswordField layoutX="91.0" layoutY="386.0" prefHeight="51.0" prefWidth="296.0" promptText="Cotraseña" />
-      <TextField layoutX="91.0" layoutY="313.0" prefHeight="51.0" prefWidth="296.0" promptText="Username" />
-      <Button layoutX="146.0" layoutY="505.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="180.0" styleClass="littleButton" text="Login" />
+      <PasswordField fx:id="tfPassword" layoutX="91.0" layoutY="386.0" prefHeight="51.0" prefWidth="296.0" promptText="Cotraseña" />
+      <TextField fx:id="tfUsername" layoutX="91.0" layoutY="313.0" prefHeight="51.0" prefWidth="296.0" promptText="Username" />
+      <Button fx:id="btnLogin" layoutX="146.0" layoutY="505.0" mnemonicParsing="false" onAction="#btnLoginOnAction" prefHeight="40.0" prefWidth="180.0" styleClass="littleButton" text="Login" />
    </children>
 </AnchorPane>
