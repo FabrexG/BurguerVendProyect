@@ -55,7 +55,7 @@ public class FormaPagoController implements Initializable {
 			this.total = this.total - 1.0;
 			etiquetaTotal.setText("Nuevo Total: $" + this.total);
 		} else {
-			etiquetaTotal.setText("Tu cuenta se encuentra en $0.0, No es necesario continuar pagar...");
+			etiquetaTotal.setText("Tu cuenta se encuentra en $0.0, No es necesario con el pago");
 		}
 	}
 
