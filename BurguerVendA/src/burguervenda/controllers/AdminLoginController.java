@@ -43,9 +43,9 @@ public class AdminLoginController {
     void btnLoginOnAction(ActionEvent event) throws IOException {
         if(tfUsername.getText().equals(user) && tfPassword.getText().equals(pass))
         {
-            Stage stage=new Stage();
-            AnchorPane root=FXMLLoader.load(getClass().getResource("/burguervenda/vistas/InventarioLogin.fxml"));
-            Scene scene=new Scene(root);
+            Stage stage = new Stage();
+            AnchorPane root = FXMLLoader.load(getClass().getResource("/burguervenda/vistas/InventarioLogin.fxml"));
+            Scene scene = new Scene(root);
             stage.setTitle("Inventario");
             stage.setScene(scene);
             stage.show();
@@ -54,7 +54,7 @@ public class AdminLoginController {
         }
         else 
         {
-            Alert alerta=new Alert(AlertType.ERROR,"Credenciales invalidas, intente de nuevo",ButtonType.YES);
+            Alert alerta = new Alert(AlertType.ERROR,"Credenciales invalidas, intente de nuevo",ButtonType.YES);
             alerta.setTitle("Erro de inicio de sesion");
             alerta.show();
         }

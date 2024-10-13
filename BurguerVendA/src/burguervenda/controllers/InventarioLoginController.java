@@ -4,23 +4,26 @@
  */
 package burguervenda.controllers;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.fxml.Initializable;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
  *
  * @author asus
  */
-public class InventarioLoginController implements Initializable {
+public class InventarioLoginController {
+    @FXML
+    private Button btnBuscar;
 
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+    @FXML
+    private TextField tfBuscar;
+
+    @FXML
+    void btnBuscarOnAction(ActionEvent event) {
+
+    }
     
 }

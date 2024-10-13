@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author asus
+ * @author Brian Maldonado
  */
 public class BurguerVendA extends Application{
 
@@ -26,7 +26,7 @@ public class BurguerVendA extends Application{
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("vistas/Bienvenida.fxml"));
-        Scene scene=new Scene(root);
+        Scene scene = new Scene(root);
         stage.setTitle("Bienvenido");
         stage.setScene(scene);
         stage.show();
