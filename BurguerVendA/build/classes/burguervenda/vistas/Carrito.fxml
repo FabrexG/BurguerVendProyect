@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="757.0" prefWidth="564.0" style="-fx-background-radius: 70px;" styleClass="fondo" stylesheets="@../estilos/EstiloPantallas.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="burguervenda.controllers.InventarioLoginController">
+   <children>
+      <Button layoutX="372.0" layoutY="663.0" mnemonicParsing="false" onMouseClicked="#goToPay" prefHeight="50.0" prefWidth="123.0" style="-fx-background-radius: 50px; -fx-background-color: #FF6A8A;" styleClass="botonesGrandes" text="Pagar" />
+      <AnchorPane layoutX="2.0" layoutY="60.0" minHeight="-Infinity" prefHeight="118.0" prefWidth="561.0" style="-fx-background-color: white;">
+         <children>
+            <Label layoutX="235.0" layoutY="66.0" prefHeight="52.0" prefWidth="114.0" text="Carrito">
+               <font>
+                  <Font name="System Bold" size="33.0" />
+               </font>
+            </Label>
+         </children>
+         <effect>
+            <Lighting diffuseConstant="1.56" specularConstant="0.11" specularExponent="18.6" surfaceScale="3.36">
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant elevation="137.09" />
+               </light>
+            </Lighting>
+         </effect>
+      </AnchorPane>
+      <TextField layoutX="272.0" layoutY="211.0" prefHeight="52.0" prefWidth="114.0" style="-fx-background-color: gray; -fx-background-radius: 15px;">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextField>
+      <TextField layoutX="175.0" layoutY="211.0" prefHeight="52.0" prefWidth="129.0" style="-fx-background-radius: 15px; -fx-font-style: bold; -fx-background-color: #FF6A8A;" text="Pedidos">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </TextField>
+      <AnchorPane layoutX="83.0" layoutY="530.0" prefHeight="111.0" prefWidth="443.0" style="-fx-background-color: #FF6A8A; -fx-background-radius: 100;">
+         <children>
+            <Button layoutX="27.0" layoutY="11.0" mnemonicParsing="false" prefHeight="89.0" prefWidth="89.0" style="-fx-background-radius: 100px; -fx-background-color: black;" text="+" textFill="#fbdce6">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </Button>
+            <Label layoutX="297.0" layoutY="11.0" prefHeight="48.0" prefWidth="77.0" text="Otro">
+               <font>
+                  <Font size="33.0" />
+               </font>
+            </Label>
+            <Label layoutX="279.0" layoutY="49.0" prefHeight="41.0" prefWidth="114.0" text="Pedido">
+               <font>
+                  <Font size="33.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <TableView layoutX="61.0" layoutY="280.0" prefHeight="222.0" prefWidth="443.0">
+         <columns>
+            <TableColumn prefWidth="146.0" text="Pedido" />
+            <TableColumn prefWidth="188.0" text="Precio" />
+            <TableColumn prefWidth="107.0" text="Total" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>
