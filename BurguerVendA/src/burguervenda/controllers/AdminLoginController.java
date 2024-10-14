@@ -36,8 +36,8 @@ public class AdminLoginController {
     @FXML
     private TextField tfUsername;
     
-    String user="admin";
-    String pass="admin1234";
+    String user = "admin";
+    String pass = "admin1234";
     
     @FXML
     void btnLoginOnAction(ActionEvent event) throws IOException {
