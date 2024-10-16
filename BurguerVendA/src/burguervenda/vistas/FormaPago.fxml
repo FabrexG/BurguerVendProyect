@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="anchorPane" prefHeight="720.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="burguervenda.controllers.FormaPagoController">
+   <children>
+      <Pane prefHeight="720.0" prefWidth="480.0">
+         <children>
+            <Label layoutX="80.0" layoutY="14.0" prefHeight="96.0" prefWidth="298.0" text="Continuar con el pago">
+               <font>
+                  <Font name="System Bold" size="27.0" />
+               </font></Label>
+            <Label fx:id="etiquetaTotal" layoutX="96.0" layoutY="185.0" />
+            <Button fx:id="btnFiftyCent" layoutX="74.0" layoutY="262.0" mnemonicParsing="false" onMouseClicked="#payFiftyCent" text="\$0.50" />
+            <Button fx:id="btnOne" layoutX="195.0" layoutY="262.0" mnemonicParsing="false" onMouseClicked="#payOne" text="\$1.00" />
+            <Button fx:id="btnTwo" layoutX="287.0" layoutY="262.0" mnemonicParsing="false" onMouseClicked="#payTwo" text="\$2.00" />
+            <Button fx:id="btnFive" layoutX="118.0" layoutY="322.0" mnemonicParsing="false" onMouseClicked="#payFive" text="\$5.00" />
+            <Button fx:id="btnTen" layoutX="240.0" layoutY="322.0" mnemonicParsing="false" onMouseClicked="#payTen" text="\$10.00" />
+            <Label layoutX="74.0" layoutY="216.0" text="Pago con monedas.">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="74.0" layoutY="360.0" text="Pago con billetes.">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnTwenty" layoutX="70.0" layoutY="406.0" mnemonicParsing="false" onMouseClicked="#payTwenty" text="\$20.00" />
+            <Button fx:id="btnFifty" layoutX="279.0" layoutY="406.0" mnemonicParsing="false" onMouseClicked="#payFifty" text="\$50.00" />
+            <Button fx:id="btnTwoHundred" layoutX="279.0" layoutY="450.0" mnemonicParsing="false" onMouseClicked="#payTwoHundred" text="\$200.00" />
+            <Button fx:id="btnHundred" layoutX="70.0" layoutY="450.0" mnemonicParsing="false" onMouseClicked="#payHundred" text="\$100.00" />
+            <Button fx:id="btnFiveHundred" layoutX="70.0" layoutY="493.0" mnemonicParsing="false" onMouseClicked="#payFiveHundred" text="\$500.00" />
+            <Button fx:id="btnThousand" layoutX="279.0" layoutY="493.0" mnemonicParsing="false" onMouseClicked="#payThousand" text="\$1000.00" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
