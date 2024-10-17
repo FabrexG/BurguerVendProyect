@@ -5,12 +5,9 @@
 package burguervenda.controllers;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -41,8 +38,7 @@ public class AdminLoginController {
     
     @FXML
     void btnLoginOnAction(ActionEvent event) throws IOException {
-        if(tfUsername.getText().equals(user) && tfPassword.getText().equals(pass))
-        {
+        if(tfUsername.getText().equals(user) && tfPassword.getText().equals(pass)) {
             Stage stage = new Stage();
             AnchorPane root = FXMLLoader.load(getClass().getResource("/burguervenda/vistas/InventarioLogin.fxml"));
             Scene scene = new Scene(root);
@@ -51,13 +47,10 @@ public class AdminLoginController {
             stage.show();
             tfUsername.setText("");
             tfPassword.setText("");
-        }
-        else 
-        {
+        } else {
             Alert alerta = new Alert(AlertType.ERROR,"Credenciales invalidas, intente de nuevo",ButtonType.YES);
             alerta.setTitle("Erro de inicio de sesion");
             alerta.show();
         }
     }
-    
 }
