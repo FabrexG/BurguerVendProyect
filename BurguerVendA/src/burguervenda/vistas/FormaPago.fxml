@@ -36,6 +36,7 @@
             <Button fx:id="btnHundred" layoutX="70.0" layoutY="450.0" mnemonicParsing="false" onMouseClicked="#payHundred" text="\$100.00" />
             <Button fx:id="btnFiveHundred" layoutX="70.0" layoutY="493.0" mnemonicParsing="false" onMouseClicked="#payFiveHundred" text="\$500.00" />
             <Button fx:id="btnThousand" layoutX="279.0" layoutY="493.0" mnemonicParsing="false" onMouseClicked="#payThousand" text="\$1000.00" />
+            <Button fx:id="btnEliminarPedido" layoutX="70.0" layoutY="569.0" mnemonicParsing="false" onMouseClicked="#eliminarPedido" text="Eliminar Pedido" />
          </children>
       </Pane>
    </children>

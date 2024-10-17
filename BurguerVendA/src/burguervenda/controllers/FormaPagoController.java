@@ -4,9 +4,12 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 import dto.Producto;
+import java.util.Optional;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javax.swing.JOptionPane;
@@ -39,6 +42,8 @@ public class FormaPagoController implements Initializable {
     private Button btnFiveHundred;
     @FXML
     private Button btnThousand;
+    @FXML
+    private Button btnEliminarPedido;
 
     private double total = 1800;
     private double totalO = total; //Guardamos el total para poder generar el ticket
@@ -144,12 +149,24 @@ public class FormaPagoController implements Initializable {
         
         
     }
-  
-    /*private String getTotalPay(List<Producto> listaProductos) {
-        double subTotal = 0;
-        for (Producto producto : listaProductos) {
-            subTotal += producto.getPrecio();
+    
+    //Implementamos un boton para poder eliminar el pedido y cuando se borra se reinicia el pedido
+    public void eliminarPedido(MouseEvent event) {
+        // Crear el cuadro de diálogo de confirmación
+        Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
+        alerta.setTitle("Eliminar Pedido");
+        alerta.setHeaderText(null);
+        alerta.setContentText("¿Estás seguro que deseas eliminar el pedido?");
+
+        // Mostrar el cuadro de diálogo y esperar la respuesta del usuario
+        Optional<ButtonType> result = alerta.showAndWait();
+
+        // Verificar si el usuario hizo clic en OK (equivalente a YES_OPTION)
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            // Restablecemos el total
+            total = totalO;
+            etiquetaTotal.setText("Pedido eliminado. El total es: $" + total);
         }
-        return String.valueOf(subTotal);
-    }*/
+    }
+
 }
