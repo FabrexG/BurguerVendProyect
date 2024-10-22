@@ -1,1 +1,0 @@
-Proyecto BurguerVend para la materia de Aseguramiento de la Calidad del Software
