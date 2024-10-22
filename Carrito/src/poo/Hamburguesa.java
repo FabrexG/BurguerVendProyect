@@ -3,6 +3,8 @@ package poo;
 
 
 
+import javafx.scene.image.Image;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,15 +14,23 @@ public class Hamburguesa {
     private List<Ingrediente> ingredientes;
     private List<Extra> extras;
     private double costoBase;
+    private Image imagen;
 
-    public Hamburguesa(String nombre, List<Ingrediente> ingredientes, double costoBase) {
+    public Hamburguesa(String nombre, List<Ingrediente> ingredientes, double costoBase, String rutaImagen) {
         this.nombre = nombre;
         this.ingredientes = ingredientes;
+        this.imagen = new Image(rutaImagen);
         this.extras = new ArrayList<>();
         this.costoBase = costoBase;
     }
 
+    public Image getImagen() {
+
+        return imagen;
+    }
+
     public void agregarExtra(Extra extra) {
+
         extras.add(extra);
     }
 
@@ -29,10 +39,12 @@ public class Hamburguesa {
     }
 
     public List<Ingrediente> getIngredientes() {
+
         return ingredientes;
     }
 
     public List<Extra> getExtras() {
+
         return extras;
     }
 
@@ -45,31 +57,31 @@ public class Hamburguesa {
     }
 
     public String descripcion() {
-            StringBuilder desc = new StringBuilder();
-            desc.append("Nombre: ").append(nombre).append("\n")
-                    .append("Ingredientes: ");
+        StringBuilder desc = new StringBuilder();
+        desc.append("Nombre: ").append(nombre).append("\n")
+                .append("Ingredientes: ");
 
-            for (Ingrediente ing : ingredientes) {
-                desc.append(ing.getNombre()).append(", ");
-            }
-
-            if (!ingredientes.isEmpty()) {
-                desc.setLength(desc.length() - 2); // Quita la última coma
-            }
-
-            desc.append("\nExtras: ");
-
-            if (!extras.isEmpty()) {
-                for (Extra extra : extras) {
-                    desc.append(extra.getNombre()).append(", ");
-                }
-                desc.setLength(desc.length() - 2); // Quita la última coma
-            } else {
-                desc.append("Ninguno");
-            }
-
-            desc.append("\nCosto: $").append(calcularCosto());
-            return desc.toString();
+        for (Ingrediente ing : ingredientes) {
+            desc.append(ing.getNombre()).append(", ");
         }
 
+        if (!ingredientes.isEmpty()) {
+            desc.setLength(desc.length() - 2); // Quita la última coma
+        }
+
+        desc.append("\nExtras: ");
+
+        if (!extras.isEmpty()) {
+            for (Extra extra : extras) {
+                desc.append(extra.getNombre()).append(", ");
+            }
+            desc.setLength(desc.length() - 2); // Quita la última coma
+        } else {
+            desc.append("Ninguno");
+        }
+
+        desc.append("\nCosto: $").append(calcularCosto());
+        return desc.toString();
     }
+
+}

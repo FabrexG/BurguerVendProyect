@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
@@ -17,7 +18,7 @@
    <children>
       <AnchorPane prefHeight="935.0" prefWidth="702.0" style="-fx-background-color: #FBDCE6; -fx-background-radius: 25px;">
          <children>
-            <AnchorPane layoutX="23.0" layoutY="22.0" prefHeight="885.0" prefWidth="676.0" style="-fx-border-style: solid; -fx-border-color: pink;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="10.0">
+            <AnchorPane fx:id="panControll" layoutX="23.0" layoutY="22.0" prefHeight="885.0" prefWidth="676.0" style="-fx-border-style: solid; -fx-border-color: pink;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="10.0">
                <children>
                   <Label layoutX="154.0" layoutY="50.0" prefHeight="18.0" prefWidth="126.0" text="Numero Pedido" AnchorPane.leftAnchor="153.0" AnchorPane.rightAnchor="135.0" AnchorPane.topAnchor="49.0">
                      <font>
@@ -25,25 +26,28 @@
                      </font>
                   </Label>
                   <TextField fx:id="txtPedido" alignment="TOP_CENTER" layoutX="156.0" layoutY="81.0" prefHeight="24.0" prefWidth="122.0" AnchorPane.leftAnchor="155.0" AnchorPane.rightAnchor="137.0" />
-                  <Label layoutX="71.0" layoutY="162.0" prefHeight="18.0" prefWidth="104.0" text="Descripcion" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="240.0">
+                  <Label layoutX="64.0" layoutY="185.0" prefHeight="18.0" prefWidth="104.0" text="Descripcion" AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="248.0">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <TextArea fx:id="txtDescripcion1" layoutX="16.0" layoutY="190.0" prefHeight="92.0" prefWidth="357.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="200.0" />
+                  <TextArea fx:id="txtDescripcion1" layoutX="19.0" layoutY="218.0" prefHeight="92.0" prefWidth="357.0" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="202.0" />
                   <DatePicker fx:id="dateFecha" layoutX="284.0" layoutY="615.0" prefHeight="24.0" prefWidth="122.0" AnchorPane.leftAnchor="284.0" AnchorPane.rightAnchor="14.0" />
                   <Label layoutX="313.0" layoutY="587.0" prefHeight="18.0" prefWidth="53.0" text="Fecha" AnchorPane.leftAnchor="313.0" AnchorPane.rightAnchor="52.0">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <ImageView fx:id="img1" fitHeight="92.0" fitWidth="119.0" layoutX="242.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true" />
-                  <TextArea fx:id="txtDescripcion2" layoutX="15.0" layoutY="307.0" prefHeight="92.0" prefWidth="357.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="201.0" />
-                  <TextArea fx:id="txtDescripcion3" layoutX="15.0" layoutY="421.0" prefHeight="92.0" prefWidth="357.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="200.0" />
-                  <ImageView fx:id="img3" fitHeight="92.0" fitWidth="119.0" layoutX="255.0" layoutY="421.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fx:id="img2" fitHeight="92.0" fitWidth="119.0" layoutX="255.0" layoutY="307.0" pickOnBounds="true" preserveRatio="true" />
-                  <TextField fx:id="txtTotal" layoutX="135.0" layoutY="531.0" prefHeight="56.0" prefWidth="76.0" />
-                  <Label layoutX="53.0" layoutY="551.0" text="Total" />
+                  <ImageView fx:id="img1" fitHeight="92.0" fitWidth="119.0" layoutX="217.0" layoutY="218.0" pickOnBounds="true" preserveRatio="true" />
+                  <TextArea fx:id="txtDescripcion2" layoutX="18.0" layoutY="330.0" prefHeight="92.0" prefWidth="357.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="202.0" />
+                  <TextArea fx:id="txtDescripcion3" layoutX="18.0" layoutY="439.0" prefHeight="92.0" prefWidth="357.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="201.0" />
+                  <ImageView fx:id="img3" fitHeight="92.0" fitWidth="119.0" layoutX="219.0" layoutY="439.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="img2" fitHeight="92.0" fitWidth="119.0" layoutX="219.0" layoutY="330.0" pickOnBounds="true" preserveRatio="true" />
+                  <TextField fx:id="txtTotal" layoutX="135.0" layoutY="559.0" prefHeight="56.0" prefWidth="76.0" />
+                  <Label layoutX="55.0" layoutY="588.0" text="Total" />
+                  <Button fx:id="btnR1" layoutX="356.0" layoutY="252.0" mnemonicParsing="false" onAction="#remover1" prefHeight="24.0" prefWidth="9.0" style="-fx-background-radius: 50px; -fx-background-color: red;" text="X" />
+                  <Button fx:id="btnR3" layoutX="356.0" layoutY="485.0" mnemonicParsing="false" onAction="#remover3" prefHeight="24.0" prefWidth="9.0" style="-fx-background-radius: 50px;" text="X" />
+                  <Button fx:id="btnR2" layoutX="356.0" layoutY="376.0" mnemonicParsing="false" onAction="#remover2" prefHeight="24.0" prefWidth="9.0" style="-fx-background-radius: 50px;" text="X" />
                </children>
             </AnchorPane>
          </children>
