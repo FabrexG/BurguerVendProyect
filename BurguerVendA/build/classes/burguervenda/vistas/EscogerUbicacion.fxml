@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="480.0" styleClass="fondo" stylesheets="@../estilos/EstiloPantallas.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="burguervenda.controllers.EscogerUbicacionController">
+   <children>
+      <Label layoutX="29.0" layoutY="47.0" prefHeight="17.0" prefWidth="428.0" text="¡Elige cómo lo prefieres!">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Button layoutX="29.0" layoutY="116.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="190.0" styleClass="littleButton" stylesheets="@../estilos/EstiloPantallas.css" text="BurguerPick" AnchorPane.leftAnchor="30.0">
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagenes/pickupIcon.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="266.0" layoutY="116.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="190.0" styleClass="littleButton" text="BurguerDelivery" AnchorPane.rightAnchor="30.0">
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagenes/deliveryIcon.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Label layoutX="30.0" layoutY="196.0" prefHeight="17.0" prefWidth="428.0" text="BurguerPick si vas a pasar a recoger tu pedido, o BurguerDelivery ">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="29.0" layoutY="221.0" text="para recibir en cualquier lugar">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
