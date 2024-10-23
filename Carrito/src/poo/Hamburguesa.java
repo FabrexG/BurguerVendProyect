@@ -103,7 +103,7 @@ public class Hamburguesa {
                         .append(" a $").append(extras.get(i).getCosto()).append(" c/u \n");
             }
         }
-        desc.append("Costo base: $").append(costoBase).append("\n"); // Agregar costo base
+        desc.append("Costo base: $").append(costoBase).append("\n\n"); // Agregar costo base
         desc.append("Costo total: $").append(calcularCosto());
         return desc.toString();
     }

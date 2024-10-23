@@ -60,6 +60,7 @@ public class HelloController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
         txtDescripcion1.setEditable(false);
         txtDescripcion2.setEditable(false);
         txtDescripcion3.setEditable(false);
@@ -68,6 +69,7 @@ public class HelloController implements Initializable {
         dateFecha.setEditable(false);
         dateFecha.setValue(LocalDate.now());
         generarNuevoPedido();
+
     }
 
     private void generarNuevoPedido() {

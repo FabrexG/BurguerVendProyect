@@ -12,8 +12,9 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 480, 720);
-        stage.setTitle("Hello!");
+        stage.setTitle("Hamburguesería"); // Cambiar el título de la ventana
         stage.setScene(scene);
+        stage.setResizable(false); // Deshabilitar el redimensionamiento de la ventana
         stage.show();
     }
 

@@ -2,6 +2,7 @@
 
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -12,48 +13,69 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="720.0" prefWidth="480.0" spacing="20.0" style="-fx-background-radius: 50px;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HelloController">
+<VBox alignment="CENTER" prefHeight="720.0" prefWidth="480.0" spacing="20.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HelloController">
+
    <stylesheets>
-      <URL value="@styles.css" />
-   </stylesheets>
+      <URL value="@styles.css" />  </stylesheets>
 
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
    <children>
-      <AnchorPane fx:id="panControll" prefHeight="885.0" prefWidth="676.0" style="-fx-border-style: solid; -fx-border-color: pink;">
+      <AnchorPane fx:id="panControll" prefHeight="885.0" prefWidth="676.0">
          <children>
             <Label layoutX="154.0" layoutY="50.0" prefHeight="18.0" prefWidth="126.0" text="Numero Pedido" AnchorPane.leftAnchor="153.0" AnchorPane.rightAnchor="135.0" AnchorPane.topAnchor="49.0">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="txtPedido" alignment="TOP_CENTER" layoutX="156.0" layoutY="81.0" prefHeight="24.0" prefWidth="122.0" AnchorPane.leftAnchor="155.0" AnchorPane.rightAnchor="137.0" />
+            <TextField fx:id="txtPedido" alignment="TOP_CENTER" layoutX="156.0" layoutY="81.0" prefHeight="24.0" prefWidth="122.0" AnchorPane.leftAnchor="155.0" AnchorPane.rightAnchor="137.0">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor></TextField>
             <Label layoutX="64.0" layoutY="185.0" prefHeight="18.0" prefWidth="104.0" text="Descripcion" AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="248.0">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <TextArea fx:id="txtDescripcion1" layoutX="19.0" layoutY="218.0" prefHeight="92.0" prefWidth="357.0" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="202.0" />
-            <DatePicker fx:id="dateFecha" layoutX="257.0" layoutY="615.0" prefHeight="42.0" prefWidth="143.0" AnchorPane.leftAnchor="256.0" AnchorPane.rightAnchor="15.0" />
+            <TextArea fx:id="txtDescripcion1" layoutX="19.0" layoutY="218.0" prefHeight="92.0" prefWidth="357.0" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="202.0">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor></TextArea>
+            <DatePicker fx:id="dateFecha" layoutX="257.0" layoutY="615.0" prefHeight="42.0" prefWidth="143.0" AnchorPane.leftAnchor="256.0" AnchorPane.rightAnchor="15.0">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor></DatePicker>
             <Label layoutX="313.0" layoutY="587.0" prefHeight="18.0" prefWidth="53.0" text="Fecha" AnchorPane.leftAnchor="313.0" AnchorPane.rightAnchor="52.0">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <ImageView fx:id="img1" fitHeight="92.0" fitWidth="119.0" layoutX="241.0" layoutY="222.0" pickOnBounds="true" preserveRatio="true" />
-            <TextArea fx:id="txtDescripcion2" layoutX="18.0" layoutY="330.0" prefHeight="92.0" prefWidth="357.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="202.0" />
-            <TextArea fx:id="txtDescripcion3" layoutX="18.0" layoutY="439.0" prefHeight="92.0" prefWidth="357.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="201.0" />
+            <ImageView fx:id="img1" fitHeight="92.0" fitWidth="119.0" layoutX="241.0" layoutY="222.0" pickOnBounds="true" preserveRatio="true">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor></ImageView>
+            <TextArea fx:id="txtDescripcion2" layoutX="18.0" layoutY="330.0" prefHeight="92.0" prefWidth="357.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="202.0">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor></TextArea>
+            <TextArea fx:id="txtDescripcion3" layoutX="18.0" layoutY="439.0" prefHeight="92.0" prefWidth="357.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="201.0">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor></TextArea>
             <ImageView fx:id="img3" fitHeight="92.0" fitWidth="119.0" layoutX="243.0" layoutY="443.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="img2" fitHeight="92.0" fitWidth="119.0" layoutX="243.0" layoutY="334.0" pickOnBounds="true" preserveRatio="true" />
-            <TextField fx:id="txtTotal" layoutX="127.0" layoutY="568.0" prefHeight="52.0" prefWidth="106.0" />
+            <TextField fx:id="txtTotal" layoutX="127.0" layoutY="568.0" prefHeight="52.0" prefWidth="106.0">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor></TextField>
             <Label layoutX="55.0" layoutY="588.0" text="Total" />
-            <Button fx:id="btnR1" layoutX="372.0" layoutY="266.0" mnemonicParsing="false" onAction="#remover1" prefHeight="36.0" prefWidth="39.0" style="-fx-background-radius: 50px; -fx-background-color: red;" text="X" />
-            <Button fx:id="btnR2" layoutX="372.0" layoutY="388.0" mnemonicParsing="false" onAction="#remover2" prefHeight="36.0" prefWidth="39.0" style="-fx-background-radius: 50px; -fx-background-color: red;" text="X" />
-            <Button fx:id="btnR3" layoutX="372.0" layoutY="497.0" mnemonicParsing="false" onAction="#remover3" prefHeight="36.0" prefWidth="39.0" style="-fx-background-radius: 50px; -fx-background-color: red;" text="X" />
-            <Button fx:id="btnA2" layoutX="372.0" layoutY="342.0" mnemonicParsing="false" onAction="#Agregar2" prefHeight="36.0" prefWidth="39.0" style="-fx-background-radius: 50px; -fx-background-color: red;" text="+" />
-            <Button fx:id="btnA3" layoutX="372.0" layoutY="451.0" mnemonicParsing="false" onAction="#Agregar3" prefHeight="36.0" prefWidth="39.0" style="-fx-background-radius: 50px; -fx-background-color: red;" text="+" />
-            <Button fx:id="btnA1" layoutX="372.0" layoutY="220.0" mnemonicParsing="false" onAction="#Agregar1" prefHeight="36.0" prefWidth="39.0" style="-fx-background-radius: 50px; -fx-background-color: red;" text="+" />
+            <Button fx:id="btnR1" layoutX="372.0" layoutY="266.0" mnemonicParsing="false" onAction="#remover1" prefHeight="36.0" prefWidth="39.0" text="X" />
+            <Button fx:id="btnR2" layoutX="372.0" layoutY="388.0" mnemonicParsing="false" onAction="#remover2" prefHeight="36.0" prefWidth="39.0" text="X" />
+            <Button fx:id="btnR3" layoutX="372.0" layoutY="497.0" mnemonicParsing="false" onAction="#remover3" prefHeight="36.0" prefWidth="39.0" text="X" />
+            <Button fx:id="btnA2" layoutX="372.0" layoutY="342.0" mnemonicParsing="false" onAction="#Agregar2" prefHeight="36.0" prefWidth="39.0" text="+" />
+            <Button fx:id="btnA3" layoutX="372.0" layoutY="451.0" mnemonicParsing="false" onAction="#Agregar3" prefHeight="36.0" prefWidth="39.0" text="+" />
+            <Button fx:id="btnA1" layoutX="372.0" layoutY="220.0" mnemonicParsing="false" onAction="#Agregar1" prefHeight="36.0" prefWidth="39.0" text="+" />
          </children>
       </AnchorPane>
    </children>
