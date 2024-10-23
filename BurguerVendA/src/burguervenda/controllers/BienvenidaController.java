@@ -35,9 +35,9 @@ public class BienvenidaController {
 
      @FXML
      void btnInfoOnAction(ActionEvent event) throws IOException {
-         Stage stage=new Stage();
-         AnchorPane root =(AnchorPane) FXMLLoader.load(getClass().getResource("/burguervenda/vistas/AppInformacion.fxml"));
-         Scene scene=new Scene(root);
+         Stage stage = new Stage();
+         AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("/burguervenda/vistas/AppInformacion.fxml"));
+         Scene scene = new Scene(root);
          stage.setTitle("Acerca de...");
          stage.setScene(scene);
          stage.show();

@@ -25,7 +25,7 @@ public class BurguerVendA extends Application{
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("vistas/Carrito.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("vistas/Bienvenida.fxml"));
         Scene scene = new Scene(root);
         stage.setTitle("Bienvenido");
         stage.setScene(scene);
