@@ -87,25 +87,24 @@ public class Hamburguesa {
     public String descripcion() {
         StringBuilder desc = new StringBuilder();
         desc.append("Nombre: ").append(nombre).append("\n");
-        desc.append("Ingredientes: ");
+        desc.append("Ingredientes: \n");
         for (int i = 0; i < ingredientes.size(); i++) {
-            desc.append(ingredientes.get(i).getNombre());
-            if (i < ingredientes.size() - 1) {
-                desc.append(", ");
-            }
+            desc.append("  - ").append(ingredientes.get(i).getCantidad())
+                    .append(" ").append(ingredientes.get(i).getNombre())
+                    .append(" a $").append(ingredientes.get(i).getCosto()).append(" c/u \n");
         }
-        desc.append("\nExtras: ");
+        desc.append("Extras: \n");
         if (extras.isEmpty()) {
-            desc.append("Ninguno");
+            desc.append("  - Ninguno\n");
         } else {
             for (int i = 0; i < extras.size(); i++) {
-                desc.append(extras.get(i).getNombre());
-                if (i < extras.size() - 1) {
-                    desc.append(", ");
-                }
+                desc.append("  - ").append(extras.get(i).getCantidad())
+                        .append(" ").append(extras.get(i).getNombre())
+                        .append(" a $").append(extras.get(i).getCosto()).append(" c/u \n");
             }
         }
-        desc.append("\nCosto: $").append(calcularCosto());
+        desc.append("Costo base: $").append(costoBase).append("\n"); // Agregar costo base
+        desc.append("Costo total: $").append(calcularCosto());
         return desc.toString();
     }
 }
