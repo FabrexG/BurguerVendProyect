@@ -5,10 +5,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.fxml.FXML;
 import java.net.URL;
+
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.ResourceBundle;
+
 
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -62,6 +64,11 @@ public class HelloController implements Initializable {
 
     private Pedido pedidoActual;
 
+    // Declarar las variables de las hamburguesas aquí
+    private Hamburguesa hamburguesa1;
+    private Hamburguesa hamburguesa2;
+    private Hamburguesa hamburguesa3;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         dateFecha.setValue(LocalDate.now());
@@ -78,65 +85,76 @@ public class HelloController implements Initializable {
 
     private void crearHamburguesas() {
         // 1. Hamburguesa predefinida con extras
-        Hamburguesa whopperConQueso = new Hamburguesa(
+        hamburguesa1 = new Hamburguesa(
                 "Whopper con Queso",
                 Arrays.asList(new Ingrediente("Queso", 1.00), new Ingrediente("Carne", 2.50)),
                 5.00, getClass().getResource("/img/1.png").toExternalForm()
         );
-        whopperConQueso.agregarExtra(new Extra("Papas", 1.50));
-        whopperConQueso.agregarExtra(new Extra("Refresco", 1.00));
+        hamburguesa1.agregarExtra(new Extra("Papas", 1.50));
+        hamburguesa1.agregarExtra(new Extra("Refresco", 1.00));
 
         // 2. Combo con extras
-        Hamburguesa comboKingPollo = new Hamburguesa(
+        hamburguesa2 = new Hamburguesa(
                 "King de Pollo Guacamole",
                 Arrays.asList(new Ingrediente("Pollo", 3.00), new Ingrediente("Guacamole", 1.50)),
                 6.00,getClass().getResource("/img/1.png").toExternalForm()
         );
-        comboKingPollo.agregarExtra(new Extra("Refresco", 1.00));
-        comboKingPollo.agregarExtra(new Extra("Helado", 2.00));
+        hamburguesa2.agregarExtra(new Extra("Refresco", 1.00));
+        hamburguesa2.agregarExtra(new Extra("Helado", 2.00));
 
         // 3. Hamburguesa improvisada
-        Hamburguesa personalizada = new Hamburguesa(
+        hamburguesa3 = new Hamburguesa(
                 "Hamburguesa Personalizada",
                 Arrays.asList(new Ingrediente("Lechuga", 0.50), new Ingrediente("Tomate", 0.50), new Ingrediente("Carne", 2.50)),
                 4.00,getClass().getResource("/img/1.png").toExternalForm()
         );
-        personalizada.agregarExtra(new Extra("Bacon", 1.50));
+        hamburguesa3.agregarExtra(new Extra("Bacon", 1.50));
 
         // Agregar hamburguesas al pedido
-        pedidoActual.agregarHamburguesa(whopperConQueso);
-        pedidoActual.agregarHamburguesa(comboKingPollo);
-        pedidoActual.agregarHamburguesa(personalizada);
+        pedidoActual.agregarHamburguesa(hamburguesa1);
+        pedidoActual.agregarHamburguesa(hamburguesa2);
+        pedidoActual.agregarHamburguesa(hamburguesa3);
 
         // Mostrar descripciones
-        txtDescripcion1.setText(whopperConQueso.descripcion());
-        txtDescripcion2.setText(comboKingPollo.descripcion());
-        txtDescripcion3.setText(personalizada.descripcion());
+        txtDescripcion1.setText(hamburguesa1.descripcion());
+        txtDescripcion2.setText(hamburguesa2.descripcion());
+        txtDescripcion3.setText(hamburguesa3.descripcion());
 
-       img1.setImage(whopperConQueso.getImagen());
-        img2.setImage(comboKingPollo.getImagen());
-        img3.setImage(personalizada.getImagen());
-        
+        img1.setImage(hamburguesa1.getImagen());
+        img2.setImage(hamburguesa2.getImagen());
+        img3.setImage(hamburguesa3.getImagen());
+
     }
 
     @FXML
     void remover1(ActionEvent event) {
-        txtDescripcion1.clear(); // Limpia el contenido del TextArea
-        img1.setImage(null); // Elimina la imagen
+        pedidoActual.removerHamburguesa(hamburguesa1);
+        txtDescripcion1.clear();
+        img1.setImage(null);
+        hamburguesa1 = null; // Limpiar la referencia
+        actualizarTotal();
     }
 
     @FXML
     void remover2(ActionEvent event) {
-        txtDescripcion2.clear(); // Limpia el contenido del TextArea
-        img2.setImage(null); // Elimina la imagen
-
+        pedidoActual.removerHamburguesa(hamburguesa2);
+        txtDescripcion2.clear();
+        img2.setImage(null);
+        hamburguesa2 = null; // Limpiar la referencia
+        actualizarTotal();
     }
 
     @FXML
     void remover3(ActionEvent event) {
-        txtDescripcion3.clear(); // Limpia el contenido del TextArea
-        img3.setImage(null); // Elimina la imagen
+        pedidoActual.removerHamburguesa(hamburguesa3);
+        txtDescripcion3.clear();
+        img3.setImage(null);
+        hamburguesa3 = null; // Limpiar la referencia
+        actualizarTotal();
+    }
 
+    // Método para actualizar el total en la interfaz
+    private void actualizarTotal() {
+        txtTotal.setText("$" + pedidoActual.calcularTotal());
     }
 }
-

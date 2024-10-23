@@ -45,9 +45,9 @@
                   <ImageView fx:id="img2" fitHeight="92.0" fitWidth="119.0" layoutX="219.0" layoutY="330.0" pickOnBounds="true" preserveRatio="true" />
                   <TextField fx:id="txtTotal" layoutX="135.0" layoutY="559.0" prefHeight="56.0" prefWidth="76.0" />
                   <Label layoutX="55.0" layoutY="588.0" text="Total" />
-                  <Button fx:id="btnR1" layoutX="356.0" layoutY="252.0" mnemonicParsing="false" onAction="#remover1" prefHeight="24.0" prefWidth="9.0" style="-fx-background-radius: 50px; -fx-background-color: red;" text="X" />
-                  <Button fx:id="btnR3" layoutX="356.0" layoutY="485.0" mnemonicParsing="false" onAction="#remover3" prefHeight="24.0" prefWidth="9.0" style="-fx-background-radius: 50px;" text="X" />
-                  <Button fx:id="btnR2" layoutX="356.0" layoutY="376.0" mnemonicParsing="false" onAction="#remover2" prefHeight="24.0" prefWidth="9.0" style="-fx-background-radius: 50px;" text="X" />
+                  <Button fx:id="btnR1" layoutX="350.0" layoutY="264.0" mnemonicParsing="false" onAction="#remover1" prefHeight="36.0" prefWidth="39.0" style="-fx-background-radius: 50px; -fx-background-color: red;" text="X" />
+                  <Button fx:id="btnR2" layoutX="350.0" layoutY="376.0" mnemonicParsing="false" onAction="#remover2" prefHeight="36.0" prefWidth="39.0" style="-fx-background-radius: 50px; -fx-background-color: red;" text="X" />
+                  <Button fx:id="btnR3" layoutX="350.0" layoutY="485.0" mnemonicParsing="false" onAction="#remover3" prefHeight="36.0" prefWidth="39.0" style="-fx-background-radius: 50px; -fx-background-color: red;" text="X" />
                </children>
             </AnchorPane>
          </children>

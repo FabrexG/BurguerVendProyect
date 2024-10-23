@@ -1,11 +1,11 @@
 package poo;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Pedido {
     private int numeroPedido;
     private List<Hamburguesa> hamburguesas;
-    private double total;
 
     public Pedido(int numeroPedido) {
         this.numeroPedido = numeroPedido;
@@ -20,8 +20,12 @@ public class Pedido {
         }
     }
 
+    public void removerHamburguesa(Hamburguesa hamburguesa) {
+        hamburguesas.remove(hamburguesa);
+    }
+
     public double calcularTotal() {
-        total = 0;
+        double total = 0; // Declarar la variable 'total' dentro del método
         for (Hamburguesa h : hamburguesas) {
             total += h.calcularCosto();
         }
@@ -32,7 +36,8 @@ public class Pedido {
         return numeroPedido;
     }
 
-    public double getTotal() {
-        return total;
-    }
+    // No es necesario un getter para el total, ya que se calcula en tiempo real
+    // public double getTotal() {
+    //     return total;
+    // }
 }
