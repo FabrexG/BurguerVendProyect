@@ -23,6 +23,16 @@ import poo.Hamburguesa;
 public class HelloController implements Initializable {
 
     @FXML
+    private Button btnA1;
+
+    @FXML
+    private Button btnA2;
+
+    @FXML
+    private Button btnA3;
+
+
+    @FXML
     private Button btnR1;
 
     @FXML
@@ -151,6 +161,52 @@ public class HelloController implements Initializable {
         img3.setImage(null);
         hamburguesa3 = null; // Limpiar la referencia
         actualizarTotal();
+    }
+
+    @FXML
+    void Agregar1(ActionEvent event) {
+        if (txtDescripcion1.getText().isEmpty() && img1.getImage() == null) {
+            Hamburguesa nuevaHamburguesa = crearNuevaHamburguesa();
+            hamburguesa1 = nuevaHamburguesa;
+            pedidoActual.agregarHamburguesa(nuevaHamburguesa);
+            txtDescripcion1.setText(nuevaHamburguesa.descripcion());
+            img1.setImage(nuevaHamburguesa.getImagen());
+            actualizarTotal();
+        }
+    }
+
+    @FXML
+    void Agregar2(ActionEvent event) {
+        if (txtDescripcion2.getText().isEmpty() && img2.getImage() == null) {
+            Hamburguesa nuevaHamburguesa = crearNuevaHamburguesa();
+            hamburguesa2 = nuevaHamburguesa;
+            pedidoActual.agregarHamburguesa(nuevaHamburguesa);
+            txtDescripcion2.setText(nuevaHamburguesa.descripcion());
+            img2.setImage(nuevaHamburguesa.getImagen());
+            actualizarTotal();
+        }
+    }
+
+    @FXML
+    void Agregar3(ActionEvent event) {
+        if (txtDescripcion3.getText().isEmpty() && img3.getImage() == null) {
+            Hamburguesa nuevaHamburguesa = crearNuevaHamburguesa();
+            hamburguesa3 = nuevaHamburguesa;
+            pedidoActual.agregarHamburguesa(nuevaHamburguesa);
+            txtDescripcion3.setText(nuevaHamburguesa.descripcion());
+            img3.setImage(nuevaHamburguesa.getImagen());
+            actualizarTotal();
+        }
+    }
+
+    // Método para crear una nueva hamburguesa (puedes personalizarlo)
+    private Hamburguesa crearNuevaHamburguesa() {
+        // Aquí puedes pedir los datos al usuario o generar una hamburguesa aleatoria
+        return new Hamburguesa(
+                "Nueva Hamburguesa",
+                Arrays.asList(new Ingrediente("Ingrediente 1", 1.00), new Ingrediente("Ingrediente 2", 2.00)),
+                4.50, getClass().getResource("/img/1.png").toExternalForm() // Reemplaza con la imagen correcta
+        );
     }
 
     // Método para actualizar el total en la interfaz

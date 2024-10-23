@@ -1,0 +1,48 @@
+.root {
+    -fx-background-color: #f0f0f0; /* Color de fondo suave */
+}
+
+.vbox {
+    -fx-background-color: transparent; /* Fondo transparente para el VBox */
+}
+
+.anchor-pane {
+    -fx-background-color: #ffffff; /* Color de fondo blanco para el AnchorPane principal */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 10); /* Sombra suave */
+}
+
+.label {
+    -fx-text-fill: #333333; /* Color de texto oscuro */
+    -fx-font-weight: bold;
+}
+
+.text-field, .text-area {
+    -fx-border-color: #cccccc; /* Borde gris claro */
+    -fx-border-radius: 5px; /* Bordes redondeados */
+    -fx-padding: 5px; /* Espaciado interno */
+}
+
+.text-area {
+    -fx-wrap-text: true; /* Ajustar el texto en el TextArea */
+}
+
+.date-picker {
+    -fx-border-color: #cccccc; /* Borde gris claro */
+    -fx-border-radius: 5px; /* Bordes redondeados */
+}
+
+.button {
+    -fx-background-color: #ff6666; /* Color de fondo rojo suave */
+    -fx-text-fill: white; /* Color de texto blanco */
+    -fx-border-radius: 50px; /* Botones redondos */
+    -fx-padding: 5px 10px; /* Espaciado interno */
+    -fx-cursor: hand; /* Cambiar el cursor al pasar por encima */
+}
+
+.button:hover {
+    -fx-background-color: #ff4d4d; /* Color de fondo rojo más oscuro al pasar por encima */
+}
+
+.button:pressed {
+    -fx-background-color: #ff3333; /* Color de fondo rojo aún más oscuro al presionar */
+}
