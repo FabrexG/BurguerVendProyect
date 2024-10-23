@@ -11,7 +11,6 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.ResourceBundle;
 
-
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import poo.Extra;
@@ -19,62 +18,42 @@ import poo.Ingrediente;
 import poo.Pedido;
 import poo.Hamburguesa;
 
-
 public class HelloController implements Initializable {
 
     @FXML
     private Button btnA1;
-
     @FXML
     private Button btnA2;
-
     @FXML
     private Button btnA3;
-
-
     @FXML
     private Button btnR1;
-
     @FXML
     private Button btnR2;
-
     @FXML
     private Button btnR3;
-
-
     @FXML
     private AnchorPane panControll;
-
     @FXML
     private ImageView img1;
-
     @FXML
     private ImageView img2;
-
     @FXML
     private ImageView img3;
-
     @FXML
     private DatePicker dateFecha;
-
     @FXML
     private TextArea txtDescripcion1;
-
     @FXML
     private TextArea txtDescripcion2;
-
     @FXML
     private TextArea txtDescripcion3;
-
     @FXML
     private TextField txtPedido;
-
     @FXML
     private TextField txtTotal;
 
     private Pedido pedidoActual;
-
-    // Declarar las variables de las hamburguesas aquí
     private Hamburguesa hamburguesa1;
     private Hamburguesa hamburguesa2;
     private Hamburguesa hamburguesa3;
@@ -87,8 +66,7 @@ public class HelloController implements Initializable {
 
     private void generarNuevoPedido() {
         pedidoActual = new Pedido(new Random().nextInt(1000) + 1);
-        crearHamburguesas();
-
+        crearHamburguesas(); // Llama a crearHamburguesas() después de crear el pedido
         txtPedido.setText(String.valueOf(pedidoActual.getNumeroPedido()));
         txtTotal.setText("$" + pedidoActual.calcularTotal());
     }
@@ -96,29 +74,39 @@ public class HelloController implements Initializable {
     private void crearHamburguesas() {
         // 1. Hamburguesa predefinida con extras
         hamburguesa1 = new Hamburguesa(
-                "Whopper con Queso",
-                Arrays.asList(new Ingrediente("Queso", 1.00), new Ingrediente("Carne", 2.50)),
+                "Whopper",
+                Arrays.asList(
+                        new Ingrediente("Queso", 1.00, 2), // 2 unidades de queso
+                        new Ingrediente("Carne", 2.50, 1)  // 1 unidad de carne
+                ),
                 5.00, getClass().getResource("/img/1.png").toExternalForm()
         );
-        hamburguesa1.agregarExtra(new Extra("Papas", 1.50));
-        hamburguesa1.agregarExtra(new Extra("Refresco", 1.00));
+        hamburguesa1.agregarExtra(new Extra("Papas", 1.50, 1)); // 1 unidad de papas
+        hamburguesa1.agregarExtra(new Extra("Refresco", 1.00, 1)); // 1 unidad de refresco
 
         // 2. Combo con extras
         hamburguesa2 = new Hamburguesa(
                 "King de Pollo Guacamole",
-                Arrays.asList(new Ingrediente("Pollo", 3.00), new Ingrediente("Guacamole", 1.50)),
-                6.00,getClass().getResource("/img/2.png").toExternalForm()
+                Arrays.asList(
+                        new Ingrediente("Pollo", 3.00, 1), // 1 unidad de pollo
+                        new Ingrediente("Guacamole", 1.50, 1) // 1 unidad de guacamole
+                ),
+                5.00,getClass().getResource("/img/2.png").toExternalForm()
         );
-        hamburguesa2.agregarExtra(new Extra("Refresco", 1.00));
-        hamburguesa2.agregarExtra(new Extra("Helado", 2.00));
+        hamburguesa2.agregarExtra(new Extra("Refresco", 1.00, 1)); // 1 unidad de refresco
+        hamburguesa2.agregarExtra(new Extra("Helado", 2.00, 1)); // 1 unidad de helado
 
         // 3. Hamburguesa improvisada
         hamburguesa3 = new Hamburguesa(
-                "Hamburguesa Personalizada",
-                Arrays.asList(new Ingrediente("Lechuga", 0.50), new Ingrediente("Tomate", 0.50), new Ingrediente("Carne", 2.50)),
+                "Hamburguesa Normal",
+                Arrays.asList(
+                        new Ingrediente("Lechuga", 0.50, 1), // 1 unidad de lechuga
+                        new Ingrediente("Tomate", 0.50, 1), // 1 unidad de tomate
+                        new Ingrediente("Carne", 2.50, 1) // 1 unidad de carne
+                ),
                 4.00,getClass().getResource("/img/3.png").toExternalForm()
         );
-        hamburguesa3.agregarExtra(new Extra("Bacon", 1.50));
+        hamburguesa3.agregarExtra(new Extra("Bacon", 1.50, 1)); // 1 unidad de bacon
 
         // Agregar hamburguesas al pedido
         pedidoActual.agregarHamburguesa(hamburguesa1);
@@ -133,7 +121,6 @@ public class HelloController implements Initializable {
         img1.setImage(hamburguesa1.getImagen());
         img2.setImage(hamburguesa2.getImagen());
         img3.setImage(hamburguesa3.getImagen());
-
     }
 
     @FXML
@@ -204,8 +191,11 @@ public class HelloController implements Initializable {
         // Aquí puedes pedir los datos al usuario o generar una hamburguesa aleatoria
         return new Hamburguesa(
                 "Nueva Hamburguesa",
-                Arrays.asList(new Ingrediente("Ingrediente 1", 1.00), new Ingrediente("Ingrediente 2", 2.00)),
-                4.50, getClass().getResource("/img/1.png").toExternalForm() // Reemplaza con la imagen correcta
+                Arrays.asList(
+                        new Ingrediente("Ingrediente 1", 1.00, 3), // 3 unidades de Ingrediente 1
+                        new Ingrediente("Ingrediente 2", 2.00, 2)  // 2 unidades de Ingrediente 2
+                ),
+                4.50, getClass().getResource("/img/1.png").toExternalForm()
         );
     }
 
