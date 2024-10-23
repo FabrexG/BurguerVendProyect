@@ -107,7 +107,7 @@ public class HelloController implements Initializable {
         hamburguesa2 = new Hamburguesa(
                 "King de Pollo Guacamole",
                 Arrays.asList(new Ingrediente("Pollo", 3.00), new Ingrediente("Guacamole", 1.50)),
-                6.00,getClass().getResource("/img/1.png").toExternalForm()
+                6.00,getClass().getResource("/img/2.png").toExternalForm()
         );
         hamburguesa2.agregarExtra(new Extra("Refresco", 1.00));
         hamburguesa2.agregarExtra(new Extra("Helado", 2.00));
@@ -116,7 +116,7 @@ public class HelloController implements Initializable {
         hamburguesa3 = new Hamburguesa(
                 "Hamburguesa Personalizada",
                 Arrays.asList(new Ingrediente("Lechuga", 0.50), new Ingrediente("Tomate", 0.50), new Ingrediente("Carne", 2.50)),
-                4.00,getClass().getResource("/img/1.png").toExternalForm()
+                4.00,getClass().getResource("/img/3.png").toExternalForm()
         );
         hamburguesa3.agregarExtra(new Extra("Bacon", 1.50));
 

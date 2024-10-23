@@ -1,48 +1,106 @@
 .root {
-    -fx-background-color: #f0f0f0; /* Color de fondo suave */
+    -fx-background-color: linear-gradient(to bottom, #f8f9fa, #e9ecef); 
 }
 
 .vbox {
-    -fx-background-color: transparent; /* Fondo transparente para el VBox */
+    -fx-background-color: transparent;
+    -fx-padding: 30px;
+    -fx-spacing: 25px; 
 }
 
 .anchor-pane {
-    -fx-background-color: #ffffff; /* Color de fondo blanco para el AnchorPane principal */
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 10); /* Sombra suave */
+    -fx-background-color: white;
+    -fx-border-radius: 15px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 20, 0, 10, 10);
+    -fx-padding: 40px;
+}
+
+#panControll {
+    -fx-border-width: 2px;
+    -fx-border-color: linear-gradient(to right, #f542a4, #f54272);
+    -fx-background-color: linear-gradient(to bottom right, #f7a0c3, #f572a4);
 }
 
 .label {
-    -fx-text-fill: #333333; /* Color de texto oscuro */
+    -fx-text-fill: #212121;
+    -fx-font-size: 16px;
     -fx-font-weight: bold;
 }
 
-.text-field, .text-area {
-    -fx-border-color: #cccccc; /* Borde gris claro */
-    -fx-border-radius: 5px; /* Bordes redondeados */
-    -fx-padding: 5px; /* Espaciado interno */
+.text-field {
+    -fx-border-color: #e0e0e0;
+    -fx-border-radius: 8px;
+    -fx-padding: 10px;
+    -fx-font-size: 14px;
+    -fx-background-color: #f9f9f9;
 }
 
 .text-area {
-    -fx-wrap-text: true; /* Ajustar el texto en el TextArea */
+    -fx-border-color: #e0e0e0;
+    -fx-border-radius: 8px;
+    -fx-padding: 10px;
+    -fx-font-size: 14px;
+    -fx-background-color: #f9f9f9;
+    -fx-wrap-text: true;
+    -fx-pref-height: 100px;
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-line-spacing: 1.5em;
+}
+
+/* Estilos para la imagen */
+.image-view {
+    -fx-border-radius: 8px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 2, 2);
+    -fx-padding: 5px; /* Agregar un espacio alrededor de la imagen */
+    -fx-background-color: #f9f9f9; /* Agregar un fondo suave a la imagen */
+}
+
+#txtTotal {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER;
+    -fx-pref-height: 50px;
+    -fx-background-color: #f0f0f0;
+    -fx-border-radius: 8px;
+    -fx-padding: 10px;
 }
 
 .date-picker {
-    -fx-border-color: #cccccc; /* Borde gris claro */
-    -fx-border-radius: 5px; /* Bordes redondeados */
+    -fx-border-color: #e0e0e0;
+    -fx-border-radius: 8px;
+    -fx-font-size: 14px;
+    -fx-background-color: #f9f9f9;
+    -fx-pref-height: 40px;
 }
 
 .button {
-    -fx-background-color: #ff6666; /* Color de fondo rojo suave */
-    -fx-text-fill: white; /* Color de texto blanco */
-    -fx-border-radius: 50px; /* Botones redondos */
-    -fx-padding: 5px 10px; /* Espaciado interno */
-    -fx-cursor: hand; /* Cambiar el cursor al pasar por encima */
+    -fx-background-color: linear-gradient(to bottom, #008CBA, #0077B3);
+    -fx-text-fill: white;
+    -fx-border-radius: 25px;
+    -fx-padding: 10px 20px;
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+    -fx-transition: all 0.3s ease;
 }
 
 .button:hover {
-    -fx-background-color: #ff4d4d; /* Color de fondo rojo más oscuro al pasar por encima */
+    -fx-background-color: linear-gradient(to bottom, #0077B3, #006699);
+    -fx-scale: 1.1;
 }
 
 .button:pressed {
-    -fx-background-color: #ff3333; /* Color de fondo rojo aún más oscuro al presionar */
+    -fx-background-color: linear-gradient(to bottom, #006699, #005580);
+    -fx-scale: 0.95;
+}
+
+#btnR1, #btnR2, #btnR3 {
+    -fx-background-color: linear-gradient(to bottom, #dc3545, #c82333);
+}
+
+#btnR1:hover, #btnR2:hover, #btnR3:hover {
+    -fx-background-color: linear-gradient(to bottom, #c82333, #b01e2c);
+}
+
+#btnR1:pressed, #btnR2:pressed, #btnR3:pressed {
+    -fx-background-color: linear-gradient(to bottom, #b01e2c, #a01a28);
 }
