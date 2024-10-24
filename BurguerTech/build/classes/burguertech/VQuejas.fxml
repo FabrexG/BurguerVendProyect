@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane fx:id="stackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="gradient" stylesheets="@diseñoQuejas.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.VQuejasController">
+    <children>
+        <AnchorPane prefHeight="400.0" prefWidth="442.0" styleClass="white-form"> 
+            <children>
+                <AnchorPane prefHeight="400.0" prefWidth="320.0" styleClass="gradient" stylesheets="@diseñoQuejas.css">
+                    <children>
+                        <ComboBox fx:id="ide_pregunta" layoutX="50.0" layoutY="185.0" prefHeight="30.0" prefWidth="220.0" promptText="Elige" styleClass="head-label" stylesheets="@diseñoQuejas.css" /> 
+                        <TextArea fx:id="descripcionTextArea" layoutX="50.0" layoutY="233.0" prefHeight="100.0" prefWidth="220.0" styleClass="textfield" />
+                        <Button layoutX="121.0" layoutY="350.0" onAction="#enviarQuejaSugerencia" styleClass="login-btn" text="Enviar" />
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="85.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@QyS.jpg" />
+                     </image>
+                  </ImageView> 
+                    </children>
+                </AnchorPane>
+            <AnchorPane layoutX="300.0" prefHeight="400.0" prefWidth="306.0" styleClass="gradient" stylesheets="@diseñoQuejas.css">
+               <children>
+                  <Button fx:id="btnImagen" layoutX="89.0" layoutY="96.0" mnemonicParsing="false" onMouseClicked="#InsertIm" styleClass="login-btn" stylesheets="@diseñoQuejas.css" text="Inserta tu imagen" />
+                  <Button fx:id="btnVideo" layoutX="95.0" layoutY="216.0" mnemonicParsing="false" onMouseClicked="#insertVideo" styleClass="login-btn" stylesheets="@diseñoQuejas.css" text="Inserta tu video" />
+               </children>
+            </AnchorPane>
+            </children>
+        </AnchorPane>
+    </children>
+</StackPane>

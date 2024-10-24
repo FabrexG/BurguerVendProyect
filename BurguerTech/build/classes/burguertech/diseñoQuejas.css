@@ -1,0 +1,49 @@
+/* 
+    Created on : 21 oct 2024, 18:54:51
+    Author     : HaZzZ
+*/
+
+.gradient {
+    -fx-background-color: linear-gradient(to bottom right, #fbdce6, #f7a9c3);
+}
+
+.white-form{
+    -fx-background-color: #fff;
+}
+
+.head-label{
+    -fx-border-color: #f7a9c3;
+    -fx-border-width: 0 0 0 3px;
+    -fx-padding: 0 0 0 5px;
+}
+
+.login-btn{
+    -fx-background-color: linear-gradient(to bottom right, #ff0156, #fbdce6);
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+    -fx-text-fill: #fff;
+    -fx-font-size: 14px;
+}
+
+.textfield{
+    -fx-background-color: transparent;
+    -fx-border-color: linear-gradient(to bottom right, #fbdce6, #f7a9c3);
+    -fx-border-width: .8px;
+}
+.textfield:focused{
+    -fx-border-width: 1px;
+}
+
+.crear-btn{
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+    -fx-text-fill: #000;
+    -fx-border-color:#000;
+    -fx-border-width: .5px;
+}
+
+.crear-btn:hover{
+    -fx-background-color: #f7a9c3;
+    -fx-textx-fill: #000;
+}
+

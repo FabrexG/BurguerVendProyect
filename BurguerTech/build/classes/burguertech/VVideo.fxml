@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.insertaVideo">
+   <children>
+      <Button fx:id="btnVideo" layoutX="48.0" layoutY="40.0" mnemonicParsing="false" text="Sube tu video" />
+      <Button fx:id="btnRegresar" layoutX="67.0" layoutY="338.0" mnemonicParsing="false" onMouseClicked="#regresar" text="Regresar" />
+   </children>
+</AnchorPane>
