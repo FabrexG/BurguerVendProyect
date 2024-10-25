@@ -110,3 +110,9 @@
     -fx-scale: 1.2; /* Efecto de zoom al pasar por encima */
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 15, 0, 7, 7); /* Sombra más intensa al pasar por encima */
 }
+
+.tooltip {
+    -fx-background-color: #f0f0f0;
+    -fx-text-fill: #333333;
+    -fx-font-size: 12px;
+}

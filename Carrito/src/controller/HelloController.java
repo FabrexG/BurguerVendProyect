@@ -76,6 +76,19 @@ HelloController implements Initializable {
 
         // Generar un nuevo pedido
         generarNuevoPedido();
+
+        Tooltip tooltip = new Tooltip("Agregar una nueva hamburguesa");
+        // Agregar tooltips a los botones "Remover"
+        this.btnR1.setTooltip(new Tooltip("Remover la hamburguesa 1 del pedido"));
+        this.btnR2.setTooltip(new Tooltip("Remover la hamburguesa 2 del pedido"));
+        this.btnR3.setTooltip(new Tooltip("Remover la hamburguesa 3 del pedido"));
+
+
+        // Agregar tooltips a los botones "Agregar"
+        this.btnA1.setTooltip(new Tooltip("Agregar una nueva hamburguesa al espacio 1"));
+        this.btnA2.setTooltip(new Tooltip("Agregar una nueva hamburguesa al espacio 2"));
+        this.btnA3.setTooltip(new Tooltip("Agregar una nueva hamburguesa al espacio 3"));
+
     }
 
     private void generarNuevoPedido() {
@@ -143,6 +156,8 @@ HelloController implements Initializable {
         this.img1.setImage(this.hamburguesa1.getImagen());
         this.img2.setImage(this.hamburguesa2.getImagen());
         this.img3.setImage(this.hamburguesa3.getImagen());
+
+
     }
 
     @FXML
