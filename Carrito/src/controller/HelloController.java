@@ -100,7 +100,7 @@ HelloController implements Initializable {
                         new Ingrediente("Queso", 1.00, 2),
                         new Ingrediente("Carne", 2.50, 1)
                 ),
-                5.00, getClass().getResource("/img/1.png").toExternalForm()
+                5.00, getClass().getResource("/img/Hamburguesa1.png").toExternalForm()
         );
         this.hamburguesa1.agregarExtra(new Extra("Papas", 1.50, 1));
         this.hamburguesa1.agregarExtra(new Extra("Refresco", 1.00, 1));
@@ -112,7 +112,7 @@ HelloController implements Initializable {
                         new Ingrediente("Pollo", 3.00, 1),
                         new Ingrediente("Guacamole", 1.50, 1)
                 ),
-                5.00, getClass().getResource("/img/2.png").toExternalForm()
+                5.00, getClass().getResource("/img/Hamburguesa4.png").toExternalForm()
         );
         this.hamburguesa2.agregarExtra(new Extra("Refresco", 1.00, 1));
         this.hamburguesa2.agregarExtra(new Extra("Helado", 2.00, 1));
@@ -125,7 +125,7 @@ HelloController implements Initializable {
                         new Ingrediente("Tomate", 0.50, 1),
                         new Ingrediente("Carne", 2.50, 1)
                 ),
-                4.00, getClass().getResource("/img/3.png").toExternalForm()
+                4.00, getClass().getResource("/img/Hamburguesa3.png").toExternalForm()
         );
         this.hamburguesa3.agregarExtra(new Extra("Bacon", 1.50, 1));
 
@@ -274,7 +274,7 @@ HelloController implements Initializable {
                         new Ingrediente("Ingrediente 1", 1.00, 3), // 3 unidades de Ingrediente 1
                         new Ingrediente("Ingrediente 2", 2.00, 2)  // 2 unidades de Ingrediente 2
                 ),
-                4.50, getClass().getResource("/img/1.png").toExternalForm()
+                4.50, getClass().getResource("/img/Hamburguesa1.png").toExternalForm()
         );
     }
 
