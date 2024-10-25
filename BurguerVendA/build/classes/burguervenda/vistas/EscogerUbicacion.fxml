@@ -7,14 +7,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="480.0" styleClass="fondo" stylesheets="@../estilos/EstiloPantallas.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="burguervenda.controllers.EscogerUbicacionController">
+<AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="720.0" prefWidth="480.0" styleClass="fondo" stylesheets="@../estilos/EstiloPantallas.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="burguervenda.controllers.EscogerUbicacionController">
    <children>
-      <Label layoutX="29.0" layoutY="47.0" prefHeight="17.0" prefWidth="428.0" text="¡Elige cómo lo prefieres!">
+      <Label layoutX="29.0" layoutY="47.0" prefHeight="17.0" prefWidth="428.0" styleClass="titulos" stylesheets="@../estilos/EstiloPantallas.css" text="¡Elige cómo lo prefieres!">
          <font>
-            <Font name="System Bold" size="20.0" />
+            <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Button layoutX="29.0" layoutY="116.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="190.0" styleClass="littleButton" stylesheets="@../estilos/EstiloPantallas.css" text="BurguerPick" AnchorPane.leftAnchor="30.0">
+      <Button fx:id="btnBurguerPick" layoutX="29.0" layoutY="116.0" mnemonicParsing="false" onAction="#btnBurguerPickOnAction" prefHeight="25.0" prefWidth="190.0" styleClass="littleButton" stylesheets="@../estilos/EstiloPantallas.css" text="BurguerPick" AnchorPane.leftAnchor="30.0">
          <graphic>
             <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -23,7 +23,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="266.0" layoutY="116.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="190.0" styleClass="littleButton" text="BurguerDelivery" AnchorPane.rightAnchor="30.0">
+      <Button fx:id="btnBurguerDelivery" layoutX="266.0" layoutY="116.0" mnemonicParsing="false" onAction="#btnBurguerDeliveryOnAction" prefHeight="25.0" prefWidth="190.0" styleClass="littleButton" text="BurguerDelivery" AnchorPane.rightAnchor="30.0">
          <graphic>
             <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                <image>

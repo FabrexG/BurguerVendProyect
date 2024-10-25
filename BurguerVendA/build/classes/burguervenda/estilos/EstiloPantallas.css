@@ -29,3 +29,8 @@
     -fx-background-color: #FF3B65;
     -fx-text-fill:#FFFFFF;
 }
+.titulos{
+    -fx-font-family: 'Arial Black';
+    -fx-font-size: 20px; 
+    
+}
