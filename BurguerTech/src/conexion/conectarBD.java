@@ -28,7 +28,7 @@ public class conectarBD {
         Alert alerta = new Alert(Alert.AlertType.INFORMATION);
         alerta.setTitle("Conexión exitosa");
         alerta.setHeaderText(null);
-        alerta.setContentText("Conexión a BD OK\n\nContreras");
+        alerta.setContentText("Se ha almacenado con exito tu Queja/Sugerencia");
         alerta.showAndWait();
     }
 }
