@@ -68,6 +68,13 @@ public class PagarPedidoController implements Initializable {
         alert.setContentText("¡Gracias por su compra! Su pedido ha sido pagado.");
         alert.showAndWait();
     }
+
+    /**
+     * Maneja el evento de clic en el botón "Carrito".
+     * Carga y muestra la ventana "Carrito".
+     *
+     * @param event El evento de acción.
+     */
     @FXML
     void btnCarrito_Regresa(ActionEvent event) {
         try {
