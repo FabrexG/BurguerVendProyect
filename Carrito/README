@@ -1,0 +1,48 @@
+# Hamburguesería - Carrito
+
+Este proyecto implementa un sistema de pedidos de hamburguesas con una interfaz gráfica de usuario (GUI) desarrollada en JavaFX. Permite a los usuarios visualizar hamburguesas, agregarlas a un carrito, personalizarlas con ingredientes y extras, y finalmente, pagar el pedido.
+
+## Características
+
+* **Visualización de hamburguesas:** Muestra imágenes y descripciones de las hamburguesas disponibles.
+* **Gestión de carrito:** Permite agregar y eliminar hamburguesas del carrito.
+* **Personalización:** Permite agregar o quitar ingredientes y extras a las hamburguesas.
+* **Cálculo del total:** Calcula el total del pedido, incluyendo el costo de las hamburguesas, los ingredientes adicionales y los extras.
+* **Pago del pedido:**  Simula el proceso de pago del pedido.
+* **Persistencia de datos:** Guarda la información de las hamburguesas, los ingredientes, los extras y los pedidos en una base de datos (se puede configurar para MySQL u Oracle).
+
+## Estructura del proyecto
+
+El proyecto está organizado en las siguientes carpetas:
+
+* **`controller`:** Contiene las clases controladoras para las ventanas de la aplicación.
+* **`poo`:** Contiene las clases del modelo de datos (hamburguesa, ingrediente, extra, combo, pedido).
+* **`vista`:** Contiene los archivos FXML para las vistas de la aplicación y la clase principal.
+* **`img`:** Contiene las imágenes utilizadas en la aplicación.
+
+## Ejecución del proyecto
+
+Para ejecutar el proyecto, necesitas:
+
+* **IntelliJ IDEA (u otro IDE compatible con JavaFX)**
+* **Scene Builder**
+* **JavaFX 21 (o una versión compatible con Scene Builder)**
+* **MySQL Oracle Database (opcional, para la persistencia de datos)**
+
+Sigue estos pasos:
+
+1. **Clona el repositorio: https://github.com/FabrexG/BurguerVendProyect/tree/Yuri
+2. **Abre el proyecto en IntelliJ IDEA.**
+3. **Configura la base de datos (opcional):** Crea la base de datos y las tablas utilizando el script SQL proporcionado.
+4. **Ejecuta la clase principal `Carrito` en la carpeta `vista`.**
+
+## Convenciones de código
+
+El código sigue las convenciones de código de Java descritas en el documento "Convenciones de Código para el lenguaje de programación Java", publicado por Sun Microsystems en 1999.
+
+## Autor
+
+* **Joan Daniel Carmona Guevara** - UACM
+
+## Licencia
+
