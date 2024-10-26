@@ -8,12 +8,13 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="720.0" prefWidth="480.0" spacing="20.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HelloController">
+<VBox alignment="CENTER" prefHeight="720.0" prefWidth="480.0" spacing="20.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CarritoController">
 
    <stylesheets>
       <URL value="@styles.css" />  </stylesheets>
@@ -77,6 +78,11 @@
             <Button fx:id="btnA3" layoutX="372.0" layoutY="451.0" mnemonicParsing="false" onAction="#Agregar3" prefHeight="36.0" prefWidth="39.0" text="+" />
             <Button fx:id="btnA1" layoutX="372.0" layoutY="220.0" mnemonicParsing="false" onAction="#Agregar1" prefHeight="36.0" prefWidth="39.0" text="+" />
             <Button fx:id="btnPagar" layoutX="33.0" layoutY="630.0" mnemonicParsing="false" onAction="#btnPagar_OnClick" text="Pagar" />
+            <ImageView fitHeight="135.0" fitWidth="124.0" layoutX="16.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/Mascota.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>

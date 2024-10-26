@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HelloApplication extends Application {
+public class Carrito extends Application {
 
     /**
      * Inicia la aplicación JavaFX.
@@ -20,7 +20,7 @@ public class HelloApplication extends Application {
     public void start(Stage primaryStage) throws IOException {
         try {
             // Cargar el FXML
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Carrito.class.getResource("Carrito.fxml"));
             Parent root = fxmlLoader.load();
 
             // Crear la escena

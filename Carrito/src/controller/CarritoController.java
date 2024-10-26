@@ -24,7 +24,7 @@ import java.util.Random;
 import java.util.ResourceBundle;
 
 public class
-HelloController implements Initializable {
+CarritoController implements Initializable {
 
 
     @FXML
@@ -311,6 +311,12 @@ HelloController implements Initializable {
     @FXML
     void btnPagar_OnClick(ActionEvent event) {
         try {
+            // Obtener la ventana actual
+            Stage stageActual = (Stage) btnPagar.getScene().getWindow();
+
+            // Calcular el total del pedido ANTES de cerrar la ventana
+            double totalPedido = this.pedidoActual.calcularTotal();
+
             // Cargar la ventana de pago
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/PagarPedido.fxml"));
             Parent root = loader.load();
@@ -319,15 +325,18 @@ HelloController implements Initializable {
             PagarPedidoController controladorPago = loader.getController();
 
             // Pasar el total del pedido al controlador de la ventana de pago
-            controladorPago.setTotal(this.pedidoActual.calcularTotal());
+            controladorPago.setTotal(totalPedido); // Pasar el total calculado
 
             // Crear la escena y mostrarla
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.setTitle("Pago del Pedido");
-            stage.setResizable(false); // Puedes configurar si la ventana es redimensionable o no
+            stage.setResizable(false);
             stage.show();
+
+            // Cerrar la ventana actual
+            stageActual.close();
 
         } catch (IOException e) {
             System.err.println("Error al cargar la ventana de pago: " + e.getMessage());

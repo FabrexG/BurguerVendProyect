@@ -6,6 +6,8 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
@@ -26,6 +28,15 @@
                </cursor></TextField>
             <Label layoutX="197.0" layoutY="182.0" text="Total" />
             <Button fx:id="btnPagar" layoutX="179.0" layoutY="314.0" mnemonicParsing="false" onAction="#btnPagar" text="Pagar" />
+            <Button fx:id="btnCarrito" layoutX="30.0" layoutY="39.0" mnemonicParsing="false" onAction="#btnCarrito_Regresa" prefHeight="84.0" prefWidth="68.0" style="-fx-background-color: linear-gradient(to bottom right, #f7a0c3, #f572a4);">
+               <graphic>
+                  <ImageView fitHeight="125.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/Mascota.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </AnchorPane>
    </children>
