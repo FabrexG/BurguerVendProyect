@@ -99,7 +99,9 @@ CarritoController implements Initializable {
         this.btnA3.setTooltip(new Tooltip("Agregar una nueva hamburguesa al espacio 3"));
 
     }
-
+    public Scene getScene() {
+        return txtPedido.getScene(); // O cualquier otro elemento de la escena
+    }
     private void generarNuevoPedido() {
         // Crear un nuevo pedido
         this.pedidoActual = new Pedido(new Random().nextInt(1000) + 1);

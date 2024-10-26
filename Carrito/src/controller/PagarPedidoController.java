@@ -10,6 +10,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import poo.DatosPedido;
 
 import java.io.IOException;
 import java.net.URL;
@@ -53,16 +54,17 @@ public class PagarPedidoController implements Initializable {
      */
     @FXML
     void btnPagar(ActionEvent event) {
-            // ... (código para procesar el pago) ...
+        //código para procesar el pago
 
-            // Restablecer el total a cero
-            setTotal(0);
 
-            // Deshabilitar el botón del carrito
-            btnCarrito.setDisable(true);
+        // Restablecer el total a cero
+        setTotal(0);
 
-            // Mostrar un mensaje de confirmación
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        // Deshabilitar el botón del carrito
+        btnCarrito.setDisable(true);
+
+         // Mostrar un mensaje de confirmación
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Pago Exitoso");
         alert.setHeaderText(null);
         alert.setContentText("¡Gracias por su compra! Su pedido ha sido pagado.");
@@ -79,14 +81,15 @@ public class PagarPedidoController implements Initializable {
     void btnCarrito_Regresa(ActionEvent event) {
         try {
             // Obtener la ventana actual
-            Stage stageActual = (Stage) btnCarrito.getScene().getWindow();
+            Stage stageActual = (Stage) this.btnCarrito.getScene().getWindow();
 
-            // Cargar la ventana Carrito
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/Carrito.fxml"));
-            Parent root = loader.load();
+            // Obtener la instancia del controlador CarritoController desde DatosPedido
+            CarritoController controladorCarrito = DatosPedido.controladorCarrito;
 
-            // Crear la escena y mostrarla
-            Scene scene = new Scene(root);
+            // Obtener la escena del controlador CarritoController
+            Scene scene = controladorCarrito.getScene(); // Llamar al método getScene()
+
+            // Crear un nuevo Stage y mostrar la ventana (reutilizando la escena del controlador)
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.setTitle("Carrito");
@@ -96,7 +99,7 @@ public class PagarPedidoController implements Initializable {
             // Cerrar la ventana actual
             stageActual.close();
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             System.err.println("Error al cargar la ventana Carrito: " + e.getMessage());
             e.printStackTrace();
         }
