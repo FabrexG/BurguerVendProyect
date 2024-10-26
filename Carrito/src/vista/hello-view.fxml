@@ -76,6 +76,7 @@
             <Button fx:id="btnA2" layoutX="372.0" layoutY="342.0" mnemonicParsing="false" onAction="#Agregar2" prefHeight="36.0" prefWidth="39.0" text="+" />
             <Button fx:id="btnA3" layoutX="372.0" layoutY="451.0" mnemonicParsing="false" onAction="#Agregar3" prefHeight="36.0" prefWidth="39.0" text="+" />
             <Button fx:id="btnA1" layoutX="372.0" layoutY="220.0" mnemonicParsing="false" onAction="#Agregar1" prefHeight="36.0" prefWidth="39.0" text="+" />
+            <Button fx:id="btnPagar" layoutX="33.0" layoutY="630.0" mnemonicParsing="false" onAction="#btnPagar_OnClick" text="Pagar" />
          </children>
       </AnchorPane>
    </children>

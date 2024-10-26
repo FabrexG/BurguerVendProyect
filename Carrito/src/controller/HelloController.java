@@ -2,16 +2,21 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import
         poo.Extra;
 import poo.Ingrediente;
 import poo.Pedido;
 import poo.Hamburguesa;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -20,6 +25,10 @@ import java.util.ResourceBundle;
 
 public class
 HelloController implements Initializable {
+
+
+    @FXML
+    private Button btnPagar;
 
     @FXML
     private
@@ -297,5 +306,32 @@ HelloController implements Initializable {
     private void actualizarTotal() {
         // Actualizar el texto del TextField txtTotal con el nuevo total del pedido
         this.txtTotal.setText("$" + this.pedidoActual.calcularTotal());
+    }
+
+    @FXML
+    void btnPagar_OnClick(ActionEvent event) {
+        try {
+            // Cargar la ventana de pago
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/PagarPedido.fxml"));
+            Parent root = loader.load();
+
+            // Obtener el controlador de la ventana de pago
+            PagarPedidoController controladorPago = loader.getController();
+
+            // Pasar el total del pedido al controlador de la ventana de pago
+            controladorPago.setTotal(this.pedidoActual.calcularTotal());
+
+            // Crear la escena y mostrarla
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("Pago del Pedido");
+            stage.setResizable(false); // Puedes configurar si la ventana es redimensionable o no
+            stage.show();
+
+        } catch (IOException e) {
+            System.err.println("Error al cargar la ventana de pago: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 }
