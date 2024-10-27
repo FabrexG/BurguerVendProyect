@@ -7,7 +7,6 @@ import java.sql.Statement;  //Genera sentencias SQL
 import java.sql.ResultSet;  //Establece resultado final de datos
 import java.sql.SQLException;   //Tratamiento de errores DB
 import javafx.scene.control.Alert;
-import javax.swing.JOptionPane;
 /**
  *
  * @author achit
@@ -26,7 +25,7 @@ public class conectarBD {
         cn = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:XE", "burguervend", "burguer123");
         stmt=cn.createStatement();
         Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-        alerta.setTitle("Conexión exitosa");
+        alerta.setTitle("Envio exitoso");
         alerta.setHeaderText(null);
         alerta.setContentText("Se ha almacenado con exito tu Queja/Sugerencia");
         alerta.showAndWait();

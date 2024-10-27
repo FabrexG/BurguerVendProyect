@@ -168,9 +168,9 @@ public class VQuejasController implements Initializable {
             }
         };
 
-        // Programar la tarea para que se ejecute a las 11:59 PM
+        // Programar la tarea para que se ejecute a las 09:59 PM
         Calendar calendario = Calendar.getInstance();
-        calendario.set(Calendar.HOUR_OF_DAY, 23);
+        calendario.set(Calendar.HOUR_OF_DAY, 21);
         calendario.set(Calendar.MINUTE, 59);
         calendario.set(Calendar.SECOND, 0);
 
