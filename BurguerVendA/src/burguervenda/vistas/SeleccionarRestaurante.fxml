@@ -7,11 +7,11 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="480.0" styleClass="fondo" stylesheets="@../estilos/EstiloPantallas.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="burguervenda.controllers.SeleccionarRestauranteController">
+<AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="720.0" prefWidth="480.0" styleClass="fondo" stylesheets="@../estilos/EstiloPantallas.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="burguervenda.controllers.SeleccionarRestauranteController">
    <children>
       <Label layoutX="37.0" layoutY="36.0" styleClass="titulos" stylesheets="@../estilos/EstiloPantallas.css" text="Busca un restaurante para " />
       <Label layoutX="37.0" layoutY="74.0" styleClass="titulos" stylesheets="@../estilos/EstiloPantallas.css" text="recoger tu pedido" />
-      <Button layoutX="29.0" layoutY="116.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="190.0" styleClass="littleButton" stylesheets="@../estilos/EstiloPantallas.css" text="BurguerPick">
+      <Button fx:id="btnBurguerPick" layoutX="29.0" layoutY="116.0" mnemonicParsing="false" onAction="#btnBurguerPickOnAction" prefHeight="25.0" prefWidth="190.0" styleClass="littleButton" stylesheets="@../estilos/EstiloPantallas.css" text="BurguerPick">
          <graphic>
             <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -20,7 +20,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="266.0" layoutY="116.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="190.0" styleClass="littleButton" text="BurguerDelivery">
+      <Button fx:id="btnBurguerDelivery" layoutX="266.0" layoutY="116.0" mnemonicParsing="false" onAction="#btnBurguerDeliveryOnAction" prefHeight="25.0" prefWidth="190.0" styleClass="littleButton" text="BurguerDelivery">
          <graphic>
             <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -29,7 +29,12 @@
             </ImageView>
          </graphic>
       </Button>
-      <ComboBox fx:id="cbEligeRestaurante" layoutX="28.0" layoutY="181.0" prefHeight="25.0" prefWidth="428.0" promptText="Elige un restaurante" />
-      <Button layoutX="29.0" layoutY="629.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="428.0" styleClass="botonesGrandes" stylesheets="@../estilos/EstiloPantallas.css" text="Seleccionar una ubicación" />
+      <ComboBox fx:id="cbEligeRestaurante" layoutX="28.0" layoutY="181.0" onAction="#mostrarInfo" prefHeight="25.0" prefWidth="428.0" promptText="Elige un restaurante" />
+      <Button fx:id="btnSelectUbi" layoutX="29.0" layoutY="629.0" mnemonicParsing="false" onAction="#btnSelectUbiOnAction" prefHeight="25.0" prefWidth="428.0" styleClass="botonesGrandes" stylesheets="@../estilos/EstiloPantallas.css" text="Seleccionar una ubicación" />
+      <AnchorPane fx:id="anchPaneInfo" layoutX="29.0" layoutY="223.0" prefHeight="390.0" prefWidth="430.0">
+         <children>
+            <ComboBox fx:id="cbFavoritos" layoutX="24.0" layoutY="25.0" prefHeight="25.0" prefWidth="392.0" promptText="Favoritos" />
+            <Button fx:id="btnSelectFav" layoutX="24.0" layoutY="335.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="392.0" styleClass="littleButton" stylesheets="@../estilos/EstiloPantallas.css" text="Seleccionar" />
+         </children></AnchorPane>
    </children>
 </AnchorPane>
