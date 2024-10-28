@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/22" fx:controller="controller.ViewPayCashController">
+   <children>
+      <Pane fx:id="anchorPane" prefHeight="600.0" prefWidth="450.0">
+         <children>
+            <Button fx:id="btnRegresar" layoutX="28.0" layoutY="524.0" mnemonicParsing="false" onMouseClicked="#goBack" prefHeight="25.0" prefWidth="110.0" text="Regresar" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

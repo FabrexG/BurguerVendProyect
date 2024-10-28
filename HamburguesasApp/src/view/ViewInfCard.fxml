@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ViewInfCardController">
+   <children>
+      <Pane prefHeight="600.0" prefWidth="450.0">
+         <children>
+            <Button fx:id="btnRegrsar" layoutX="50.0" layoutY="485.0" mnemonicParsing="false" onMouseClicked="#goBack" text="Regresar" />
+            <Text layoutX="43.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero de tarjeta" wrappingWidth="137.3359375" />
+            <Text layoutX="43.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha De Caducidad" wrappingWidth="137.3359375" />
+            <Text layoutX="43.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titular De La Tarjeta" wrappingWidth="137.3359375" />
+            <Text layoutX="43.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CVC" wrappingWidth="105.3359375" />
+            <TextField fx:id="txtNumeroTarjeta" layoutX="189.0" layoutY="72.0" />
+            <TextField fx:id="txtFecha" layoutX="189.0" layoutY="143.0" />
+            <TextField fx:id="txtTitularTarjeta" layoutX="189.0" layoutY="215.0" />
+            <Button layoutX="163.0" layoutY="367.0" mnemonicParsing="false" onMouseClicked="#Pagar" prefHeight="25.0" prefWidth="62.0" text="Pagar" />
+            <PasswordField fx:id="txtPassword" layoutX="189.0" layoutY="306.0" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
