@@ -38,6 +38,10 @@ public class Restaurante {
         restaurantes.add(new Restaurante("Calle 11","Av. Tlahuac 1479, Iztapalapa, 09880 Ciudad de México, CDMX","9:00 a.m."));
     }
     
+    public void añadirFavoritos(Restaurante res){
+        restaurantesFavoritos.add(res);
+    }
+    
     private void cargarFavoritos(){
         for(Restaurante res:restaurantes){
             if(res.isFavorito()){

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+
+<AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="720.0" prefWidth="480.0" styleClass="fondo" stylesheets="@../estilos/EstiloPantallas.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="burguervenda.controllers.RecogerPedidoProcesoController">
+   <children>
+      <ImageView fitHeight="223.0" fitWidth="240.0" layoutX="136.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/Ajolote.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="78.0" layoutY="194.0" prefHeight="29.0" prefWidth="348.0" styleClass="titulos" stylesheets="@../estilos/EstiloPantallas.css" text="Activa el boton cuando llegues " />
+      <Label layoutX="78.0" layoutY="231.0" styleClass="titulos" stylesheets="@../estilos/EstiloPantallas.css" text="al restaurante para elegir " />
+      <Label layoutX="78.0" layoutY="270.0" styleClass="titulos" stylesheets="@../estilos/EstiloPantallas.css" text=" el metodo de retiro" />
+      <Button fx:id="btnIrRestaurante" layoutX="78.0" layoutY="337.0" mnemonicParsing="false" onAction="#irRetirar" prefHeight="25.0" prefWidth="348.0" styleClass="botonesGrandes" stylesheets="@../estilos/EstiloPantallas.css" text="Ya estoy en el restaurante" />
+      <Label layoutX="78.0" layoutY="477.0" text="Pedido en curso" />
+      <Label layoutX="329.0" layoutY="477.0" text="¿Algun problema?" />
+      <Line endX="14.0" endY="33.0" layoutX="237.0" layoutY="502.0" startX="14.0" startY="-24.0" />
+      <Button fx:id="btnVerDetalle" layoutX="78.0" layoutY="502.0" mnemonicParsing="false" onAction="#monitorearPedido" styleClass="littleButton" stylesheets="@../estilos/EstiloPantallas.css" text="Ver detalle" />
+      <Button fx:id="btnAyuda" layoutX="329.0" layoutY="502.0" mnemonicParsing="false" onAction="#abrirChat" styleClass="littleButton" stylesheets="@../estilos/EstiloPantallas.css" text="Ayuda" />
+   </children>
+</AnchorPane>

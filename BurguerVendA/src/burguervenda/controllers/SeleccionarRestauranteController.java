@@ -14,8 +14,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
 /**
@@ -44,18 +49,32 @@ public class SeleccionarRestauranteController implements Initializable {
     private Button btnSelectUbi;
 
     @FXML
+    private CheckBox ckbxFavoritos;
+
+    @FXML
+    private Label lbDireccion;
+
+    @FXML
+    private Label lbInfo;
+
+    @FXML
+    private Label lbNombre;
+
+    @FXML
     private ComboBox<Restaurante> cbEligeRestaurante;
 
     @FXML
     private ComboBox<Restaurante> cbFavoritos;
+    
+    ArrayList<Restaurante> restList = new ArrayList<>();
+    ArrayList<Restaurante> restFavs = new ArrayList<>();
+    Restaurante seleccion;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Restaurante res = new Restaurante();
-        ArrayList<Restaurante> restList = new ArrayList<>();
-        ArrayList<Restaurante> restFavs = new ArrayList<>();
         restList=res.getRestaurantes();
         cbEligeRestaurante.getItems().addAll(restList);
         cbFavoritos.getItems().addAll(restFavs);
@@ -80,13 +99,51 @@ public class SeleccionarRestauranteController implements Initializable {
     
     @FXML
     void mostrarInfo(ActionEvent event) throws IOException {
-        Restaurante seleccion=cbEligeRestaurante.getSelectionModel().getSelectedItem();
+        seleccion=cbEligeRestaurante.getSelectionModel().getSelectedItem();
         if(seleccion!=null){
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/burguervenda/vistas/MostrarRestauranteInfo.fxml"));
-            Parent root = loader.load();
-            MostrarRestauranteInfoController controller = loader.getController();
-            controller.loadInfo(seleccion);
-            anchPaneInfo.getChildren().setAll(root);
+            lbNombre.setText(seleccion.getNombre());
+            lbDireccion.setText(seleccion.getDireccion());
+            lbInfo.setText(seleccion.getInfoApertura());
+            cbFavoritos.setDisable(true);
         }
+    }
+    
+    @FXML
+    void mostrarInfo2(ActionEvent event) throws IOException {
+        seleccion=cbFavoritos.getSelectionModel().getSelectedItem();
+        if(seleccion!=null){
+            lbNombre.setText(seleccion.getNombre());
+            lbDireccion.setText(seleccion.getDireccion());
+            lbInfo.setText(seleccion.getInfoApertura());
+            cbEligeRestaurante.setDisable(true);
+        }
+    }
+    
+    @FXML
+    void seleccionarRestaurante(ActionEvent event) throws IOException {
+        if(ckbxFavoritos.isSelected()){
+            restFavs.add(seleccion);
+            if(cbFavoritos.getItems().contains(seleccion)){
+                Alert alerta = new Alert(AlertType.ERROR,"Este restaurante ya se encuentra en favoritos",ButtonType.OK);
+                alerta.show();
+            }
+            else{
+               cbFavoritos.getItems().add(seleccion); 
+            }
+            ckbxFavoritos.setSelected(false);
+        }
+        if(seleccion == null){
+            Alert alerta = new Alert(AlertType.ERROR,"Ingrese un restaurante",ButtonType.YES);
+            alerta.setTitle("Error al escoger restaurante");
+            alerta.show();
+            return;
+        }
+        cbEligeRestaurante.setDisable(false);
+        cbFavoritos.setDisable(false);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/burguervenda/vistas/RecogerPedidoProceso.fxml"));
+        Parent root = loader.load();
+        RecogerPedidoProcesoController controller = loader.getController();
+        controller.setResElegido(seleccion);
+        anchorPane.getChildren().setAll(root);
     }
 }
