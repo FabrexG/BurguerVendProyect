@@ -8,12 +8,11 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
  *
- * @author Brian Maldonado
+ * @author Brian Miguel Escalona Maldonado
  */
 public class BurguerVendA extends Application{
 

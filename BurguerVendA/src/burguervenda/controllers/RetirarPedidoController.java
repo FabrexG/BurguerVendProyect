@@ -20,7 +20,7 @@ import javafx.scene.layout.AnchorPane;
 /**
  * FXML Controller class
  *
- * @author asus
+ * @author Brian Miguel Escalona Maldonado
  */
 public class RetirarPedidoController implements Initializable {
 
@@ -51,8 +51,8 @@ public class RetirarPedidoController implements Initializable {
     
     private static final String CARACTERES = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     
-    public void cargarInfo(String tipo){
-        if(tipo == "AutoVend"){
+    public void cargarInfo(String tipo) {
+        if(tipo == "AutoVend") {
             lbInfo.setText("Acercate hasta el AutoVend y di el número ");
             lbInfo1.setText("para que podamos darte tu orden ");
             lbInfo2.setText("¡Disfrutala!");
@@ -60,8 +60,7 @@ public class RetirarPedidoController implements Initializable {
             codigoVerificacion = generarCodigo(4);
             lbCodigo.setText(codigoEntrega);
             System.out.println(codigoVerificacion);
-        }
-        else{
+        } else {
             lbInfo.setText("Acercate hasta el mostrador y dile el número a alguien ");
             lbInfo1.setText("de nuesto personal para que podamos darte tu orden ");
             lbInfo2.setText("¡Disfrutala!");
@@ -71,10 +70,10 @@ public class RetirarPedidoController implements Initializable {
             System.out.println(codigoVerificacion);
         }
     }
-    public String generarCodigo(int len){
+    public String generarCodigo(int len) {
         Random rand = new Random();
         StringBuilder codigo = new StringBuilder(len);
-        for(int i = 0; i < len; i++){
+        for(int i = 0; i < len; i++) {
             int index = rand.nextInt(CARACTERES.length());
             codigo.append(CARACTERES.charAt(index));
         }
