@@ -10,7 +10,7 @@
 <AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="720.0" prefWidth="480.0" styleClass="fondo" stylesheets="@../estilos/EstiloPantallas.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="burguervenda.controllers.DondeRetirarController">
    <children>
       <Label layoutX="142.0" layoutY="72.0" styleClass="titulos" stylesheets="@../estilos/EstiloPantallas.css" text="¿Donde retirar?" />
-      <Label fx:id="lbRestaurante" layoutX="142.0" layoutY="101.0" prefHeight="17.0" prefWidth="169.0" text="Restaurante: " />
+      <Label fx:id="lbRestaurante" layoutX="142.0" layoutY="101.0" prefHeight="17.0" prefWidth="328.0" text="Restaurante: " />
       <Label layoutX="116.0" layoutY="198.0" text="¿Como quieres retirar tu pedido? ">
          <font>
             <Font name="System Bold" size="16.0" />
