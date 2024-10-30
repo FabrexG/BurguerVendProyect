@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="625.0" prefWidth="483.0" style="-fx-background-color: #F44B9D;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ElegirHamburguesaController">
+   <children>
+      <Label layoutX="148.0" layoutY="7.0" text="Elige Tu Hamburguesa ">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <VBox fx:id="Vbox1" layoutX="53.0" layoutY="45.0" onMouseClicked="#vbox1One_Click" prefHeight="144.0" prefWidth="133.0" styleClass="vbox" stylesheets="@application.css">
+         <children>
+            <ImageView fx:id="imageH1" fitHeight="95.0" fitWidth="109.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Downloads/Imagenes/Hamburguesa1.png" />
+               </image>
+               <VBox.margin>
+                  <Insets left="15.0" top="10.0" />
+               </VBox.margin>
+            </ImageView>
+            <Label fx:id="lblHamburguesa1" alignment="CENTER" prefHeight="17.0" prefWidth="164.0" text="Whopper con queso">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblPrecio1" alignment="CENTER" prefHeight="17.0" prefWidth="156.0" text="\$120" textFill="#f51111">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox fx:id="vbox2" layoutX="292.0" layoutY="44.0" onMouseClicked="#vbox2One_Click" prefHeight="147.0" prefWidth="145.0" styleClass="vbox" stylesheets="@application.css">
+         <children>
+            <ImageView fx:id="imageH2" fitHeight="118.0" fitWidth="109.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Downloads/Imagenes/Hamburguesa2.png" />
+               </image>
+               <VBox.margin>
+                  <Insets left="20.0" top="10.0" />
+               </VBox.margin>
+            </ImageView>
+            <Label fx:id="lblHambuguesa2" alignment="CENTER" prefHeight="17.0" prefWidth="164.0" text="Whopper BBQ Tocino">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblPrecio2" alignment="CENTER" prefHeight="17.0" prefWidth="156.0" text="\$140" textFill="#f51111">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+         <opaqueInsets>
+            <Insets top="10.0" />
+         </opaqueInsets>
+      </VBox>
+      <VBox fx:id="vbox3" layoutX="47.0" layoutY="220.0" onMouseClicked="#vbox3One_Click" prefHeight="155.0" prefWidth="145.0" styleClass="vbox" stylesheets="@application.css">
+         <children>
+            <ImageView fx:id="imageH3" fitHeight="100.0" fitWidth="109.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Downloads/Imagenes/Hamburguesa3.png" />
+               </image>
+               <VBox.margin>
+                  <Insets left="20.0" top="10.0" />
+               </VBox.margin>
+            </ImageView>
+            <Label fx:id="lblHamburguesa3" alignment="CENTER" prefHeight="17.0" prefWidth="164.0" text="3 Quesos y Tocino Crispy King">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblPrecio3" alignment="CENTER" prefHeight="17.0" prefWidth="156.0" text="\$154" textFill="#f51111">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox fx:id="vbox4" layoutX="47.0" layoutY="407.0" onMouseClicked="#vbox4One_Click" prefHeight="155.0" prefWidth="145.0" styleClass="vbox" stylesheets="@application.css">
+         <children>
+            <ImageView fx:id="imageH5" fitHeight="99.0" fitWidth="111.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Downloads/Imagenes/Hamburguesa5.png" />
+               </image>
+               <VBox.margin>
+                  <Insets left="18.0" top="10.0" />
+               </VBox.margin>
+            </ImageView>
+            <Label fx:id="lblHambuguesa4" alignment="CENTER" prefHeight="17.0" prefWidth="164.0" text="King de Pollo Guacamole">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblPrecio4" alignment="CENTER" prefHeight="17.0" prefWidth="156.0" text="\$180" textFill="#f51111">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox fx:id="vbox5" layoutX="292.0" layoutY="220.0" onMouseClicked="#vbox5One_Click" prefHeight="155.0" prefWidth="145.0" styleClass="vbox" stylesheets="@application.css">
+         <children>
+            <ImageView fx:id="imageH4" fitHeight="110.0" fitWidth="109.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Downloads/Imagenes/Hamburguesa4.png" />
+               </image>
+               <VBox.margin>
+                  <Insets left="20.0" top="10.0" />
+               </VBox.margin>
+            </ImageView>
+            <Label fx:id="lblHambuguesa5" alignment="CENTER" prefHeight="17.0" prefWidth="164.0" text="Classic Crispy King">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblPrecio5" alignment="CENTER" prefHeight="17.0" prefWidth="156.0" text="\$164" textFill="#f51111">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox fx:id="vbox6" layoutX="292.0" layoutY="407.0" onMouseClicked="#vbox6One_Click" prefHeight="147.0" prefWidth="145.0" styleClass="vbox" stylesheets="@application.css">
+         <children>
+            <ImageView fx:id="imageH6" fitHeight="121.0" fitWidth="109.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Downloads/Imagenes/Hamburguesa6.png" />
+               </image>
+               <VBox.margin>
+                  <Insets left="18.0" top="10.0" />
+               </VBox.margin>
+            </ImageView>
+            <Label fx:id="lblHamburguesa6" alignment="CENTER" prefHeight="17.0" prefWidth="164.0" text="Whopper con queso">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblPrecio6" alignment="CENTER" prefHeight="17.0" prefWidth="156.0" text="\$120" textFill="#f51111">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <Button fx:id="btnVolver" layoutX="327.0" layoutY="577.0" mnemonicParsing="false" onMouseClicked="#btnVolver_OneClick" text="Volver al menu" />
+   </children>
+</AnchorPane>

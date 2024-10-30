@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="principal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="636.0" prefWidth="561.0" style="-fx-background-color: #F44B9D;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PedirComboController">
+   <children>
+      <Label layoutX="167.0" layoutY="26.0" text="Eligue El Combo Deseado">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <VBox fx:id="vBoxCombo1" layoutX="32.0" layoutY="63.0" onMouseClicked="#vBoxCombo1_OnClick" prefHeight="167.0" prefWidth="200.0" styleClass="vbox" stylesheets="@../../bin/application/application.css">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Downloads/Imagenes/Combo1.jpeg" />
+               </image>
+            </ImageView>
+            <Label fx:id="lblCombo1" prefHeight="46.0" prefWidth="200.0" text=" Combo Whopper Doble con Queso" />
+            <Label fx:id="lblPrecioCombo1" alignment="CENTER" prefHeight="27.0" prefWidth="201.0" text="\$ 168" textFill="#e22a0a">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox fx:id="vBoxCombo2" layoutX="314.0" layoutY="63.0" onMouseClicked="#vBoxCombo2_OnClick" prefHeight="167.0" prefWidth="200.0" styleClass="vbox2" stylesheets="@application.css">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Downloads/Imagenes/Combo2.jpeg" />
+               </image>
+            </ImageView>
+            <Label fx:id="lblCombo2" alignment="CENTER" prefHeight="17.0" prefWidth="195.0" text="Combo Stacker Chipoootle Res">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblPrecioCombo2" alignment="CENTER" prefHeight="27.0" prefWidth="213.0" text="\$183" textFill="#e22a0a">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+      <VBox fx:id="vBoxCombo3" layoutX="32.0" layoutY="263.0" onMouseClicked="#vBoxCombo3_OnClick" prefHeight="167.0" prefWidth="200.0" styleClass="vbox3" stylesheets="@application.css">
+         <children>
+            <ImageView fitHeight="137.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Downloads/Imagenes/Combo3.jpeg" />
+               </image>
+            </ImageView>
+            <Label fx:id="lblCombo3" alignment="CENTER" prefHeight="46.0" prefWidth="200.0" text="Combo Whopper Angry Doble" />
+            <Label fx:id="lblPrecioCombo3" alignment="CENTER" prefHeight="27.0" prefWidth="201.0" text="\$ 244" textFill="#e22a0a">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox fx:id="vBoxCombo4" layoutX="314.0" layoutY="263.0" onMouseClicked="#vBoxCombo4_OnClick" prefHeight="167.0" prefWidth="200.0" styleClass="vbox4" stylesheets="@application.css">
+         <children>
+            <ImageView fitHeight="128.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Downloads/Imagenes/Combo4.jpeg" />
+               </image>
+            </ImageView>
+            <Label fx:id="lblCombo4" alignment="CENTER" prefHeight="46.0" prefWidth="200.0" text="Combo Long Rodeo" />
+            <Label fx:id="lblPrecioCombo4" alignment="CENTER" prefHeight="27.0" prefWidth="201.0" text="\$ 134" textFill="#e22a0a">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox fx:id="vBoxCombo5" layoutX="32.0" layoutY="454.0" onMouseClicked="#vBoxCombo5_OnClick" prefHeight="167.0" prefWidth="200.0" styleClass="vbox5" stylesheets="@application.css">
+         <children>
+            <ImageView fitHeight="128.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Downloads/Imagenes/Combo5.jpeg" />
+               </image>
+            </ImageView>
+            <Label fx:id="lblCombo5" prefHeight="46.0" prefWidth="200.0" text="   Combo Spicy Ranch Crispy King" />
+            <Label fx:id="lblPrecioCombo5" alignment="CENTER" prefHeight="27.0" prefWidth="201.0" text="\$ 265" textFill="#e22a0a">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox fx:id="vBoxHambuerguesaSola" layoutX="314.0" layoutY="454.0" onMouseClicked="#vBoxHambuerguesaSola_OnClick" prefHeight="167.0" prefWidth="200.0" styleClass="vbox6" stylesheets="@application.css">
+         <children>
+            <ImageView fitHeight="128.0" fitWidth="207.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Downloads/Imagenes/img2.png" />
+               </image>
+               <VBox.margin>
+                  <Insets left="4.0" />
+               </VBox.margin>
+            </ImageView>
+            <Label alignment="CENTER" prefHeight="46.0" prefWidth="200.0" text="Regresar al Menu Principal" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

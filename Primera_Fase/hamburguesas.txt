@@ -1,0 +1,191 @@
+Nombre: Classic Crispy King
+Ingredientes: Filete de pechuga de pollo empanizado, Dos rebanadas de queso americano, Lechuga fresca, Mayonesa cremosa, Pan suave alargado con ajonjolí
+Costo Base: $164.0
+Extras: Carne Extra, Pepinillos Extra, Queseo Extra
+Costo Final: $254.0
+
+===== Lista de Hamburguesas =====
+Nombre: Whopper BBQ Tocino
+Ingredientes: Carne a la parrilla, Mayonesa, Lechuga, Cebolla, Jitomate, Pepinillos, Queso americano, Tocino, Salsa BBQ
+Costo Base: $140.0
+Extras: Carne Extra, Salsa Extra
+Costo Final: $200.0
+===== Fin de la Lista =====
+
+===== Lista de Hamburguesas =====
+Nombre: Classic Crispy King
+Ingredientes: Filete de pechuga de pollo empanizado, Dos rebanadas de queso americano, Lechuga fresca, Mayonesa cremosa, Pan suave alargado con ajonjolí
+Costo Base: $164.0
+Extras: Lechuga Extra, Pepinillos Extra
+Costo Final: $224.0
+
+===== Fin de la Lista =====
+
+===== Lista de Hamburguesas =====
+Nombre: Classic Crispy King
+Ingredientes:
+- Filete de pechuga de pollo empanizado
+- Dos rebanadas de queso americano
+- Lechuga fresca
+- Mayonesa cremosa
+- Pan suave alargado con ajonjolí
+Costo Base: $164.0
+Extras:
+- Carne Extra
+Costo Final: $194.0
+
+===== Fin de la Lista =====
+
+===== Lista de Hamburguesas =====
+Nombre: Classic Crispy King
+Ingredientes:
+- Filete de pechuga de pollo empanizado
+- Dos rebanadas de queso americano
+- Lechuga fresca
+- Mayonesa cremosa
+- Pan suave alargado con ajonjolí
+Costo Base: $164.0
+Extras:
+- Salsa Extra
+Costo Final: $194.0
+
+===== Fin de la Lista =====
+
+===== Lista de Hamburguesas =====
+Nombre: Classic Crispy King
+Ingredientes:
+- Filete de pechuga de pollo empanizado
+- Dos rebanadas de queso americano
+- Lechuga fresca
+- Mayonesa cremosa
+- Pan suave alargado con ajonjolí
+Costo Base: $164.0
+Extras:
+- Pepinillos Extra
+- Salsa Extra
+Costo Final: $224.0
+
+===== Fin de la Lista =====
+
+===== Lista de Hamburguesas =====
+Nombre: Classic Crispy King
+Ingredientes:
+- Filete de pechuga de pollo empanizado
+- Dos rebanadas de queso americano
+- Lechuga fresca
+- Mayonesa cremosa
+- Pan suave alargado con ajonjolí
+Costo Base: $164.0
+Extras:
+- Queseo Extra
+- Salsa Extra
+Costo Final: $264.0
+
+===== Fin de la Lista =====
+
+===== Lista de Hamburguesas =====
+Nombre: 3 Quesos y Tocino Crispy King
+Ingredientes:
+- Pechuga de pollo crujiente
+- Tres quesos distintos
+- Tocino
+Costo Base: $154.0
+Extras:
+- Carne Extra
+- Jitomate Extra
+- Queseo Extra
+Costo Final: $244.0
+
+===== Fin de la Lista =====
+
+===== Lista de Hamburguesas =====
+Nombre: Whopper con queso
+Ingredientes:
+- Hamburguesa de proteína vegetal
+- Tomate
+- Lechuga
+- Cebolla
+- Pepinillos
+- Ketchup
+- Mayonesa
+- Pan suave con semillas de sésamo
+Costo Base: $120.0
+Extras:
+Ninguno
+Costo Final: $120.0
+
+===== Fin de la Lista =====
+
+===== Lista de Hamburguesas =====
+Nombre: Whopper BBQ Tocino
+Ingredientes:
+- Carne a la parrilla
+- Mayonesa
+- Lechuga
+- Cebolla
+- Jitomate
+- Pepinillos
+- Queso americano
+- Tocino
+- Salsa BBQ
+Costo Base: $140.0
+Extras:
+- Carne Extra
+- Pepinillos Extra
+- Queseo Extra
+Costo Final: $230.0
+
+===== Fin de la Lista =====
+
+===== Lista de Hamburguesas =====
+Nombre: Classic Crispy King
+Ingredientes:
+- Filete de pechuga de pollo empanizado
+- Dos rebanadas de queso americano
+- Lechuga fresca
+- Mayonesa cremosa
+- Pan suave alargado con ajonjolí
+Costo Base: $164.0
+Extras:
+- Carne Extra
+- Lechuga Extra
+- Pepinillos Extra
+Costo Final: $254.0
+
+===== Fin de la Lista =====
+
+===== Lista de Hamburguesas =====
+Nombre: Classic Crispy King
+Ingredientes:
+- Filete de pechuga de pollo empanizado
+- Dos rebanadas de queso americano
+- Lechuga fresca
+- Mayonesa cremosa
+- Pan suave alargado con ajonjolí
+Costo Base: $164.0
+Extras:
+Ninguno
+Costo Final: $164.0
+
+===== Fin de la Lista =====
+
+===== Lista de Hamburguesas =====
+Nombre: Whopper BBQ Tocino
+Ingredientes:
+- Carne a la parrilla
+- Mayonesa
+- Lechuga
+- Cebolla
+- Jitomate
+- Pepinillos
+- Queso americano
+- Tocino
+- Salsa BBQ
+Costo Base: $140.0
+Extras:
+- Carne Extra
+- Lechuga Extra
+- Queseo Extra
+Costo Final: $230.0
+
+===== Fin de la Lista =====
