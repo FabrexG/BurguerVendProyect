@@ -20,7 +20,7 @@ import javafx.scene.layout.AnchorPane;
 /**
  * FXML Controller class
  *
- * @author asus
+ * @author Brian Miguel Escalona Maldonado
  */
 public class DondeRetirarController implements Initializable {
 

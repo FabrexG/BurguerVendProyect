@@ -26,7 +26,7 @@ import javafx.scene.layout.AnchorPane;
 /**
  * FXML Controller class
  *
- * @author LENOVO
+ * @author Brian Miguel Escalona Maldonado
  */
 public class SeleccionarRestauranteController implements Initializable {
     
@@ -100,7 +100,7 @@ public class SeleccionarRestauranteController implements Initializable {
     @FXML
     void mostrarInfo(ActionEvent event) throws IOException {
         seleccion=cbEligeRestaurante.getSelectionModel().getSelectedItem();
-        if(seleccion!=null){
+        if(seleccion!=null) {
             lbNombre.setText(seleccion.getNombre());
             lbDireccion.setText(seleccion.getDireccion());
             lbInfo.setText(seleccion.getInfoApertura());
@@ -111,7 +111,7 @@ public class SeleccionarRestauranteController implements Initializable {
     @FXML
     void mostrarInfo2(ActionEvent event) throws IOException {
         seleccion=cbFavoritos.getSelectionModel().getSelectedItem();
-        if(seleccion!=null){
+        if(seleccion!=null) {
             lbNombre.setText(seleccion.getNombre());
             lbDireccion.setText(seleccion.getDireccion());
             lbInfo.setText(seleccion.getInfoApertura());
@@ -121,18 +121,17 @@ public class SeleccionarRestauranteController implements Initializable {
     
     @FXML
     void seleccionarRestaurante(ActionEvent event) throws IOException {
-        if(ckbxFavoritos.isSelected()){
+        if(ckbxFavoritos.isSelected()) {
             restFavs.add(seleccion);
-            if(cbFavoritos.getItems().contains(seleccion)){
+            if(cbFavoritos.getItems().contains(seleccion)) {
                 Alert alerta = new Alert(AlertType.ERROR,"Este restaurante ya se encuentra en favoritos",ButtonType.OK);
                 alerta.show();
-            }
-            else{
+            } else {
                cbFavoritos.getItems().add(seleccion); 
             }
             ckbxFavoritos.setSelected(false);
         }
-        if(seleccion == null){
+        if(seleccion == null) {
             Alert alerta = new Alert(AlertType.ERROR,"Ingrese un restaurante",ButtonType.YES);
             alerta.setTitle("Error al escoger restaurante");
             alerta.show();

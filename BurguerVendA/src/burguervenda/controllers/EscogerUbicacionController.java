@@ -12,6 +12,12 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 
+/**
+ * FXML Controller class
+ *
+ * @author Brian Miguel Escalona Maldonado
+ */
+
 public class EscogerUbicacionController {
     
     @FXML

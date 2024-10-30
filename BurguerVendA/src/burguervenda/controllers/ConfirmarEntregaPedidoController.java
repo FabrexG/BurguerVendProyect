@@ -19,7 +19,7 @@ import javafx.stage.Stage;
 /**
  * FXML Controller class
  *
- * @author asus
+ * @author Brian Miguel Escalona Maldonado
  */
 public class ConfirmarEntregaPedidoController implements Initializable {
 
@@ -45,14 +45,13 @@ public class ConfirmarEntregaPedidoController implements Initializable {
 
     @FXML
     void confirmarPedido(ActionEvent event) {
-        if(txtfieldCodigo.getText().equals(codigo)){
+        if(txtfieldCodigo.getText().equals(codigo)) {
             Alert alerta = new Alert(AlertType.CONFIRMATION,"Pedido entregado",ButtonType.YES);
             alerta.setTitle("Pedido completado");
             alerta.show();
             Stage stage= (Stage) btnConfirmar.getScene().getWindow();
             stage.close();
-        }
-        else {
+        } else {
             Alert alerta = new Alert(AlertType.ERROR,"Error codigo invalido",ButtonType.YES);
             alerta.setTitle("Codigo invalido");
             alerta.show();

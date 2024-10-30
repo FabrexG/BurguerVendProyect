@@ -42,9 +42,9 @@ public class Restaurante {
         restaurantesFavoritos.add(res);
     }
     
-    private void cargarFavoritos(){
-        for(Restaurante res:restaurantes){
-            if(res.isFavorito()){
+    private void cargarFavoritos() {
+        for(Restaurante res:restaurantes) {
+            if(res.isFavorito()) {
                 restaurantesFavoritos.add(res);
             }
         }

@@ -18,7 +18,7 @@ import javafx.scene.layout.AnchorPane;
 /**
  * FXML Controller class
  *
- * @author LENOVO
+ * @author Brian Miguel Escalona Maldonado
  */
 public class SeleccionarUbicacionController implements Initializable {
     
