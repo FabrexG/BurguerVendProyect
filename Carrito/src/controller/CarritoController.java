@@ -16,12 +16,24 @@ import poo.Ingrediente;
 import poo.Pedido;
 import poo.Hamburguesa;
 
+import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.time.LocalDate;
+
+
+import java.util.ArrayList;
+import java.util.List;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.ResourceBundle;
+
+import conexion.ConectaBD;
+import javafx.scene.image.Image;
+
 
 public class
 CarritoController implements Initializable {
@@ -107,7 +119,7 @@ CarritoController implements Initializable {
         this.pedidoActual = new Pedido(new Random().nextInt(1000) + 1);
 
         // Crear las hamburguesas
-        crearHamburguesas();
+        obtenerHamburguesasDeBD();
 
         // Mostrar el número de pedido
         this.txtPedido.setText(String.valueOf(this.pedidoActual.getNumeroPedido()));
@@ -115,62 +127,104 @@ CarritoController implements Initializable {
         // Mostrar el total del pedido
         this.txtTotal.setText("$" + this.pedidoActual.calcularTotal());
     }
+private void obtenerHamburguesasDeBD() {
+    ConectaBD conectaBD = null;
+    try {
+        // Crear una instancia de ConectaBD
+        conectaBD = new ConectaBD();
+        conectaBD.conectarBDOracle();
 
-    private void crearHamburguesas() {
-        // Crear la hamburguesa "Whopper"
-        this.hamburguesa1 = new Hamburguesa(
-                "Whopper",
-                Arrays.asList(
-                        new Ingrediente("Queso", 1.00, 2),
-                        new Ingrediente("Carne", 2.50, 1)
-                ),
-                5.00, getClass().getResource("/img/Hamburguesa1.png").toExternalForm()
-        );
-        this.hamburguesa1.agregarExtra(new Extra("Papas", 1.50, 1));
-        this.hamburguesa1.agregarExtra(new Extra("Refresco", 1.00, 1));
+        // Obtener las hamburguesas de la base de datos
+        ResultSet rsHamburguesas = conectaBD.stmt.executeQuery("SELECT * FROM Hamburguesa");
 
-        // Crear la hamburguesa "King de Pollo Guacamole"
-        this.hamburguesa2 = new Hamburguesa(
-                "King de Pollo Guacamole",
-                Arrays.asList(
-                        new Ingrediente("Pollo", 3.00, 1),
-                        new Ingrediente("Guacamole", 1.50, 1)
-                ),
-                5.00, getClass().getResource("/img/Hamburguesa4.png").toExternalForm()
-        );
-        this.hamburguesa2.agregarExtra(new Extra("Refresco", 1.00, 1));
-        this.hamburguesa2.agregarExtra(new Extra("Helado", 2.00, 1));
+        List<Hamburguesa> hamburguesas = new ArrayList<>();
+        while (rsHamburguesas.next()) {
+            Hamburguesa hamburguesa = new Hamburguesa();
+            hamburguesa.setId(rsHamburguesas.getInt("id"));
+            hamburguesa.setNombre(rsHamburguesas.getString("nombre"));
+            hamburguesa.setCostoBase(rsHamburguesas.getDouble("costoBase"));
+            hamburguesa.setImagen(new Image(getClass().getResourceAsStream(rsHamburguesas.getString("rutaImagen"))));
 
-        // Crear la hamburguesa "Hamburguesa Normal"
-        this.hamburguesa3 = new Hamburguesa(
-                "Hamburguesa Normal",
-                Arrays.asList(
-                        new Ingrediente("Lechuga", 0.50, 1),
-                        new Ingrediente("Tomate", 0.50, 1),
-                        new Ingrediente("Carne", 2.50, 1)
-                ),
-                4.00, getClass().getResource("/img/Hamburguesa3.png").toExternalForm()
-        );
-        this.hamburguesa3.agregarExtra(new Extra("Bacon", 1.50, 1));
+            // Obtener los ingredientes de la hamburguesa
+            ResultSet rsIngredientes = conectaBD.stmt.executeQuery(
+                "SELECT i.nombre, i.costo, hi.cantidad " +
+                "FROM Ingrediente i " +
+                "JOIN HamburguesaIngrediente hi ON i.id = hi.ingrediente_id " +
+                "WHERE hi.hamburguesa_id = " + hamburguesa.getId()
+            );
+            List<Ingrediente> ingredientes = new ArrayList<>();
+            while (rsIngredientes.next()) {
+                ingredientes.add(new Ingrediente(
+                    rsIngredientes.getString("nombre"),
+                    rsIngredientes.getDouble("costo"),
+                    rsIngredientes.getInt("cantidad")
+                ));
+            }
+            hamburguesa.setIngredientes(ingredientes);
 
-        // Agregar las hamburguesas al pedido
-        this.pedidoActual.agregarHamburguesa(this.hamburguesa1);
-        this.pedidoActual.agregarHamburguesa(this.hamburguesa2);
-        this.pedidoActual.agregarHamburguesa(this.hamburguesa3);
+            // Obtener los extras de la hamburguesa
+            ResultSet rsExtras = conectaBD.stmt.executeQuery(
+                "SELECT e.nombre, e.costo, he.cantidad " +
+                "FROM Extra e " +
+                "JOIN HamburguesaExtra he ON e.id = he.extra_id " +
+                "WHERE he.hamburguesa_id = " + hamburguesa.getId()
+            );
+            List<Extra> extras = new ArrayList<>();
+            while (rsExtras.next()) {
+                extras.add(new Extra(
+                    rsExtras.getString("nombre"),
+                    rsExtras.getDouble("costo"),
+                    rsExtras.getInt("cantidad")
+                ));
+            }
+            hamburguesa.setExtras(extras);
+
+            hamburguesas.add(hamburguesa);
+        }
+
+        // Asignar las hamburguesas a las variables
+        if (!hamburguesas.isEmpty()) {
+            this.hamburguesa1 = hamburguesas.get(0);
+            if (hamburguesas.size() > 1) {
+                this.hamburguesa2 = hamburguesas.get(1);
+            }
+            if (hamburguesas.size() > 2) {
+                this.hamburguesa3 = hamburguesas.get(2);
+            }
+        }
 
         // Mostrar las descripciones de las hamburguesas
-        this.txtDescripcion1.setText(this.hamburguesa1.descripcion());
-        this.txtDescripcion2.setText(this.hamburguesa2.descripcion());
-        this.txtDescripcion3.setText(this.hamburguesa3.descripcion());
+        if (this.hamburguesa1 != null) {
+            this.txtDescripcion1.setText(this.hamburguesa1.descripcion());
+            this.img1.setImage(this.hamburguesa1.getImagen());
+            this.pedidoActual.agregarHamburguesa(this.hamburguesa1);
+        }
+        if (this.hamburguesa2 != null) {
+            this.txtDescripcion2.setText(this.hamburguesa2.descripcion());
+            this.img2.setImage(this.hamburguesa2.getImagen());
+            this.pedidoActual.agregarHamburguesa(this.hamburguesa2);
+        }
+        if (this.hamburguesa3 != null) {
+            this.txtDescripcion3.setText(this.hamburguesa3.descripcion());
+            this.img3.setImage(this.hamburguesa3.getImagen());
+            this.pedidoActual.agregarHamburguesa(this.hamburguesa3);
+        }
 
-        // Mostrar las imágenes de las hamburguesas
-        this.img1.setImage(this.hamburguesa1.getImagen());
-        this.img2.setImage(this.hamburguesa2.getImagen());
-        this.img3.setImage(this.hamburguesa3.getImagen());
-
-
+    } catch (SQLException e) {
+        System.err.println("Error al obtener las hamburguesas de la base de datos: " + e.getMessage());
+        e.printStackTrace();
+    } finally {
+        if (conectaBD != null) {
+            try {
+                conectaBD.cn.close(); // Cerrar la conexión en el finally
+            } catch (SQLException e) {
+                System.err.println("Error al cerrar la conexión a la base de datos: " + e.getMessage());
+            }
+        }
     }
+}
 
+    
     @FXML
     void remover1(ActionEvent event) {
         // Remover la hamburguesa 1 del pedido
