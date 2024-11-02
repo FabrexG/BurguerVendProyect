@@ -12,7 +12,7 @@ public class Hamburguesa {
     private List<Extra> extras;
     private double costoBase;
     private Image imagen;
-
+    private int id;
     /**
      * Constructor vacío para la clase Hamburguesa.
      */
@@ -66,6 +66,14 @@ public class Hamburguesa {
      */
     public void agregarExtra(Extra extra) {
         this.extras.add(extra);
+    }
+    
+        public int getId() {
+        return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     /**
