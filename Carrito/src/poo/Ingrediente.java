@@ -65,7 +65,18 @@ public class Ingrediente {
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
-
+    /**
+     * Disminuye la cantidad disponible del ingrediente.
+     *
+     * @param cantidad La cantidad a disminuir.
+     * @throws IllegalArgumentException Si la cantidad a disminuir es mayor que la cantidad disponible.
+     */
+    public void disminuirCantidad(int cantidad) {
+        if (cantidad > this.cantidad) {
+            throw new IllegalArgumentException("No hay suficiente " + this.nombre + " en el inventario.");
+        }
+        this.cantidad -= cantidad;
+    }
     @Override
     public String toString() {
         return "Ingrediente{" +
