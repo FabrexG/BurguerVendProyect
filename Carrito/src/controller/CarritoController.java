@@ -119,7 +119,7 @@ CarritoController implements Initializable {
         this.pedidoActual = new Pedido(new Random().nextInt(1000) + 1);
 
         // Crear las hamburguesas
-        obtenerHamburguesasDeBD();
+        obtenerHamburguesa1DeBD();
 
         // Mostrar el número de pedido
         this.txtPedido.setText(String.valueOf(this.pedidoActual.getNumeroPedido()));
@@ -127,7 +127,7 @@ CarritoController implements Initializable {
         // Mostrar el total del pedido
         this.txtTotal.setText("$" + this.pedidoActual.calcularTotal());
     }
-private void obtenerHamburguesasDeBD() {
+private void obtenerHamburguesa1DeBD() {
     ConectaBD conectaBD = null;
     try {
         // Crear una instancia de ConectaBD
@@ -185,12 +185,6 @@ private void obtenerHamburguesasDeBD() {
         // Asignar las hamburguesas a las variables
         if (!hamburguesas.isEmpty()) {
             this.hamburguesa1 = hamburguesas.get(0);
-            if (hamburguesas.size() > 1) {
-                this.hamburguesa2 = hamburguesas.get(1);
-            }
-            if (hamburguesas.size() > 2) {
-                this.hamburguesa3 = hamburguesas.get(2);
-            }
         }
 
         // Mostrar las descripciones de las hamburguesas
@@ -198,16 +192,6 @@ private void obtenerHamburguesasDeBD() {
             this.txtDescripcion1.setText(this.hamburguesa1.descripcion());
             this.img1.setImage(this.hamburguesa1.getImagen());
             this.pedidoActual.agregarHamburguesa(this.hamburguesa1);
-        }
-        if (this.hamburguesa2 != null) {
-            this.txtDescripcion2.setText(this.hamburguesa2.descripcion());
-            this.img2.setImage(this.hamburguesa2.getImagen());
-            this.pedidoActual.agregarHamburguesa(this.hamburguesa2);
-        }
-        if (this.hamburguesa3 != null) {
-            this.txtDescripcion3.setText(this.hamburguesa3.descripcion());
-            this.img3.setImage(this.hamburguesa3.getImagen());
-            this.pedidoActual.agregarHamburguesa(this.hamburguesa3);
         }
 
     } catch (SQLException e) {
