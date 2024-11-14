@@ -1,0 +1,51 @@
+|<!DOCTYPE html>
+<html>
+<head>
+    <title>Mapa OpenStreetMap</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+        #mapid {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="mapid"></div>
+<script>
+
+function showPosition() {
+    var locale = [19.314306462392477, -99.05868283458258];
+    initMap(locale);
+}
+
+function showError(error) {
+    console.log("Error en la geolocalización: " + error.message);
+    // Puedes definir una ubicación por defecto si hay un error
+    var defaultLocation = [19.3611325, -99.073557];
+    initMap(defaultLocation);
+}
+
+function initMap(locale) {
+    var mapa = L.map('mapid').setView(locale, 16);
+    var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+    var osmAttrib = 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
+    var osm = new L.TileLayer(osmUrl, {
+        maxZoom: 19,
+        attribution: osmAttrib
+    });
+    osm.addTo(mapa);
+    var marcador = L.marker(locale).addTo(mapa);
+    marcador.bindPopup('<p>Estamos en el edificio A</p><br/><image src="EdificioA.png"/>');
+}
+
+showPosition();
+</script>
+</body>
+</html>
