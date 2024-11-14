@@ -76,6 +76,7 @@ public class SeleccionarRestauranteController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         Restaurante res = new Restaurante();
         restList=res.getRestaurantes();
+        restFavs=res.getRestaurantesFavoritos();
         cbEligeRestaurante.getItems().addAll(restList);
         cbFavoritos.getItems().addAll(restFavs);
     }   
@@ -93,8 +94,9 @@ public class SeleccionarRestauranteController implements Initializable {
     }
 
     @FXML
-    void btnSelectUbiOnAction(ActionEvent event) {
-        //TODO
+    void btnSelectUbiOnAction(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/burguervenda/vistas/SeleccionarRestauranteMapa.fxml"));
+        anchorPane.getChildren().setAll(root);
     }
     
     @FXML
@@ -126,6 +128,7 @@ public class SeleccionarRestauranteController implements Initializable {
             if(cbFavoritos.getItems().contains(seleccion)) {
                 Alert alerta = new Alert(AlertType.ERROR,"Este restaurante ya se encuentra en favoritos",ButtonType.OK);
                 alerta.show();
+                return;
             } else {
                cbFavoritos.getItems().add(seleccion); 
             }

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.web.WebView?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="480.0" styleClass="fondo" stylesheets="@../estilos/EstiloPantallas.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="burguervenda.controllers.SeleccionarRestauranteMapaController">
+   <children>
+      <Label layoutX="39.0" layoutY="46.0" styleClass="titulos" stylesheets="@../estilos/EstiloPantallas.css" text="Busca un restaurante para " />
+      <Label layoutX="39.0" layoutY="84.0" styleClass="titulos" stylesheets="@../estilos/EstiloPantallas.css" text="recoger tu pedido" />
+      <Button fx:id="btnBurguerPick" layoutX="31.0" layoutY="126.0" mnemonicParsing="false" onAction="#btnBurguerPickOnAction" prefHeight="25.0" prefWidth="190.0" styleClass="littleButton" stylesheets="@../estilos/EstiloPantallas.css" text="BurguerPick">
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagenes/pickupIcon.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btnBurguerDelivery" layoutX="268.0" layoutY="126.0" mnemonicParsing="false" onAction="#btnBurguerDeliveryOnAction" prefHeight="25.0" prefWidth="190.0" styleClass="littleButton" text="BurguerDelivery">
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagenes/deliveryIcon.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <ComboBox fx:id="cbEligeRestaurante" layoutX="30.0" layoutY="191.0" onAction="#mostrarInfo" prefHeight="25.0" prefWidth="428.0" promptText="Elige un restaurante" />
+      <Button fx:id="btnSelectUbi" layoutX="33.0" layoutY="639.0" mnemonicParsing="false" onAction="#btnSelectUbiOnAction" prefHeight="25.0" prefWidth="428.0" styleClass="botonesGrandes" stylesheets="@../estilos/EstiloPantallas.css" text="Seleccionar una ubicación" />
+      <AnchorPane fx:id="anchPaneInfo" layoutX="31.0" layoutY="233.0" prefHeight="390.0" prefWidth="430.0">
+         <children>
+            <WebView fx:id="wb_mapa" layoutY="2.0" prefHeight="390.0" prefWidth="428.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
