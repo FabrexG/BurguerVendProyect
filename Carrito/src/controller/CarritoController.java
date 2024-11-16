@@ -158,33 +158,28 @@ public class  CarritoController implements Initializable {
         }
     }
 
-@FXML
-void remover1(ActionEvent event) {
-    if (this.hamburguesa1 != null) {
-        removerHamburguesa(this.hamburguesa1);
-
-        // Limpiar la descripción, imagen y referencia a la hamburguesa1
-        this.txtDescripcion1.clear();
-        this.img1.setImage(null);
-        this.hamburguesa1 = null;
-
-        // Actualizar el total del pedido
-        actualizarTotal();
+    @FXML
+    void remover1(ActionEvent event) {
+        if (this.hamburguesa1 != null) {
+            removerHamburguesa(this.hamburguesa1);
+            this.pedidoActual.removerHamburguesa(this.hamburguesa1);
+            this.txtDescripcion1.clear();
+            this.img1.setImage((Image) null);
+            this.hamburguesa1 = null;
+            this.actualizarTotal();
+        }
     }
-}
 
     @FXML
     void remover2(ActionEvent event) {
         if (this.hamburguesa2 != null) {
             removerHamburguesa(this.hamburguesa2);
 
-            // Limpiar la descripción, imagen y referencia a la hamburguesa2
+            this.pedidoActual.removerHamburguesa(this.hamburguesa2);
             this.txtDescripcion2.clear();
-            this.img2.setImage(null);
+            this.img2.setImage((Image) null);
             this.hamburguesa2 = null;
-
-            // Actualizar el total del pedido
-            actualizarTotal();
+            this.actualizarTotal();
         }
     }
 
@@ -193,13 +188,11 @@ void remover1(ActionEvent event) {
         if (this.hamburguesa3 != null) {
             removerHamburguesa(this.hamburguesa3);
 
-            // Limpiar la descripción, imagen y referencia a la hamburguesa3
+            this.pedidoActual.removerHamburguesa(this.hamburguesa3);
             this.txtDescripcion3.clear();
-            this.img3.setImage(null);
+            this.img3.setImage((Image) null);
             this.hamburguesa3 = null;
-
-            // Actualizar el total del pedido
-            actualizarTotal();
+            this.actualizarTotal();
         }
     }
 

@@ -42,6 +42,7 @@ public class Pedido {
      * @param hamburguesa La hamburguesa a remover.
      */
     public void removerHamburguesa(Hamburguesa hamburguesa) {
+
         this.hamburguesas.remove(hamburguesa);
     }
 
