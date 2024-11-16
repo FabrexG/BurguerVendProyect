@@ -377,7 +377,9 @@ public class  CarritoController implements Initializable {
         for (int i = 0; i < numIngredientes; i++) {
             if (!ingredientesDisponibles.isEmpty()) {
                 Ingrediente ingrediente = ingredientesDisponibles.remove(random.nextInt(ingredientesDisponibles.size()));
-                ingrediente.setCantidad(1); // Cantidad fija de 1 por ingrediente
+                // Generar cantidad aleatoria entre 1 y 5
+                int cantidadAleatoria = random.nextInt(5) + 1;
+                ingrediente.setCantidad(cantidadAleatoria); // Cantidad fija de 1 por ingrediente
                 ingredientes.add(ingrediente);
             }
         }
@@ -406,7 +408,8 @@ public class  CarritoController implements Initializable {
         for (int i = 0; i < numExtras; i++) {
             if (!extrasDisponibles.isEmpty()) {
                 Extra extra = extrasDisponibles.remove(random.nextInt(extrasDisponibles.size()));
-                extra.setCantidad(1); // Cantidad fija de 1 por extra
+                int cantidadAleatoria = random.nextInt(5) + 1;
+                extra.setCantidad(cantidadAleatoria); // Cantidad fija de 1 por extra
                 extras.add(extra);
             }
         }
