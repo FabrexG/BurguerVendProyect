@@ -1,14 +1,13 @@
 package controller;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import poo.Extra;
 import poo.Ingrediente;
@@ -24,14 +23,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.IOException;
-import java.net.URL;
-import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.Random;
 import java.util.ResourceBundle;
 
 import conexion.ConectaBD;
-import javafx.scene.image.Image;
 
 import javax.swing.*;
 
@@ -55,8 +50,7 @@ public class  CarritoController implements Initializable {
     private Button btnR2;
     @FXML
     private Button btnR3;
-    @FXML
-    private AnchorPane panControll;
+
     @FXML
     private ImageView img1;
     @FXML
@@ -98,7 +92,6 @@ public class  CarritoController implements Initializable {
         // Generar un nuevo pedido
         generarNuevoPedido();
 
-        Tooltip tooltip = new Tooltip("Agregar una nueva hamburguesa");
         // Agregar tooltips a los botones "Remover"
         this.btnR1.setTooltip(new Tooltip("Remover la hamburguesa 1 del pedido"));
         this.btnR2.setTooltip(new Tooltip("Remover la hamburguesa 2 del pedido"));
@@ -155,51 +148,50 @@ public class  CarritoController implements Initializable {
 
         } catch (SQLException e) {
             System.err.println("Error al eliminar la hamburguesa de la base de datos: " + e.getMessage());
-            e.printStackTrace();
-            // Manejar la excepción adecuadamente (mostrar un mensaje de error al usuario)
+
         }
     }
 
     @FXML
-    void remover1(ActionEvent event) {
+    void remover1() {
         if (this.hamburguesa1 != null) {
             removerHamburguesa(this.hamburguesa1);
             this.pedidoActual.removerHamburguesa(this.hamburguesa1);
             this.txtDescripcion1.clear();
-            this.img1.setImage((Image) null);
+            this.img1.setImage(null);
             this.hamburguesa1 = null;
             this.actualizarTotal();
         }
     }
 
     @FXML
-    void remover2(ActionEvent event) {
+    void remover2() {
         if (this.hamburguesa2 != null) {
             removerHamburguesa(this.hamburguesa2);
 
             this.pedidoActual.removerHamburguesa(this.hamburguesa2);
             this.txtDescripcion2.clear();
-            this.img2.setImage((Image) null);
+            this.img2.setImage(null);
             this.hamburguesa2 = null;
             this.actualizarTotal();
         }
     }
 
     @FXML
-    void remover3(ActionEvent event) {
+    void remover3() {
         if (this.hamburguesa3 != null) {
             removerHamburguesa(this.hamburguesa3);
 
             this.pedidoActual.removerHamburguesa(this.hamburguesa3);
             this.txtDescripcion3.clear();
-            this.img3.setImage((Image) null);
+            this.img3.setImage(null);
             this.hamburguesa3 = null;
             this.actualizarTotal();
         }
     }
 
     @FXML
-    void Agregar1(ActionEvent event) {
+    void Agregar1() {
         if (this.txtDescripcion1.getText().isEmpty() && this.img1.getImage() == null) {
             Hamburguesa nuevaHamburguesa = crearNuevaHamburguesa();
             if (nuevaHamburguesa != null) {
@@ -215,7 +207,7 @@ public class  CarritoController implements Initializable {
     }
 
     @FXML
-    void Agregar2(ActionEvent event) {
+    void Agregar2() {
         if (this.txtDescripcion2.getText().isEmpty() && this.img2.getImage() == null) {
             Hamburguesa nuevaHamburguesa = crearNuevaHamburguesa();
             if (nuevaHamburguesa != null) {
@@ -231,7 +223,7 @@ public class  CarritoController implements Initializable {
     }
 
     @FXML
-    void Agregar3(ActionEvent event) {
+    void Agregar3() {
         if (this.txtDescripcion3.getText().isEmpty() && this.img3.getImage() == null) {
             Hamburguesa nuevaHamburguesa = crearNuevaHamburguesa();
             if (nuevaHamburguesa != null) {
@@ -269,7 +261,7 @@ public class  CarritoController implements Initializable {
 
                 nuevaHamburguesa.setNombre(nombre);
                 nuevaHamburguesa.setCostoBase(costoBase);
-                nuevaHamburguesa.setImagen(new javafx.scene.image.Image("/img/Hamburguesa2.png")); // Reemplaza con la URL de tu imagen
+                nuevaHamburguesa.setImagen(new Image(obtenerRutaImagenAleatoria()));
 
                 // Insertar la hamburguesa en la base de datos
                 String sql = "INSERT INTO Hamburguesa (nombre, costoBase, rutaImagen) " +
@@ -323,7 +315,6 @@ public class  CarritoController implements Initializable {
 
         } catch (SQLException e) {
             System.err.println("Error al guardar la hamburguesa en la base de datos: " + e.getMessage());
-            e.printStackTrace();
             // Manejar la excepción adecuadamente (mostrar un mensaje al usuario, etc.)
             return null;
         } finally {
@@ -334,7 +325,6 @@ public class  CarritoController implements Initializable {
                 }
             } catch (SQLException e) {
                 System.err.println("Error al cerrar la conexión a la base de datos: " + e.getMessage());
-                e.printStackTrace();
             }
         }
     }
@@ -427,6 +417,19 @@ public class  CarritoController implements Initializable {
     }
 
 
+    private String obtenerRutaImagenAleatoria() {
+        String[] rutasImagenes = {
+                "/img/Hamburguesa2.png",
+                "/img/Hamburguesa1.png",
+                "/img/Hamburguesa3.png"
+        };
+
+        Random random = new Random();
+        int indiceAleatorio = random.nextInt(rutasImagenes.length);
+
+        return rutasImagenes[indiceAleatorio];
+    }
+
     private List<Extra> obtenerExtrasAleatorios() throws SQLException {
         List<Extra> extras = new ArrayList<>();
         String sql = "SELECT * FROM Extra";
@@ -501,7 +504,7 @@ public class  CarritoController implements Initializable {
     }
 
     @FXML
-    void btnPagar_OnClick(ActionEvent event) {
+    void btnPagar_OnClick() {
         if (pedidoActual.calcularTotal() != 0) {
 
             try {
@@ -534,7 +537,6 @@ public class  CarritoController implements Initializable {
 
             } catch (IOException e) {
                 System.err.println("Error al cargar la ventana de pago: " + e.getMessage());
-                e.printStackTrace();
             }
         }else{
             JOptionPane.showMessageDialog(null,"Ordena una hamburguesa por lo menos");

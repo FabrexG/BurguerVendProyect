@@ -2,6 +2,7 @@ package poo;
 
 import javafx.scene.image.Image;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -201,7 +202,11 @@ public class Hamburguesa {
             }
         }
         desc.append("Costo base: $").append(this.costoBase).append("\n\n"); // Agregar costo base
-        desc.append("Costo total: $").append(calcularCosto());
+        // Formatear el costo total a dos decimales
+        DecimalFormat df = new DecimalFormat("#.##");
+        String costoTotalFormateado = df.format(calcularCosto());
+
+        desc.append("Costo total: $").append(costoTotalFormateado);
         return desc.toString();
     }
 }
