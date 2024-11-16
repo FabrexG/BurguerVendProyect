@@ -200,73 +200,49 @@ public class  CarritoController implements Initializable {
 
     @FXML
     void Agregar1(ActionEvent event) {
-        // Verificar si la descripción e imagen de la hamburguesa 1 están vacías
         if (this.txtDescripcion1.getText().isEmpty() && this.img1.getImage() == null) {
-            // Crear una nueva hamburguesa
             Hamburguesa nuevaHamburguesa = crearNuevaHamburguesa();
-
-            // Asignar la nueva hamburguesa a la variable hamburguesa1
-            this.hamburguesa1 = nuevaHamburguesa;
-
-            // Agregar la nueva hamburguesa al pedido
-            this.pedidoActual.agregarHamburguesa(nuevaHamburguesa);
-
-            // Mostrar la descripción de la nueva hamburguesa
-            this.txtDescripcion1.setText(nuevaHamburguesa.descripcion());
-
-            // Mostrar la imagen de la nueva hamburguesa
-            this.img1.setImage(nuevaHamburguesa.getImagen());
-
-            // Actualizar el total del pedido
-            actualizarTotal();
+            if (nuevaHamburguesa != null) {
+                this.hamburguesa1 = nuevaHamburguesa;
+                this.pedidoActual.agregarHamburguesa(nuevaHamburguesa);
+                this.txtDescripcion1.setText(nuevaHamburguesa.descripcion());
+                this.img1.setImage(nuevaHamburguesa.getImagen());
+                actualizarTotal();
+            } else {
+                txtDescripcion1.setText("");
+            }
         }
     }
 
     @FXML
     void Agregar2(ActionEvent event) {
-        // Verificar si la descripción e imagen de la hamburguesa 2 están vacías
         if (this.txtDescripcion2.getText().isEmpty() && this.img2.getImage() == null) {
-            // Crear una nueva hamburguesa
             Hamburguesa nuevaHamburguesa = crearNuevaHamburguesa();
-
-            // Asignar la nueva hamburguesa a la variable hamburguesa2
-            this.hamburguesa2 = nuevaHamburguesa;
-
-            // Agregar la nueva hamburguesa al pedido
-            this.pedidoActual.agregarHamburguesa(nuevaHamburguesa);
-
-            // Mostrar la descripción de la nueva hamburguesa
-            this.txtDescripcion2.setText(nuevaHamburguesa.descripcion());
-
-            // Mostrar la imagen de la nueva hamburguesa
-            this.img2.setImage(nuevaHamburguesa.getImagen());
-
-            // Actualizar el total del pedido
-            actualizarTotal();
+            if (nuevaHamburguesa != null) {
+                this.hamburguesa2 = nuevaHamburguesa;
+                this.pedidoActual.agregarHamburguesa(nuevaHamburguesa);
+                this.txtDescripcion2.setText(nuevaHamburguesa.descripcion());
+                this.img2.setImage(nuevaHamburguesa.getImagen());
+                actualizarTotal();
+            } else {
+                txtDescripcion2.setText(""); // Limpiar el TextArea 2
+            }
         }
     }
 
     @FXML
     void Agregar3(ActionEvent event) {
-        // Verificar si la descripción e imagen de la hamburguesa 3 están vacías
         if (this.txtDescripcion3.getText().isEmpty() && this.img3.getImage() == null) {
-            // Crear una nueva hamburguesa
             Hamburguesa nuevaHamburguesa = crearNuevaHamburguesa();
-
-            // Asignar la nueva hamburguesa a la variable hamburguesa3
-            this.hamburguesa3 = nuevaHamburguesa;
-
-            // Agregar la nueva hamburguesa al pedido
-            this.pedidoActual.agregarHamburguesa(nuevaHamburguesa);
-
-            // Mostrar la descripción de la nueva hamburguesa
-            this.txtDescripcion3.setText(nuevaHamburguesa.descripcion());
-
-            // Mostrar la imagen de la nueva hamburguesa
-            this.img3.setImage(nuevaHamburguesa.getImagen());
-
-            // Actualizar el total del pedido
-            actualizarTotal();
+            if (nuevaHamburguesa != null) {
+                this.hamburguesa3 = nuevaHamburguesa;
+                this.pedidoActual.agregarHamburguesa(nuevaHamburguesa);
+                this.txtDescripcion3.setText(nuevaHamburguesa.descripcion());
+                this.img3.setImage(nuevaHamburguesa.getImagen());
+                actualizarTotal();
+            } else {
+                txtDescripcion3.setText(""); // Limpiar el TextArea 3
+            }
         }
     }
 
@@ -277,72 +253,135 @@ public class  CarritoController implements Initializable {
             conn = new ConectaBD();
             conn.conectarBDOracle();
 
-            // Obtener ingredientes aleatorios de la base de datos
+            // Obtener ingredientes y extras aleatorios de la base de datos
             List<Ingrediente> ingredientes = obtenerIngredientesAleatorios();
-            nuevaHamburguesa.setIngredientes(ingredientes);
-
-            // Obtener extras aleatorios de la base de datos
             List<Extra> extras = obtenerExtrasAleatorios();
-            nuevaHamburguesa.setExtras(extras);
 
-            // Generar nombre y costo base aleatorios
-            String nombre = generarNombreAleatorio();
-            double costoBase = generarCostoBaseAleatorio();
+            // Validar la cantidad de ingredientes y extras
+            String productoFaltante = validarInventario(ingredientes, extras);
+            if (productoFaltante == null) {
+                nuevaHamburguesa.setIngredientes(ingredientes);
+                nuevaHamburguesa.setExtras(extras);
 
-            nuevaHamburguesa.setNombre(nombre);
-            nuevaHamburguesa.setCostoBase(costoBase);
-            nuevaHamburguesa.setImagen(new javafx.scene.image.Image("/img/Hamburguesa2.png")); // Reemplaza con la URL de tu imagen
+                // Generar nombre y costo base aleatorios
+                String nombre = generarNombreAleatorio();
+                double costoBase = generarCostoBaseAleatorio();
 
-            // Insertar la hamburguesa en la base de datos
-            String sql = "INSERT INTO Hamburguesa (nombre, costoBase, rutaImagen) " +
-                    "VALUES ('" + nuevaHamburguesa.getNombre() + "', " +
-                    nuevaHamburguesa.getCostoBase() + ", '" +
-                    nuevaHamburguesa.getImagen().getUrl() + "')";
+                nuevaHamburguesa.setNombre(nombre);
+                nuevaHamburguesa.setCostoBase(costoBase);
+                nuevaHamburguesa.setImagen(new javafx.scene.image.Image("/img/Hamburguesa2.png")); // Reemplaza con la URL de tu imagen
 
-            conn.stmt.executeUpdate(sql);
+                // Insertar la hamburguesa en la base de datos
+                String sql = "INSERT INTO Hamburguesa (nombre, costoBase, rutaImagen) " +
+                        "VALUES ('" + nuevaHamburguesa.getNombre() + "', " +
+                        nuevaHamburguesa.getCostoBase() + ", '" +
+                        nuevaHamburguesa.getImagen().getUrl() + "')";
 
-            // Obtener el ID de la hamburguesa insertada
-            sql = "SELECT secuencia_hamburguesa.CURRVAL FROM dual";
-            ResultSet rs = conn.stmt.executeQuery(sql);
-            if (rs.next()) {
-                nuevaHamburguesa.setId(rs.getInt(1));
-            }
-
-            // Insertar los ingredientes y actualizar cantidades
-            for (Ingrediente ingrediente : nuevaHamburguesa.getIngredientes()) {
-                int idIngrediente = obtenerIdIngrediente(ingrediente.getNombre());
-
-                sql = "INSERT INTO HamburguesaIngrediente (hamburguesa_id, ingrediente_id, cantidad) " +
-                        "VALUES (" + nuevaHamburguesa.getId() + ", " + idIngrediente + ", " + ingrediente.getCantidad() + ")";
                 conn.stmt.executeUpdate(sql);
 
-                // Actualizar cantidad del ingrediente en la base de datos
-                actualizarCantidadIngrediente(ingrediente.getId(), ingrediente.getCantidad(), "restar");
+                // Obtener el ID de la hamburguesa insertada
+                sql = "SELECT secuencia_hamburguesa.CURRVAL FROM dual";
+                ResultSet rs = conn.stmt.executeQuery(sql);
+                if (rs.next()) {
+                    nuevaHamburguesa.setId(rs.getInt(1));
+                }
+
+                // Insertar los ingredientes y actualizar cantidades
+                for (Ingrediente ingrediente : nuevaHamburguesa.getIngredientes()) {
+                    int idIngrediente = obtenerIdIngrediente(ingrediente.getNombre());
+
+                    sql = "INSERT INTO HamburguesaIngrediente (hamburguesa_id, ingrediente_id, cantidad) " +
+                            "VALUES (" + nuevaHamburguesa.getId() + ", " + idIngrediente + ", " + ingrediente.getCantidad() + ")";
+                    conn.stmt.executeUpdate(sql);
+
+                    // Actualizar cantidad del ingrediente en la base de datos
+                    actualizarCantidadIngrediente(ingrediente.getId(), ingrediente.getCantidad(), "restar");
+                }
+
+                // Insertar los extras y actualizar cantidades
+                for (Extra extra : nuevaHamburguesa.getExtras()) {
+                    int idExtra = obtenerIdExtra(extra.getNombre());
+
+                    sql = "INSERT INTO HamburguesaExtra (hamburguesa_id, extra_id, cantidad) " +
+                            "VALUES (" + nuevaHamburguesa.getId() + ", " + idExtra + ", " + extra.getCantidad() + ")";
+                    conn.stmt.executeUpdate(sql);
+
+                    // Actualizar cantidad del extra en la base de datos
+                    actualizarCantidadExtra(extra.getId(), extra.getCantidad(), "restar");
+                }
+
+                return nuevaHamburguesa; // Devolver la hamburguesa si se creó correctamente
+
+            } else {
+                // Mostrar un mensaje de error al usuario indicando el ingrediente o extra que falta
+                JOptionPane.showMessageDialog(null,
+                        "No hay suficiente " + productoFaltante + " para crear esta hamburguesa.",
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE);
+                return null;
             }
-
-            // Insertar los extras y actualizar cantidades
-            for (Extra extra : nuevaHamburguesa.getExtras()) {
-                int idExtra = obtenerIdExtra(extra.getNombre());
-
-                sql = "INSERT INTO HamburguesaExtra (hamburguesa_id, extra_id, cantidad) " +
-                        "VALUES (" + nuevaHamburguesa.getId() + ", " + idExtra + ", " + extra.getCantidad() + ")";
-                conn.stmt.executeUpdate(sql);
-
-                // Actualizar cantidad del extra en la base de datos
-                actualizarCantidadExtra(extra.getId(), extra.getCantidad(), "restar");
-            }
-
-            // Cerrar la conexión a la base de datos
-            conn.cn.close();
 
         } catch (SQLException e) {
             System.err.println("Error al guardar la hamburguesa en la base de datos: " + e.getMessage());
             e.printStackTrace();
             // Manejar la excepción adecuadamente (mostrar un mensaje al usuario, etc.)
+            return null;
+        } finally {
+            try {
+                // Cerrar la conexión a la base de datos en el bloque finally
+                if (conn != null && !conn.cn.isClosed()) {
+                    conn.cn.close();
+                }
+            } catch (SQLException e) {
+                System.err.println("Error al cerrar la conexión a la base de datos: " + e.getMessage());
+                e.printStackTrace();
+            }
         }
-
-        return nuevaHamburguesa;
     }
+
+
+    private String validarInventario(List<Ingrediente> ingredientes, List<Extra> extras) throws SQLException {
+        for (Ingrediente ingrediente : ingredientes) {
+            int cantidadDisponible = obtenerCantidadIngrediente(ingrediente.getNombre());
+            if (ingrediente.getCantidad() > cantidadDisponible) {
+                return ingrediente.getNombre();
+            }
+        }
+        for (Extra extra : extras) {
+            int cantidadDisponible = obtenerCantidadExtra(extra.getNombre());
+            if (extra.getCantidad() > cantidadDisponible) {
+                return extra.getNombre();
+            }
+        }
+        return null;
+    }
+
+
+    private int obtenerCantidadIngrediente(String nombreIngrediente) throws SQLException {
+        String sql = "SELECT cantidad FROM Ingrediente WHERE nombre = '" + nombreIngrediente + "'";
+        ResultSet rs = conn.stmt.executeQuery(sql);
+        if (rs.next()) {
+            return rs.getInt("cantidad");
+        } else {
+            throw new SQLException("Ingrediente no encontrado: " + nombreIngrediente);
+        }
+    }
+
+    private int obtenerCantidadExtra(String nombreExtra) throws SQLException {
+        String sql = "SELECT cantidad FROM Extra WHERE nombre = '" + nombreExtra + "'";
+        ResultSet rs = conn.stmt.executeQuery(sql);
+        if (rs.next()) {
+            return rs.getInt("cantidad");
+        } else {
+            throw new SQLException("Extra no encontrado: " + nombreExtra);
+        }
+    }
+
+
+
+
+
+
     private String generarNombreAleatorio() {
         List<String> nombres = List.of("Hamburguesa Clásica", "Hamburguesa Doble", "Hamburguesa con Queso",
                 "Hamburguesa de Pollo", "Hamburguesa Vegetariana", "Hamburguesa Especial");
@@ -418,8 +457,11 @@ public class  CarritoController implements Initializable {
     }
     // Método para actualizar el total en la interfaz
     private void actualizarTotal() {
-        // Actualizar el texto del TextField txtTotal con el nuevo total del pedido
-        this.txtTotal.setText("$" + this.pedidoActual.calcularTotal());
+        // Formatear el total a dos decimales
+        String totalFormateado = String.format("$%.2f", this.pedidoActual.calcularTotal());
+
+        // Actualizar el texto del TextField txtTotal con el total formateado
+        this.txtTotal.setText(totalFormateado);
     }
     private int obtenerIdIngrediente(String nombreIngrediente) throws SQLException {
         String sql = "SELECT id FROM Ingrediente WHERE nombre = '" + nombreIngrediente + "'";

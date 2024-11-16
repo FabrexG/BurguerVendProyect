@@ -18,7 +18,8 @@ public class Hamburguesa {
      * Constructor vacío para la clase Hamburguesa.
      */
     public Hamburguesa() {
-        // Constructor vacío
+        this.ingredientes = new ArrayList<>(); // Inicializar la lista de ingredientes
+        this.extras = new ArrayList<>(); // Inicializar la lista de extras
     }
 
     /**
@@ -31,7 +32,7 @@ public class Hamburguesa {
      */
     public Hamburguesa(String nombre, List<Ingrediente> ingredientes, double costoBase, String rutaImagen) {
         this.nombre = nombre;
-        this.ingredientes = ingredientes;
+        this.ingredientes = new ArrayList<>();
         this.imagen = new Image(rutaImagen);
         this.extras = new ArrayList<>();
         // Validar el costo base
