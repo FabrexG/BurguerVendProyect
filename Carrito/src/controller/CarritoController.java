@@ -118,95 +118,12 @@ CarritoController implements Initializable {
         // Crear un nuevo pedido
         this.pedidoActual = new Pedido(new Random().nextInt(1000) + 1);
 
-        // Crear las hamburguesas
-        obtenerHamburguesa1DeBD();
-
         // Mostrar el número de pedido
         this.txtPedido.setText(String.valueOf(this.pedidoActual.getNumeroPedido()));
 
         // Mostrar el total del pedido
         this.txtTotal.setText("$" + this.pedidoActual.calcularTotal());
     }
-private void obtenerHamburguesa1DeBD() {
-    ConectaBD conectaBD = null;
-    try {
-        // Crear una instancia de ConectaBD
-        conectaBD = new ConectaBD();
-        conectaBD.conectarBDOracle();
-
-        // Obtener las hamburguesas de la base de datos
-        ResultSet rsHamburguesas = conectaBD.stmt.executeQuery("SELECT * FROM Hamburguesa");
-
-        List<Hamburguesa> hamburguesas = new ArrayList<>();
-        while (rsHamburguesas.next()) {
-            Hamburguesa hamburguesa = new Hamburguesa();
-            hamburguesa.setId(rsHamburguesas.getInt("id"));
-            hamburguesa.setNombre(rsHamburguesas.getString("nombre"));
-            hamburguesa.setCostoBase(rsHamburguesas.getDouble("costoBase"));
-            hamburguesa.setImagen(new Image(getClass().getResourceAsStream(rsHamburguesas.getString("rutaImagen"))));
-
-            // Obtener los ingredientes de la hamburguesa
-            ResultSet rsIngredientes = conectaBD.stmt.executeQuery(
-                "SELECT i.nombre, i.costo, hi.cantidad " +
-                "FROM Ingrediente i " +
-                "JOIN HamburguesaIngrediente hi ON i.id = hi.ingrediente_id " +
-                "WHERE hi.hamburguesa_id = " + hamburguesa.getId()
-            );
-            List<Ingrediente> ingredientes = new ArrayList<>();
-            while (rsIngredientes.next()) {
-                ingredientes.add(new Ingrediente(
-                    rsIngredientes.getString("nombre"),
-                    rsIngredientes.getDouble("costo"),
-                    rsIngredientes.getInt("cantidad")
-                ));
-            }
-            hamburguesa.setIngredientes(ingredientes);
-
-            // Obtener los extras de la hamburguesa
-            ResultSet rsExtras = conectaBD.stmt.executeQuery(
-                "SELECT e.nombre, e.costo, he.cantidad " +
-                "FROM Extra e " +
-                "JOIN HamburguesaExtra he ON e.id = he.extra_id " +
-                "WHERE he.hamburguesa_id = " + hamburguesa.getId()
-            );
-            List<Extra> extras = new ArrayList<>();
-            while (rsExtras.next()) {
-                extras.add(new Extra(
-                    rsExtras.getString("nombre"),
-                    rsExtras.getDouble("costo"),
-                    rsExtras.getInt("cantidad")
-                ));
-            }
-            hamburguesa.setExtras(extras);
-
-            hamburguesas.add(hamburguesa);
-        }
-
-        // Asignar las hamburguesas a las variables
-        if (!hamburguesas.isEmpty()) {
-            this.hamburguesa1 = hamburguesas.get(0);
-        }
-
-        // Mostrar las descripciones de las hamburguesas
-        if (this.hamburguesa1 != null) {
-            this.txtDescripcion1.setText(this.hamburguesa1.descripcion());
-            this.img1.setImage(this.hamburguesa1.getImagen());
-            this.pedidoActual.agregarHamburguesa(this.hamburguesa1);
-        }
-
-    } catch (SQLException e) {
-        System.err.println("Error al obtener las hamburguesas de la base de datos: " + e.getMessage());
-        e.printStackTrace();
-    } finally {
-        if (conectaBD != null) {
-            try {
-                conectaBD.cn.close(); // Cerrar la conexión en el finally
-            } catch (SQLException e) {
-                System.err.println("Error al cerrar la conexión a la base de datos: " + e.getMessage());
-            }
-        }
-    }
-}
 
     
     @FXML
