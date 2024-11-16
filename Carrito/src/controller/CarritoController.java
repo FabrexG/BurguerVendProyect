@@ -33,6 +33,8 @@ import java.util.ResourceBundle;
 import conexion.ConectaBD;
 import javafx.scene.image.Image;
 
+import javax.swing.*;
+
 
 public class  CarritoController implements Initializable {
     private ConectaBD conn;
@@ -455,37 +457,42 @@ public class  CarritoController implements Initializable {
 
     @FXML
     void btnPagar_OnClick(ActionEvent event) {
-        try {
-            // Obtener la ventana actual
-            Stage stageActual = (Stage) btnPagar.getScene().getWindow();
+        if (pedidoActual.calcularTotal() != 0) {
 
-            // Calcular el total del pedido ANTES de cerrar la ventana
-            double totalPedido = this.pedidoActual.calcularTotal();
+            try {
+                // Obtener la ventana actual
+                Stage stageActual = (Stage) btnPagar.getScene().getWindow();
 
-            // Cargar la ventana de pago
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/PagarPedido.fxml"));
-            Parent root = loader.load();
+                // Calcular el total del pedido ANTES de cerrar la ventana
+                double totalPedido = this.pedidoActual.calcularTotal();
 
-            // Obtener el controlador de la ventana de pago
-            PagarPedidoController controladorPago = loader.getController();
+                // Cargar la ventana de pago
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/PagarPedido.fxml"));
+                Parent root = loader.load();
 
-            // Pasar el total del pedido al controlador de la ventana de pago
-            controladorPago.setTotal(totalPedido); // Pasar el total calculado
+                // Obtener el controlador de la ventana de pago
+                PagarPedidoController controladorPago = loader.getController();
 
-            // Crear la escena y mostrarla
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.setTitle("Pago del Pedido");
-            stage.setResizable(false);
-            stage.show();
+                // Pasar el total del pedido al controlador de la ventana de pago
+                controladorPago.setTotal(totalPedido); // Pasar el total calculado
 
-            // Cerrar la ventana actual
-            stageActual.close();
+                // Crear la escena y mostrarla
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.setTitle("Pago del Pedido");
+                stage.setResizable(false);
+                stage.show();
 
-        } catch (IOException e) {
-            System.err.println("Error al cargar la ventana de pago: " + e.getMessage());
-            e.printStackTrace();
+                // Cerrar la ventana actual
+                stageActual.close();
+
+            } catch (IOException e) {
+                System.err.println("Error al cargar la ventana de pago: " + e.getMessage());
+                e.printStackTrace();
+            }
+        }else{
+            JOptionPane.showMessageDialog(null,"Ordena una hamburguesa por lo menos");
         }
     }
 }
