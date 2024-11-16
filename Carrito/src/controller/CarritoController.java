@@ -10,8 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import
-        poo.Extra;
+import poo.Extra;
 import poo.Ingrediente;
 import poo.Pedido;
 import poo.Hamburguesa;
@@ -35,9 +34,8 @@ import conexion.ConectaBD;
 import javafx.scene.image.Image;
 
 
-public class
-CarritoController implements Initializable {
-
+public class  CarritoController implements Initializable {
+    private ConectaBD conn;
 
     @FXML
     private Button btnPagar;
@@ -125,23 +123,51 @@ CarritoController implements Initializable {
         this.txtTotal.setText("$" + this.pedidoActual.calcularTotal());
     }
 
-    
+
     @FXML
     void remover1(ActionEvent event) {
-        // Remover la hamburguesa 1 del pedido
-        this.pedidoActual.removerHamburguesa(this.hamburguesa1);
+        if (this.hamburguesa1 != null) {
+            try {
+                // Obtener la conexión a la base de datos
+                conn = new ConectaBD();
+                conn.conectarBDOracle();
 
-        // Limpiar la descripción y la imagen de la hamburguesa 1
-        this.txtDescripcion1.clear();
-        this.img1.setImage(null);
+                // Eliminar la hamburguesa de la base de datos
+                String sql = "DELETE FROM Hamburguesa WHERE id = " + this.hamburguesa1.getId();
+                conn.stmt.executeUpdate(sql);
 
-        // Limpiar la referencia a la hamburguesa 1
-        this.hamburguesa1 = null;
+                // Eliminar las relaciones de la hamburguesa en las tablas HamburguesaIngrediente y HamburguesaExtra
+                sql = "DELETE FROM HamburguesaIngrediente WHERE hamburguesa_id = " + this.hamburguesa1.getId();
+                conn.stmt.executeUpdate(sql);
+                sql = "DELETE FROM HamburguesaExtra WHERE hamburguesa_id = " + this.hamburguesa1.getId();
+                conn.stmt.executeUpdate(sql);
 
-        // Actualizar el total del pedido
-        actualizarTotal();
+                // Devolver ingredientes y extras al inventario
+                for (Ingrediente ingrediente : this.hamburguesa1.getIngredientes()) {
+                    actualizarCantidadIngrediente(ingrediente.getId(), ingrediente.getCantidad(), "sumar");
+                }
+                for (Extra extra : this.hamburguesa1.getExtras()) {
+                    actualizarCantidadExtra(extra.getId(), extra.getCantidad(), "sumar");
+                }
+
+                // Cerrar la conexión a la base de datos
+                conn.cn.close();
+
+                // Limpiar la descripción, imagen y referencia a la hamburguesa1
+                this.txtDescripcion1.clear();
+                this.img1.setImage(null);
+                this.hamburguesa1 = null;
+
+                // Actualizar el total del pedido
+                actualizarTotal();
+
+            } catch (SQLException e) {
+                System.err.println("Error al eliminar la hamburguesa de la base de datos: " + e.getMessage());
+                e.printStackTrace();
+                // Manejar la excepción adecuadamente (mostrar un mensaje de error al usuario)
+            }
+        }
     }
-
     @FXML
     void remover2(ActionEvent event) {
         // Remover la hamburguesa 2 del pedido
@@ -246,23 +272,189 @@ CarritoController implements Initializable {
         }
     }
 
-    // Método para crear una nueva hamburguesa (puedes personalizarlo)
     private Hamburguesa crearNuevaHamburguesa() {
-        // Aquí puedes pedir los datos al usuario o generar una hamburguesa aleatoria
-        return new Hamburguesa(
-                "Nueva Hamburguesa",
-                Arrays.asList(
-                        new Ingrediente("Ingrediente 1", 1.00, 3), // 3 unidades de Ingrediente 1
-                        new Ingrediente("Ingrediente 2", 2.00, 2)  // 2 unidades de Ingrediente 2
-                ),
-                4.50, getClass().getResource("/img/Hamburguesa1.png").toExternalForm()
-        );
+        Hamburguesa nuevaHamburguesa = new Hamburguesa();
+        try {
+            // Obtener la conexión a la base de datos
+            conn = new ConectaBD();
+            conn.conectarBDOracle();
+
+            // Obtener ingredientes aleatorios de la base de datos
+            List<Ingrediente> ingredientes = obtenerIngredientesAleatorios();
+            nuevaHamburguesa.setIngredientes(ingredientes);
+
+            // Obtener extras aleatorios de la base de datos
+            List<Extra> extras = obtenerExtrasAleatorios();
+            nuevaHamburguesa.setExtras(extras);
+
+            // Generar nombre y costo base aleatorios
+            String nombre = generarNombreAleatorio();
+            double costoBase = generarCostoBaseAleatorio();
+
+            nuevaHamburguesa.setNombre(nombre);
+            nuevaHamburguesa.setCostoBase(costoBase);
+            nuevaHamburguesa.setImagen(new javafx.scene.image.Image("/img/Hamburguesa2.png")); // Reemplaza con la URL de tu imagen
+
+            // Insertar la hamburguesa en la base de datos
+            String sql = "INSERT INTO Hamburguesa (nombre, costoBase, rutaImagen) " +
+                    "VALUES ('" + nuevaHamburguesa.getNombre() + "', " +
+                    nuevaHamburguesa.getCostoBase() + ", '" +
+                    nuevaHamburguesa.getImagen().getUrl() + "')";
+
+            conn.stmt.executeUpdate(sql);
+
+            // Obtener el ID de la hamburguesa insertada
+            sql = "SELECT secuencia_hamburguesa.CURRVAL FROM dual";
+            ResultSet rs = conn.stmt.executeQuery(sql);
+            if (rs.next()) {
+                nuevaHamburguesa.setId(rs.getInt(1));
+            }
+
+            // Insertar los ingredientes y actualizar cantidades
+            for (Ingrediente ingrediente : nuevaHamburguesa.getIngredientes()) {
+                int idIngrediente = obtenerIdIngrediente(ingrediente.getNombre());
+
+                sql = "INSERT INTO HamburguesaIngrediente (hamburguesa_id, ingrediente_id, cantidad) " +
+                        "VALUES (" + nuevaHamburguesa.getId() + ", " + idIngrediente + ", " + ingrediente.getCantidad() + ")";
+                conn.stmt.executeUpdate(sql);
+
+                // Actualizar cantidad del ingrediente en la base de datos
+                actualizarCantidadIngrediente(ingrediente.getId(), ingrediente.getCantidad(), "restar");
+            }
+
+            // Insertar los extras y actualizar cantidades
+            for (Extra extra : nuevaHamburguesa.getExtras()) {
+                int idExtra = obtenerIdExtra(extra.getNombre());
+
+                sql = "INSERT INTO HamburguesaExtra (hamburguesa_id, extra_id, cantidad) " +
+                        "VALUES (" + nuevaHamburguesa.getId() + ", " + idExtra + ", " + extra.getCantidad() + ")";
+                conn.stmt.executeUpdate(sql);
+
+                // Actualizar cantidad del extra en la base de datos
+                actualizarCantidadExtra(extra.getId(), extra.getCantidad(), "restar");
+            }
+
+            // Cerrar la conexión a la base de datos
+            conn.cn.close();
+
+        } catch (SQLException e) {
+            System.err.println("Error al guardar la hamburguesa en la base de datos: " + e.getMessage());
+            e.printStackTrace();
+            // Manejar la excepción adecuadamente (mostrar un mensaje al usuario, etc.)
+        }
+
+        return nuevaHamburguesa;
+    }
+    private String generarNombreAleatorio() {
+        List<String> nombres = List.of("Hamburguesa Clásica", "Hamburguesa Doble", "Hamburguesa con Queso",
+                "Hamburguesa de Pollo", "Hamburguesa Vegetariana", "Hamburguesa Especial");
+        Random random = new Random();
+        int indice = random.nextInt(nombres.size());
+        return nombres.get(indice);
     }
 
+    private double generarCostoBaseAleatorio() {
+        Random random = new Random();
+        double costo = 5 + random.nextDouble() * 10; // Costo entre 5 y 15
+        return Math.round(costo * 100.0) / 100.0; // Redondear a 2 decimales
+    }
+    private List<Ingrediente> obtenerIngredientesAleatorios() throws SQLException {
+        List<Ingrediente> ingredientes = new ArrayList<>();
+        String sql = "SELECT * FROM Ingrediente";
+        ResultSet rs = conn.stmt.executeQuery(sql);
+        List<Ingrediente> ingredientesDisponibles = new ArrayList<>();
+        while (rs.next()) {
+            ingredientesDisponibles.add(new Ingrediente(
+                    rs.getInt("id"),
+                    rs.getString("nombre"),
+                    rs.getDouble("costo"),
+                    rs.getInt("cantidad"),
+                    rs.getString("unidad")
+            ));
+        }
+
+        Random random = new Random();
+        int numIngredientes = random.nextInt(3) + 2; // Entre 2 y 4 ingredientes
+
+        for (int i = 0; i < numIngredientes; i++) {
+            if (!ingredientesDisponibles.isEmpty()) {
+                Ingrediente ingrediente = ingredientesDisponibles.remove(random.nextInt(ingredientesDisponibles.size()));
+                ingrediente.setCantidad(1); // Cantidad fija de 1 por ingrediente
+                ingredientes.add(ingrediente);
+            }
+        }
+
+        return ingredientes;
+    }
+
+
+    private List<Extra> obtenerExtrasAleatorios() throws SQLException {
+        List<Extra> extras = new ArrayList<>();
+        String sql = "SELECT * FROM Extra";
+        ResultSet rs = conn.stmt.executeQuery(sql);
+        List<Extra> extrasDisponibles = new ArrayList<>();
+        while (rs.next()) {
+            extrasDisponibles.add(new Extra(
+                    rs.getInt("id"),
+                    rs.getString("nombre"),
+                    rs.getDouble("costo"),
+                    rs.getInt("cantidad")
+            ));
+        }
+
+        Random random = new Random();
+        int numExtras = random.nextInt(3); // Entre 0 y 2 extras
+
+        for (int i = 0; i < numExtras; i++) {
+            if (!extrasDisponibles.isEmpty()) {
+                Extra extra = extrasDisponibles.remove(random.nextInt(extrasDisponibles.size()));
+                extra.setCantidad(1); // Cantidad fija de 1 por extra
+                extras.add(extra);
+            }
+        }
+
+        return extras;
+    }
     // Método para actualizar el total en la interfaz
     private void actualizarTotal() {
         // Actualizar el texto del TextField txtTotal con el nuevo total del pedido
         this.txtTotal.setText("$" + this.pedidoActual.calcularTotal());
+    }
+    private int obtenerIdIngrediente(String nombreIngrediente) throws SQLException {
+        String sql = "SELECT id FROM Ingrediente WHERE nombre = '" + nombreIngrediente + "'";
+        ResultSet rs = conn.stmt.executeQuery(sql);
+        if (rs.next()) {
+            return rs.getInt("id");
+        } else {
+            // El ingrediente no existe, manejar la situación adecuadamente
+            // Puedes lanzar una excepción, registrar un error o mostrar un mensaje al usuario
+            throw new SQLException("Ingrediente no encontrado: " + nombreIngrediente);
+        }
+    }
+
+    private int obtenerIdExtra(String nombreExtra) throws SQLException {
+        String sql = "SELECT id FROM Extra WHERE nombre = '" + nombreExtra + "'";
+        ResultSet rs = conn.stmt.executeQuery(sql);
+        if (rs.next()) {
+            return rs.getInt("id");
+        } else {
+            // El extra no existe, manejar la situación adecuadamente
+            throw new SQLException("Extra no encontrado: " + nombreExtra);
+        }
+    }
+
+    private void actualizarCantidadIngrediente(int ingredienteId, int cantidad, String operacion) throws SQLException {
+        String sql = "UPDATE Ingrediente SET cantidad = cantidad " +
+                (operacion.equals("restar") ? "- " : "+ ") + cantidad +
+                " WHERE id = " + ingredienteId;
+        conn.stmt.executeUpdate(sql);
+    }
+
+    private void actualizarCantidadExtra(int extraId, int cantidad, String operacion) throws SQLException {
+        String sql = "UPDATE Extra SET cantidad = cantidad " +
+                (operacion.equals("restar") ? "- " : "+ ") + cantidad +
+                " WHERE id = " + extraId;
+        conn.stmt.executeUpdate(sql);
     }
 
     @FXML

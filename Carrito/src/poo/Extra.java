@@ -7,22 +7,24 @@ public class Extra extends Ingrediente {
     /**
      * Constructor para la clase Extra.
      *
+     * @param id El ID del extra.
      * @param nombre El nombre del extra.
      * @param costo  El costo del extra.
      */
-    public Extra(String nombre, double costo) {
-        super(nombre, costo);
+    public Extra(int id, String nombre, double costo) {
+        super(id, nombre, costo);
     }
 
     /**
      * Constructor para la clase Extra que incluye la cantidad.
      *
+     * @param id       El ID del extra.
      * @param nombre   El nombre del extra.
      * @param costo    El costo del extra.
      * @param cantidad La cantidad del extra.
      */
-    public Extra(String nombre, double costo, int cantidad) {
-        super(nombre, costo);
+    public Extra(int id, String nombre, double costo, int cantidad) {
+        super(id, nombre, costo);
         this.cantidad = cantidad;
     }
 

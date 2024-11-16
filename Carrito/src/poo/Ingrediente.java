@@ -2,17 +2,21 @@ package poo;
 
 public class Ingrediente {
 
+    private int id; // Atributo para el ID del ingrediente
     private String nombre;
     private double costo;
-    private int cantidad; // Nuevo atributo para la cantidad
+    private int cantidad; // Atributo para la cantidad
+    private String unidad; // Atributo para la unidad
 
     /**
      * Constructor para la clase Ingrediente.
      *
+     * @param id El ID del ingrediente.
      * @param nombre El nombre del ingrediente.
      * @param costo  El costo del ingrediente.
      */
-    public Ingrediente(String nombre, double costo) {
+    public Ingrediente(int id, String nombre, double costo) {
+        this.id = id;
         this.nombre = nombre;
         this.costo = costo;
     }
@@ -20,14 +24,51 @@ public class Ingrediente {
     /**
      * Constructor para la clase Ingrediente que incluye la cantidad.
      *
+     * @param id       El ID del ingrediente.
      * @param nombre   El nombre del ingrediente.
      * @param costo    El costo del ingrediente.
      * @param cantidad La cantidad del ingrediente.
      */
-    public Ingrediente(String nombre, double costo, int cantidad) {
+    public Ingrediente(int id, String nombre, double costo, int cantidad) {
+        this.id = id;
         this.nombre = nombre;
         this.costo = costo;
         this.cantidad = cantidad;
+    }
+
+    /**
+     * Constructor para la clase Ingrediente que incluye la cantidad y la unidad.
+     *
+     * @param id       El ID del ingrediente.
+     * @param nombre   El nombre del ingrediente.
+     * @param costo    El costo del ingrediente.
+     * @param cantidad La cantidad del ingrediente.
+     * @param unidad   La unidad del ingrediente.
+     */
+    public Ingrediente(int id, String nombre, double costo, int cantidad, String unidad) {
+        this.id = id;
+        this.nombre = nombre;
+        this.costo = costo;
+        this.cantidad = cantidad;
+        this.unidad = unidad;
+    }
+
+    /**
+     * Obtiene el ID del ingrediente.
+     *
+     * @return El ID del ingrediente.
+     */
+    public int getId() {
+        return this.id;
+    }
+
+    /**
+     * Establece el ID del ingrediente.
+     *
+     * @param id El nuevo ID del ingrediente.
+     */
+    public void setId(int id) {
+        this.id = id;
     }
 
     /**
@@ -65,6 +106,25 @@ public class Ingrediente {
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
+
+    /**
+     * Obtiene la unidad del ingrediente.
+     *
+     * @return La unidad del ingrediente.
+     */
+    public String getUnidad() {
+        return this.unidad;
+    }
+
+    /**
+     * Establece la unidad del ingrediente.
+     *
+     * @param unidad La nueva unidad del ingrediente.
+     */
+    public void setUnidad(String unidad) {
+        this.unidad = unidad;
+    }
+
     /**
      * Disminuye la cantidad disponible del ingrediente.
      *
@@ -77,12 +137,15 @@ public class Ingrediente {
         }
         this.cantidad -= cantidad;
     }
+
     @Override
     public String toString() {
         return "Ingrediente{" +
-                "nombre='" + this.nombre + '\'' +
+                "id=" + this.id +
+                ", nombre='" + this.nombre + '\'' +
                 ", costo=" + this.costo +
                 ", cantidad=" + this.cantidad +
+                ", unidad='" + this.unidad + '\'' +
                 '}';
     }
 }
