@@ -124,80 +124,83 @@ public class  CarritoController implements Initializable {
     }
 
 
-    @FXML
-    void remover1(ActionEvent event) {
-        if (this.hamburguesa1 != null) {
-            try {
-                // Obtener la conexión a la base de datos
-                conn = new ConectaBD();
-                conn.conectarBDOracle();
+    private void removerHamburguesa(Hamburguesa hamburguesa) {
+        try {
+            // Obtener la conexión a la base de datos
+            conn = new ConectaBD();
+            conn.conectarBDOracle();
 
-                // Eliminar la hamburguesa de la base de datos
-                String sql = "DELETE FROM Hamburguesa WHERE id = " + this.hamburguesa1.getId();
-                conn.stmt.executeUpdate(sql);
+            // Eliminar las relaciones de la hamburguesa en las tablas HamburguesaIngrediente y HamburguesaExtra
+            String sql = "DELETE FROM HamburguesaIngrediente WHERE hamburguesa_id = " + hamburguesa.getId();
+            conn.stmt.executeUpdate(sql);
+            sql = "DELETE FROM HamburguesaExtra WHERE hamburguesa_id = " + hamburguesa.getId();
+            conn.stmt.executeUpdate(sql);
 
-                // Eliminar las relaciones de la hamburguesa en las tablas HamburguesaIngrediente y HamburguesaExtra
-                sql = "DELETE FROM HamburguesaIngrediente WHERE hamburguesa_id = " + this.hamburguesa1.getId();
-                conn.stmt.executeUpdate(sql);
-                sql = "DELETE FROM HamburguesaExtra WHERE hamburguesa_id = " + this.hamburguesa1.getId();
-                conn.stmt.executeUpdate(sql);
+            // Eliminar la hamburguesa de la base de datos
+            sql = "DELETE FROM Hamburguesa WHERE id = " + hamburguesa.getId();
+            conn.stmt.executeUpdate(sql);
 
-                // Devolver ingredientes y extras al inventario
-                for (Ingrediente ingrediente : this.hamburguesa1.getIngredientes()) {
-                    actualizarCantidadIngrediente(ingrediente.getId(), ingrediente.getCantidad(), "sumar");
-                }
-                for (Extra extra : this.hamburguesa1.getExtras()) {
-                    actualizarCantidadExtra(extra.getId(), extra.getCantidad(), "sumar");
-                }
-
-                // Cerrar la conexión a la base de datos
-                conn.cn.close();
-
-                // Limpiar la descripción, imagen y referencia a la hamburguesa1
-                this.txtDescripcion1.clear();
-                this.img1.setImage(null);
-                this.hamburguesa1 = null;
-
-                // Actualizar el total del pedido
-                actualizarTotal();
-
-            } catch (SQLException e) {
-                System.err.println("Error al eliminar la hamburguesa de la base de datos: " + e.getMessage());
-                e.printStackTrace();
-                // Manejar la excepción adecuadamente (mostrar un mensaje de error al usuario)
+            // Devolver ingredientes y extras al inventario
+            for (Ingrediente ingrediente : hamburguesa.getIngredientes()) {
+                actualizarCantidadIngrediente(ingrediente.getId(), ingrediente.getCantidad(), "sumar");
             }
+            for (Extra extra : hamburguesa.getExtras()) {
+                actualizarCantidadExtra(extra.getId(), extra.getCantidad(), "sumar");
+            }
+
+            // Cerrar la conexión a la base de datos
+            conn.cn.close();
+
+        } catch (SQLException e) {
+            System.err.println("Error al eliminar la hamburguesa de la base de datos: " + e.getMessage());
+            e.printStackTrace();
+            // Manejar la excepción adecuadamente (mostrar un mensaje de error al usuario)
         }
     }
-    @FXML
-    void remover2(ActionEvent event) {
-        // Remover la hamburguesa 2 del pedido
-        this.pedidoActual.removerHamburguesa(this.hamburguesa2);
 
-        // Limpiar la descripción y la imagen de la hamburguesa 2
-        this.txtDescripcion2.clear();
-        this.img2.setImage(null);
+@FXML
+void remover1(ActionEvent event) {
+    if (this.hamburguesa1 != null) {
+        removerHamburguesa(this.hamburguesa1);
 
-        // Limpiar la referencia a la hamburguesa 2
-        this.hamburguesa2 = null;
+        // Limpiar la descripción, imagen y referencia a la hamburguesa1
+        this.txtDescripcion1.clear();
+        this.img1.setImage(null);
+        this.hamburguesa1 = null;
 
         // Actualizar el total del pedido
         actualizarTotal();
+    }
+}
+
+    @FXML
+    void remover2(ActionEvent event) {
+        if (this.hamburguesa2 != null) {
+            removerHamburguesa(this.hamburguesa2);
+
+            // Limpiar la descripción, imagen y referencia a la hamburguesa2
+            this.txtDescripcion2.clear();
+            this.img2.setImage(null);
+            this.hamburguesa2 = null;
+
+            // Actualizar el total del pedido
+            actualizarTotal();
+        }
     }
 
     @FXML
     void remover3(ActionEvent event) {
-        // Remover la hamburguesa 3 del pedido
-        this.pedidoActual.removerHamburguesa(this.hamburguesa3);
+        if (this.hamburguesa3 != null) {
+            removerHamburguesa(this.hamburguesa3);
 
-        // Limpiar la descripción y la imagen de la hamburguesa 3
-        this.txtDescripcion3.clear();
-        this.img3.setImage(null);
+            // Limpiar la descripción, imagen y referencia a la hamburguesa3
+            this.txtDescripcion3.clear();
+            this.img3.setImage(null);
+            this.hamburguesa3 = null;
 
-        // Limpiar la referencia a la hamburguesa 3
-        this.hamburguesa3 = null;
-
-        // Actualizar el total del pedido
-        actualizarTotal();
+            // Actualizar el total del pedido
+            actualizarTotal();
+        }
     }
 
     @FXML
