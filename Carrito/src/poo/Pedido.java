@@ -22,7 +22,9 @@ public class Pedido {
         this.fechaPedido = LocalDateTime.now();
         this.estado = "recibido";
     }
-
+    public List<Hamburguesa> getHamburguesas() {
+        return this.hamburguesas;
+    }
     /**
      * Agrega una hamburguesa al pedido.
      *

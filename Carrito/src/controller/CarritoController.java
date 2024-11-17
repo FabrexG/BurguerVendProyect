@@ -521,6 +521,9 @@ public class  CarritoController implements Initializable {
                 // Obtener el controlador de la ventana de pago
                 PagarPedidoController controladorPago = loader.getController();
 
+                // Pasar el pedido actual al controlador de la ventana de pago
+                controladorPago.setPedido(this.pedidoActual);
+
                 // Pasar el total del pedido al controlador de la ventana de pago
                 controladorPago.setTotal(totalPedido); // Pasar el total calculado
 
@@ -538,8 +541,8 @@ public class  CarritoController implements Initializable {
             } catch (IOException e) {
                 System.err.println("Error al cargar la ventana de pago: " + e.getMessage());
             }
-        }else{
-            JOptionPane.showMessageDialog(null,"Ordena una hamburguesa por lo menos");
+        } else {
+            JOptionPane.showMessageDialog(null, "Ordena una hamburguesa por lo menos");
         }
     }
 }
