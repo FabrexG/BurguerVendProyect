@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.web.WebView?>
+
+<AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="720.0" prefWidth="480.0" styleClass="fondo" stylesheets="@../estilos/EstiloPantallas.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="burguervenda.controllers.IngresarDireccionMapaController">
+   <children>
+      <Label layoutX="29.0" layoutY="43.0" styleClass="titulos" stylesheets="@../estilos/EstiloPantallas.css" text="Ingresa tu dirección para la" />
+      <Label layoutX="29.0" layoutY="81.0" styleClass="titulos" stylesheets="@../estilos/EstiloPantallas.css" text="entrega del pedido" />
+      <Button fx:id="btnBurguerPick" layoutX="21.0" layoutY="123.0" mnemonicParsing="false" onAction="#btnBurguerPickOnAction" prefHeight="25.0" prefWidth="190.0" styleClass="littleButton" stylesheets="@../estilos/EstiloPantallas.css" text="BurguerPick">
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagenes/pickupIcon.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btnBurguerDelivery" layoutX="258.0" layoutY="123.0" mnemonicParsing="false" onAction="#btnBurguerDeliveryOnAction" prefHeight="25.0" prefWidth="190.0" styleClass="littleButton" text="BurguerDelivery">
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagenes/deliveryIcon.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <AnchorPane fx:id="anchPaneInfo" layoutX="29.0" layoutY="181.0" prefHeight="527.0" prefWidth="419.0">
+         <children>
+            <Button fx:id="btnContinuar" layoutX="14.0" layoutY="485.0" mnemonicParsing="false" onAction="#ingresarDireccion" prefHeight="25.0" prefWidth="392.0" styleClass="littleButton" stylesheets="@../estilos/EstiloPantallas.css" text="Seleccionar" />
+            <Label fx:id="lbNombre" layoutX="15.0" layoutY="258.0" prefHeight="17.0" prefWidth="397.0" text="Direccion:" />
+            <Label fx:id="lbDireccion" layoutX="15.0" layoutY="286.0" prefHeight="17.0" prefWidth="397.0" text="Numero:" />
+            <Label fx:id="lbInfo" layoutX="15.0" layoutY="349.0" prefHeight="17.0" prefWidth="397.0" text="Piso, puerta, escalera:" />
+            <TextField fx:id="tfNumero" layoutX="17.0" layoutY="312.0" prefHeight="25.0" prefWidth="275.0" promptText="Ayudanos a encontrar tu casa" />
+            <CheckBox fx:id="cbSinNumero" layoutX="317.0" layoutY="316.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="90.0" text="Sin numero" />
+            <TextField fx:id="tfPuerta" layoutX="17.0" layoutY="376.0" prefHeight="25.0" prefWidth="392.0" promptText="Ayudanos a reconocer tu casa" />
+            <Text layoutX="15.0" layoutY="428.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Indiaciones adicionales para el repartidor:" wrappingWidth="392.0" />
+            <TextField fx:id="tfIndicaciones" layoutX="17.0" layoutY="439.0" prefHeight="25.0" prefWidth="392.0" promptText="Ayudanos a entregar tu pedido" />
+            <WebView fx:id="wb_mapa" layoutX="13.0" layoutY="10.0" prefHeight="243.0" prefWidth="397.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

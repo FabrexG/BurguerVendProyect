@@ -16,6 +16,9 @@ public class Restaurante {
     private String direccion;
     private boolean favorito;
     private String infoApertura;
+    private String latitud;
+    private String longitud;
+
     private ArrayList<Restaurante> restaurantes = new ArrayList<>();
     private ArrayList<Restaurante> restaurantesFavoritos = new ArrayList<>();
     
@@ -107,6 +110,20 @@ public class Restaurante {
     public void setInfoApertura(String infoApertura) {
         this.infoApertura = infoApertura;
     }
-    
+    public String getLatitud() {
+        return latitud;
+    }
+
+    public void setLatitud(String latitud) {
+        this.latitud = latitud;
+    }
+
+    public String getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(String longitud) {
+        this.longitud = longitud;
+    }
     
 }

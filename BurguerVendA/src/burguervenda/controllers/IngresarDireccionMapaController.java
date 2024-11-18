@@ -4,6 +4,7 @@
  */
 package burguervenda.controllers;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -17,19 +18,21 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 
 /**
  * FXML Controller class
  *
  * @author asus
  */
-public class IngresarDireccionController implements Initializable {
-
-    @FXML
-    private AnchorPane anchPaneInfo;
-
+public class IngresarDireccionMapaController implements Initializable {
+    
     @FXML
     private AnchorPane anchorPane;
+    
+    @FXML
+    private AnchorPane anchPaneInfo;
 
     @FXML
     private Button btnBurguerDelivery;
@@ -39,9 +42,6 @@ public class IngresarDireccionController implements Initializable {
 
     @FXML
     private Button btnContinuar;
-
-    @FXML
-    private Button btnSelectUbi;
 
     @FXML
     private CheckBox cbSinNumero;
@@ -56,16 +56,16 @@ public class IngresarDireccionController implements Initializable {
     private Label lbNombre;
 
     @FXML
-    private TextField tfDireccion;
-
-    @FXML
     private TextField tfIndicaciones;
 
     @FXML
     private TextField tfNumero;
 
     @FXML
-    private TextField tfPiso;
+    private TextField tfPuerta;
+
+    @FXML
+    private WebView wb_mapa;
 
     @FXML
     void btnBurguerDeliveryOnAction(ActionEvent event) throws IOException {
@@ -80,19 +80,15 @@ public class IngresarDireccionController implements Initializable {
     }
 
     @FXML
-    void btnSelectUbiOnAction(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/burguervenda/vistas/IngresarDireccionMapa.fxml"));
-        anchorPane.getChildren().setAll(root);
-    }
-
-    @FXML
     void ingresarDireccion(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/burguervenda/vistas/MonitorearPedido.fxml"));
         anchorPane.getChildren().setAll(root);
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        WebEngine webEngine = wb_mapa.getEngine();
+        File file = new File("src/burguervenda/elementosweb/MapaRestaurantes.html");
+        webEngine.load(file.toURI().toString());
     }    
     
 }

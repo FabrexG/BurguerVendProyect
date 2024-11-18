@@ -81,12 +81,12 @@ public class SeleccionarRestauranteMapaController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-         Restaurante res = new Restaurante();
+        Restaurante res = new Restaurante();
         restList=res.getRestaurantes();
         restFavs=res.getRestaurantesFavoritos();
         cbEligeRestaurante.getItems().addAll(restList);
         WebEngine webEngine = wb_mapa.getEngine();
-        File file = new File("src/burguervenda/mapas/MapaRestaurantes.html");
+        File file = new File("src/burguervenda/elementosweb/MapaRestaurantes.html");
         webEngine.load(file.toURI().toString());
         
     }

@@ -8,12 +8,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="720.0" prefWidth="480.0" styleClass="fondo" stylesheets="@../estilos/EstiloPantallas.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="burguervenda.controllers.MonitorearPedidoController">
+<AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="720.0" prefWidth="480.0" styleClass="fondo" stylesheets="@../estilos/EstiloPantallas.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="burguervenda.controllers.MonitorearPedidoController">
    <children>
       <Label layoutX="32.0" layoutY="43.0" styleClass="titulos" stylesheets="@../estilos/EstiloPantallas.css" text="Su pedido se esta " />
       <Label layoutX="32.0" layoutY="83.0" styleClass="titulos" stylesheets="@../estilos/EstiloPantallas.css" text="procesando..." />
-      <ProgressBar layoutX="28.0" layoutY="139.0" prefHeight="29.0" prefWidth="424.0" progress="0.0" />
+      <ProgressBar fx:id="pbMonitoreo" layoutX="28.0" layoutY="139.0" prefHeight="29.0" prefWidth="424.0" progress="0.0" />
       <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="58.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../imagenes/OrdenarIcon.png" />
@@ -40,8 +39,8 @@
          </font>
       </Label>
       <Label layoutX="23.0" layoutY="331.0" styleClass="titulos" stylesheets="@../estilos/EstiloPantallas.css" text="Informacion de contacto:" />
-      <Label layoutX="28.0" layoutY="389.0" styleClass="titulos" text="BurguerVend San Lorenzo Tezonco" />
-      <Button layoutX="60.0" layoutY="470.0" mnemonicParsing="false" styleClass="littleButton" text="Mensaje">
+      <Label fx:id="lbRestaurante" layoutX="28.0" layoutY="389.0" styleClass="titulos" text="BurguerVend " />
+      <Button fx:id="btnMensaje" layoutX="60.0" layoutY="470.0" mnemonicParsing="false" onAction="#abrirChat" styleClass="littleButton" text="Mensaje">
          <graphic>
             <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -50,7 +49,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="307.0" layoutY="470.0" mnemonicParsing="false" styleClass="littleButton" text="Llamada">
+      <Button fx:id="btnLlamda" layoutX="307.0" layoutY="470.0" mnemonicParsing="false" styleClass="littleButton" text="Llamada">
          <graphic>
             <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                <image>

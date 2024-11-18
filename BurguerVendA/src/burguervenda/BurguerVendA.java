@@ -27,7 +27,7 @@ public class BurguerVendA extends Application{
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("vistas/EscogerUbicacion.fxml"));
         Scene scene = new Scene(root);
-        stage.setTitle("Escoger ubicación");
+        stage.setTitle("App BurguerVend");
         stage.setScene(scene);
         stage.show();
     }

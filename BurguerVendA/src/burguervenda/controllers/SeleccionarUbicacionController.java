@@ -58,13 +58,15 @@ public class SeleccionarUbicacionController implements Initializable {
     }
 
     @FXML
-    void btnSelectUbiOnAction(ActionEvent event) {
-
+    void btnSelectUbiOnAction(ActionEvent event) throws IOException {
+       Parent root = FXMLLoader.load(getClass().getResource("/burguervenda/vistas/IngresarDireccionMapa.fxml"));
+       anchorPane.getChildren().setAll(root);
     }
 
     @FXML
-    void ingrearNuevaDireccion(ActionEvent event) {
-
+    void ingrearNuevaDireccion(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/burguervenda/vistas/IngresarDireccion.fxml"));
+        anchorPane.getChildren().setAll(root);
     }
     
 }
