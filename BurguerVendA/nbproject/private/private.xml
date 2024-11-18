@@ -6,6 +6,9 @@
             <file>file:/C:/Users/asus/OneDrive/Documentos/GitHub/BurguerVendProyect/BurguerVendA/src/burguervenda/clases/Direccion.java</file>
             <file>file:/C:/Users/asus/OneDrive/Documentos/GitHub/BurguerVendProyect/BurguerVendA/src/burguervenda/BurguerVendA.java</file>
             <file>file:/C:/Users/asus/OneDrive/Documentos/GitHub/BurguerVendProyect/BurguerVendA/src/burguervenda/clases/Restaurante.java</file>
+            <file>file:/C:/Users/asus/OneDrive/Documentos/GitHub/BurguerVendProyect/BurguerVendA/src/burguervenda/controllers/ConfirmarEntregaPedidoController.java</file>
+            <file>file:/C:/Users/asus/OneDrive/Documentos/GitHub/BurguerVendProyect/BurguerVendA/src/burguervenda/controllers/RetirarPedidoController.java</file>
+            <file>file:/C:/Users/asus/OneDrive/Documentos/GitHub/BurguerVendProyect/BurguerVendA/src/burguervenda/controllers/MonitorearPedidoController.java</file>
         </group>
     </open-files>
 </project-private>

@@ -33,7 +33,7 @@
             <Image url="@../imagenes/EntregaIcon.png" />
          </image>
       </ImageView>
-      <Label layoutX="29.0" layoutY="258.0" text="Entrega estimada en 20 minutos...">
+      <Label fx:id="lbTiempo" layoutX="29.0" layoutY="258.0" text="Entrega estimada en 20 minutos...">
          <font>
             <Font size="14.0" />
          </font>
@@ -58,5 +58,11 @@
             </ImageView>
          </graphic>
       </Button>
+      <Label fx:id="lbCodigo" layoutX="26.0" layoutY="632.0" prefHeight="17.0" prefWidth="424.0" styleClass="titulos" text="Codigo de entrega" />
+      <Label layoutX="23.0" layoutY="596.0" styleClass="titulos" text="Codigo de entrega:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
