@@ -1,0 +1,56 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+.vbox:hover {
+    -fx-background-color: #5468F4;
+    -fx-background-radius: 20; /* Puedes ajustar las unidades si es necesario */
+}
+
+.vbox {
+    -fx-background-color: #68D0F2;
+}
+.vbox2:hover {
+    -fx-background-color: #5468F4;
+    -fx-background-radius: 20; /* Puedes ajustar las unidades si es necesario */
+}
+
+.vbox2 {
+    -fx-background-color: #68D0F2;
+}
+
+.vbox3:hover {
+    -fx-background-color: #5468F4;
+    -fx-background-radius: 20; /* Puedes ajustar las unidades si es necesario */
+}
+
+.vbox3 {
+    -fx-background-color: #68D0F2;
+}
+.vbox4:hover {
+    -fx-background-color: #5468F4;
+    -fx-background-radius: 20; /* Puedes ajustar las unidades si es necesario */
+}
+
+.vbox4 {
+    -fx-background-color: #68D0F2;
+}
+
+.vbox5:hover {
+    -fx-background-color: #5468F4;
+    -fx-background-radius: 20; /* Puedes ajustar las unidades si es necesario */
+}
+
+.vbox5 {
+    -fx-background-color: #68D0F2;
+}
+.vbox6:hover {
+    -fx-background-color: #5468F4;
+    -fx-background-radius: 20; /* Puedes ajustar las unidades si es necesario */
+}
+
+.vbox6 {
+    -fx-background-color: #68D0F2;
+}
+
+
+
+

@@ -1,0 +1,222 @@
+
+===== Lista de Combos =====
+Nombre : Combo Stacker Chipoootle Res
+Ingredientes:
+- Carne a la parrilla
+- Aros de cebolla
+- Cebolla crujiente
+- Queso suizo
+- Salsa de queso chipotle
+- Salsa stacker
+- Tocino crujiente
+Precio Base: $183
+Complementos:
+- Refresco Manzana ($0.0)
+- Papas Grandes ($50.0)
+Precio total: $233
+
+
+===== Fin de la Lista =====
+
+===== Lista de Combos =====
+Nombre :  Combo Whopper Doble con Queso
+Ingredientes:
+- Dos carnes de res a la parrilla
+- jitomates
+- lechuga
+- mayonesa
+- pepinillos
+- cebolla
+- pan suave con ajonjolí
+Precio Base: $168
+Complementos:
+- Refresco Manzana ($0.0)
+- Papas Grandes ($50.0)
+- Carne ($50.0)
+Precio total: $268
+
+
+===== Fin de la Lista =====
+
+===== Lista de Combos =====
+Nombre : Combo Stacker Chipoootle Res
+Ingredientes:
+- Carne a la parrilla
+- Aros de cebolla
+- Cebolla crujiente
+- Queso suizo
+- Salsa de queso chipotle
+- Salsa stacker
+- Tocino crujiente
+Precio Base: $183
+Complementos:
+- Refresco Manzana ($0.0)
+- Papas Medianas ($0.0)
+- Carne ($50.0)
+Precio total: $233
+
+
+===== Fin de la Lista =====
+
+===== Lista de Combos =====
+Nombre :  Combo Whopper Doble con Queso
+Ingredientes:
+- Dos carnes de res a la parrilla
+- jitomates
+- lechuga
+- mayonesa
+- pepinillos
+- cebolla
+- pan suave con ajonjolí
+Precio Base: $168
+Complementos:
+- null ($0.0)
+- Papas Grandes ($50.0)
+- Carne ($50.0)
+Precio total: $268
+
+
+===== Fin de la Lista =====
+
+===== Lista de Combos =====
+Nombre : Combo Stacker Chipoootle Res
+Ingredientes:
+- Carne a la parrilla
+- Aros de cebolla
+- Cebolla crujiente
+- Queso suizo
+- Salsa de queso chipotle
+- Salsa stacker
+- Tocino crujiente
+Precio Base: $183
+Complementos:
+- null ($0.0)
+- Papas Medianas ($0.0)
+- Carne ($50.0)
+Precio total: $233
+
+
+===== Fin de la Lista =====
+
+===== Lista de Combos =====
+Nombre : Combo Long Rodeo
+Ingredientes:
+- Dos carnes de res a la parrilla
+- Dos rebanadas de queso americano
+- Aros de cebolla crujientes
+- Salsa BBQ
+- Pan suave alargado
+Precio Base: $134
+Complementos:
+- Refresco Mirinda ($0.0)
+- Papas Grandes ($50.0)
+Precio total: $184
+
+
+===== Fin de la Lista =====
+
+===== Lista de Combos =====
+Nombre : Combo Whopper Angry Doble
+Ingredientes:
+- Carne de res asada a la parrilla
+- Tocino de corte grueso
+- Queso americano
+- Lechuga iceberg
+- Tomates
+- Pétalos de cebolla
+- Jalapeños
+- Mayonesa cremosa
+- Salsa picante Angry
+Precio Base: $244
+Complementos:
+- Refresco Pepsi ($0.0)
+- Papas Grandes ($50.0)
+- Carne ($50.0)
+Precio total: $344
+
+
+===== Fin de la Lista =====
+
+===== Lista de Combos =====
+Nombre : Combo Whopper Angry Doble
+Ingredientes:
+- Carne de res asada a la parrilla
+- Tocino de corte grueso
+- Queso americano
+- Lechuga iceberg
+- Tomates
+- Pétalos de cebolla
+- Jalapeños
+- Mayonesa cremosa
+- Salsa picante Angry
+Precio Base: $244
+Complementos:
+- Refresco Pepsi ($0.0)
+- Papas Grandes ($50.0)
+- Carne ($50.0)
+Precio total: $344
+
+Nombre : Combo Whopper Angry Doble
+Ingredientes:
+- Carne de res asada a la parrilla
+- Tocino de corte grueso
+- Queso americano
+- Lechuga iceberg
+- Tomates
+- Pétalos de cebolla
+- Jalapeños
+- Mayonesa cremosa
+- Salsa picante Angry
+Precio Base: $244
+Complementos:
+- Refresco Pepsi ($0.0)
+- Papas Grandes ($50.0)
+- Carne ($50.0)
+Precio total: $344
+
+
+===== Fin de la Lista =====
+
+===== Lista de Combos =====
+Nombre : Combo Whopper Angry Doble
+Ingredientes:
+- Carne de res asada a la parrilla
+- Tocino de corte grueso
+- Queso americano
+- Lechuga iceberg
+- Tomates
+- Pétalos de cebolla
+- Jalapeños
+- Mayonesa cremosa
+- Salsa picante Angry
+Precio Base: $244
+Complementos:
+- Refresco Pepsi ($0.0)
+- Papas Grandes ($50.0)
+- Carne ($50.0)
+Precio total: $344
+
+
+===== Fin de la Lista =====
+
+===== Lista de Combos =====
+Nombre : Combo Whopper Angry Doble
+Ingredientes:
+- Carne de res asada a la parrilla
+- Tocino de corte grueso
+- Queso americano
+- Lechuga iceberg
+- Tomates
+- Pétalos de cebolla
+- Jalapeños
+- Mayonesa cremosa
+- Salsa picante Angry
+Precio Base: $244
+Complementos:
+- Refresco Pepsi ($0.0)
+- Papas Grandes ($50.0)
+- Carne ($50.0)
+Precio total: $344
+
+
+===== Fin de la Lista =====
