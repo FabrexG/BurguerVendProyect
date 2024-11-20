@@ -8,8 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.web.WebView?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="480.0" styleClass="fondo" stylesheets="@../estilos/EstiloPantallas.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="burguervenda.controllers.SeleccionarRestauranteMapaController">
+<AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="720.0" prefWidth="480.0" styleClass="fondo" stylesheets="@../estilos/EstiloPantallas.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="burguervenda.controllers.SeleccionarRestauranteMapaController">
    <children>
       <Label layoutX="39.0" layoutY="46.0" styleClass="titulos" stylesheets="@../estilos/EstiloPantallas.css" text="Busca un restaurante para " />
       <Label layoutX="39.0" layoutY="84.0" styleClass="titulos" stylesheets="@../estilos/EstiloPantallas.css" text="recoger tu pedido" />

@@ -4,6 +4,7 @@
  */
 package burguervenda.controllers;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -13,18 +14,26 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 
 /**
  * FXML Controller class
  *
- * @author Brian Miguel Escalona Maldonado
+ * @author asus
  */
-public class SeleccionarUbicacionController implements Initializable {
+public class IngresarDireccionMapaController implements Initializable {
     
     @FXML
     private AnchorPane anchorPane;
     
+    @FXML
+    private AnchorPane anchPaneInfo;
+
     @FXML
     private Button btnBurguerDelivery;
 
@@ -32,20 +41,33 @@ public class SeleccionarUbicacionController implements Initializable {
     private Button btnBurguerPick;
 
     @FXML
-    private Button btnIngDir;
+    private Button btnContinuar;
 
     @FXML
-    private Button btnSelectUbi;
+    private CheckBox cbSinNumero;
 
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }
+    @FXML
+    private Label lbDireccion;
 
-     @FXML
+    @FXML
+    private Label lbInfo;
+
+    @FXML
+    private Label lbNombre;
+
+    @FXML
+    private TextField tfIndicaciones;
+
+    @FXML
+    private TextField tfNumero;
+
+    @FXML
+    private TextField tfPuerta;
+
+    @FXML
+    private WebView wb_mapa;
+
+    @FXML
     void btnBurguerDeliveryOnAction(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/burguervenda/vistas/SeleccionarUbicacion.fxml"));
         anchorPane.getChildren().setAll(root);
@@ -58,15 +80,15 @@ public class SeleccionarUbicacionController implements Initializable {
     }
 
     @FXML
-    void btnSelectUbiOnAction(ActionEvent event) throws IOException {
-       Parent root = FXMLLoader.load(getClass().getResource("/burguervenda/vistas/IngresarDireccionMapa.fxml"));
-       anchorPane.getChildren().setAll(root);
-    }
-
-    @FXML
-    void ingrearNuevaDireccion(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/burguervenda/vistas/IngresarDireccion.fxml"));
+    void ingresarDireccion(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/burguervenda/vistas/MonitorearPedido.fxml"));
         anchorPane.getChildren().setAll(root);
     }
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        WebEngine webEngine = wb_mapa.getEngine();
+        File file = new File("src/burguervenda/elementosweb/MapaRestaurantes.html");
+        webEngine.load(file.toURI().toString());
+    }    
     
 }

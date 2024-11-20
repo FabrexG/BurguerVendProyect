@@ -13,18 +13,24 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
 /**
  * FXML Controller class
  *
- * @author Brian Miguel Escalona Maldonado
+ * @author asus
  */
-public class SeleccionarUbicacionController implements Initializable {
-    
+public class IngresarDireccionController implements Initializable {
+
+    @FXML
+    private AnchorPane anchPaneInfo;
+
     @FXML
     private AnchorPane anchorPane;
-    
+
     @FXML
     private Button btnBurguerDelivery;
 
@@ -32,20 +38,36 @@ public class SeleccionarUbicacionController implements Initializable {
     private Button btnBurguerPick;
 
     @FXML
-    private Button btnIngDir;
+    private Button btnContinuar;
 
     @FXML
     private Button btnSelectUbi;
 
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }
+    @FXML
+    private CheckBox cbSinNumero;
 
-     @FXML
+    @FXML
+    private Label lbDireccion;
+
+    @FXML
+    private Label lbInfo;
+
+    @FXML
+    private Label lbNombre;
+
+    @FXML
+    private TextField tfDireccion;
+
+    @FXML
+    private TextField tfIndicaciones;
+
+    @FXML
+    private TextField tfNumero;
+
+    @FXML
+    private TextField tfPiso;
+
+    @FXML
     void btnBurguerDeliveryOnAction(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/burguervenda/vistas/SeleccionarUbicacion.fxml"));
         anchorPane.getChildren().setAll(root);
@@ -59,14 +81,18 @@ public class SeleccionarUbicacionController implements Initializable {
 
     @FXML
     void btnSelectUbiOnAction(ActionEvent event) throws IOException {
-       Parent root = FXMLLoader.load(getClass().getResource("/burguervenda/vistas/IngresarDireccionMapa.fxml"));
-       anchorPane.getChildren().setAll(root);
+        Parent root = FXMLLoader.load(getClass().getResource("/burguervenda/vistas/IngresarDireccionMapa.fxml"));
+        anchorPane.getChildren().setAll(root);
     }
 
     @FXML
-    void ingrearNuevaDireccion(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/burguervenda/vistas/IngresarDireccion.fxml"));
+    void ingresarDireccion(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/burguervenda/vistas/MonitorearPedido.fxml"));
         anchorPane.getChildren().setAll(root);
     }
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+    }    
     
 }
