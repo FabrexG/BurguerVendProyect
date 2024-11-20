@@ -41,9 +41,9 @@ public class Restaurante {
     
     private void cargarRestaurantes(){
         restaurantes.add(new Restaurante("San Lorenzo, Tezonco","Av. Tlahuac 5295, Los Olivos, Tláhuac, 13210 Ciudad de México, CDMX","8:00 a.m."));
-        restaurantes.add(new Restaurante("Plaza Las Antenas, Periferico Oriente ","Av. Canal de Garay 3278, La Esperanza, Iztapalapa, 09910 Ciudad de México, CDMX","10:00 a.m.",true));
+        restaurantes.add(new Restaurante("Plaza Las Antenas, Periferico Oriente ","Av. Canal de Garay 3278, La Esperanza, Iztapalapa, 09910 Ciudad de México, CDMX","10:00 a.m."));
         restaurantes.add(new Restaurante("Walmart, Olivos","Av. Tlahuac 5662, Área Federal Panteón San Lorenzo Tezonco, Iztapalapa, 09790 Ciudad de México, CDMX","7:00 a.m."));
-        restaurantes.add(new Restaurante("Calle 11","Av. Tlahuac 1479, Iztapalapa, 09880 Ciudad de México, CDMX","9:00 a.m.",true));
+        restaurantes.add(new Restaurante("Calle 11","Av. Tlahuac 1479, Iztapalapa, 09880 Ciudad de México, CDMX","9:00 a.m."));
     }
     
     public void añadirFavoritos(Restaurante res){
