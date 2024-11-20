@@ -27,7 +27,6 @@ function showPosition() {
 
 function showError(error) {
     console.log("Error en la geolocalización: " + error.message);
-    // Puedes definir una ubicación por defecto si hay un error
     var defaultLocation = [19.3611325, -99.073557];
     initMap(defaultLocation);
 }
