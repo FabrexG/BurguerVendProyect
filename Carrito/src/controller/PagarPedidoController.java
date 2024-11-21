@@ -26,10 +26,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import poo.DatosPedido;
-import poo.Hamburguesa;
-import poo.Ingrediente;
-import poo.Pedido;
+import poo.*;
 
 import java.awt.*;
 import java.io.File;
@@ -156,13 +153,22 @@ public class PagarPedidoController implements Initializable {
                         .setFontColor(ColorConstants.BLACK);
                 document.add(new Paragraph(nombreHamburguesa).setMarginBottom(5));
 
-                // Añadir ingredientes con nombre y cantidad
+                // Añadir ingredientes con nombre, cantidad y costo
                 document.add(new Paragraph("Ingredientes:").setFont(font).setFontSize(12));
                 for (Ingrediente ingrediente : hamburguesa.getIngredientes()) {
-                    Text ingredienteText = new Text(ingrediente.getCantidad() + " " + ingrediente.getNombre())
+                    Text ingredienteText = new Text(ingrediente.getCantidad() + " " + ingrediente.getNombre() + " - $" + String.format("%.2f", ingrediente.getCosto()) + " c/u")
                             .setFont(font)
                             .setFontSize(12);
                     document.add(new Paragraph(ingredienteText));
+                }
+
+                // Añadir extras con nombre, cantidad y costo
+                document.add(new Paragraph("Extras:").setFont(font).setFontSize(12));
+                for (Extra extra : hamburguesa.getExtras()) {
+                    Text extraText = new Text(extra.getCantidad() + " " + extra.getNombre() + " - $" + String.format("%.2f", extra.getCosto()) + " c/u")
+                            .setFont(font)
+                            .setFontSize(12);
+                    document.add(new Paragraph(extraText));
                 }
 
                 // Formatear el costo con dos decimales
@@ -173,12 +179,20 @@ public class PagarPedidoController implements Initializable {
             }
 
             // Formatear el total con dos decimales y resaltar
-            Text totalText = new Text("Total a pagar: $" + String.format("%.2f", pedido.calcularTotal()))
+            double total = pedido.calcularTotal();
+            Text totalText = new Text("Total a pagar: $" + String.format("%.2f", total) + " MXN")
                     .setFont(boldFont)
                     .setFontSize(18)
                     .setFontColor(ColorConstants.WHITE)
                     .setBackgroundColor(new DeviceRgb(34, 139, 34)); // Verde oscuro
             document.add(new Paragraph(totalText).setMarginTop(10).setTextAlignment(TextAlignment.CENTER));
+
+            // Agregar total en letras
+            Text totalLetrasText = new Text("(" + convertirNumeroALetras(total) + ")")
+                    .setFont(font)
+                    .setFontSize(12)
+                    .setTextAlignment(TextAlignment.CENTER);
+            document.add(new Paragraph(totalLetrasText));
 
             // Cerrar el documento PDF
             document.close();
@@ -191,6 +205,62 @@ public class PagarPedidoController implements Initializable {
         }
     }
 
+    // Método para convertir número a letras
+    private String convertirNumeroALetras(double numero) {
+        if (numero == 0) {
+            return "Cero pesos 00/100 MXN";
+        } else if (numero < 0) {
+            return "Menos " + convertirNumeroALetras(-numero);
+        }
+
+        String[] unidades = {"", "Un", "Dos", "Tres", "Cuatro", "Cinco", "Seis", "Siete", "Ocho", "Nueve"};
+        String[] especiales = {"Diez", "Once", "Doce", "Trece", "Catorce", "Quince", "Dieciséis", "Diecisiete", "Dieciocho", "Diecinueve"};
+        String[] decenas
+ = {"", "Diez", "Veinte", "Treinta", "Cuarenta", "Cincuenta", "Sesenta", "Setenta", "Ochenta", "Noventa"};
+        String[] centenas = {"", "Cien", "Doscientos", "Trescientos", "Cuatrocientos", "Quinientos", "Seiscientos", "Setecientos", "Ochocientos", "Novecientos"};
+
+
+        int parteEntera = (int) numero;
+        int parteDecimal = (int) Math.round((numero - parteEntera) * 100);
+
+        String resultado = "";
+
+        if (parteEntera >= 100) {
+            resultado += centenas[parteEntera / 100] + " ";
+            parteEntera %= 100;
+        }
+        if (parteEntera >= 20) {
+            resultado += decenas[parteEntera / 10]
+            + " ";
+            parteEntera %= 10;
+        }
+        if (parteEntera >= 10 && parteEntera <= 19) {
+            resultado += especiales[parteEntera - 10] + " ";
+        } else if (parteEntera >= 1 && parteEntera <= 9) {
+            resultado += unidades[parteEntera] + " ";
+        }
+
+        if (parteEntera > 1) {
+            resultado += "Pesos ";
+        } else {
+            resultado += "Peso ";
+        }
+
+        if (parteDecimal > 0) {
+            // Eliminar la recursividad y convertir solo las unidades
+            String decimalEnLetras = unidades[parteDecimal % 10];
+            if (parteDecimal >= 10 && parteDecimal <= 19) {
+                decimalEnLetras = especiales[parteDecimal - 10];
+            } else if (parteDecimal >= 20) {
+                decimalEnLetras = decenas[parteDecimal / 10] + (parteDecimal % 10 != 0 ? " y " + unidades[parteDecimal % 10] : "");
+            }
+            resultado += "con " + decimalEnLetras + " centavos MXN";
+        } else {
+            resultado += "00/100 MXN";
+        }
+
+        return resultado;
+    }
 
     /**
      * Maneja el evento de clic en el botón "Carrito".
