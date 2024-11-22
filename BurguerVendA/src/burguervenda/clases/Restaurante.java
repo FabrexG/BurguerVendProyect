@@ -3,8 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package burguervenda.clases;
-
+import java.sql.*;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -22,17 +24,13 @@ public class Restaurante {
     private ArrayList<Restaurante> restaurantes = new ArrayList<>();
     private ArrayList<Restaurante> restaurantesFavoritos = new ArrayList<>();
     
-    public Restaurante(String name, String dir, String info){
+    public Restaurante(String name, String dir, String info, String lat, String lon){
         this.nombre = name;
         this.direccion = dir;
         this.favorito = false;
         this.infoApertura = info;
-    }
-    public Restaurante(String name, String dir, String info,boolean fav){
-        this.nombre = name;
-        this.direccion = dir;
-        this.favorito = fav;
-        this.infoApertura = info;
+        this.latitud = lat;
+        this.longitud = lon;
     }
     public Restaurante(){
         cargarRestaurantes();
@@ -40,21 +38,49 @@ public class Restaurante {
     }
     
     private void cargarRestaurantes(){
-        restaurantes.add(new Restaurante("San Lorenzo, Tezonco","Av. Tlahuac 5295, Los Olivos, Tláhuac, 13210 Ciudad de México, CDMX","8:00 a.m."));
-        restaurantes.add(new Restaurante("Plaza Las Antenas, Periferico Oriente ","Av. Canal de Garay 3278, La Esperanza, Iztapalapa, 09910 Ciudad de México, CDMX","10:00 a.m."));
-        restaurantes.add(new Restaurante("Walmart, Olivos","Av. Tlahuac 5662, Área Federal Panteón San Lorenzo Tezonco, Iztapalapa, 09790 Ciudad de México, CDMX","7:00 a.m."));
-        restaurantes.add(new Restaurante("Calle 11","Av. Tlahuac 1479, Iztapalapa, 09880 Ciudad de México, CDMX","9:00 a.m."));
+        try(Connection connection = ConeccionDataBase.getConection();
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT NOMBRE, DIRECCION, INFORMACION, LATITUD,LONGITUD\n" +
+"FROM RESTAURANTE")){
+            while(resultSet.next()) {
+                String nombre = resultSet.getString("NOMBRE");
+                String direccion = resultSet.getString("DIRECCION");
+                String informacion = resultSet.getString("INFORMACION");
+                String latitud = resultSet.getNString("LATITUD");
+                String longitud = resultSet.getNString("LONGITUD");
+                restaurantes.add(new Restaurante(nombre,direccion,informacion,latitud,longitud));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
     
     public void añadirFavoritos(Restaurante res){
-        restaurantesFavoritos.add(res);
+        try(Connection connection = ConeccionDataBase.getConection();
+            Statement statement = connection.createStatement();
+            PreparedStatement preparedStatment = connection.prepareStatement("INSERT INTO RESTAURANTE VALUES (?,?,?,?,?)");){
+    }
+        catch (SQLException ex) {
+            Logger.getLogger(Restaurante.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     private void cargarFavoritos() {
-        for(Restaurante res:restaurantes) {
-            if(res.isFavorito()) {
-                restaurantesFavoritos.add(res);
+        try(Connection connection = ConeccionDataBase.getConection();
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT RES.NOMBRE, RES.DIRECCION, RES.INFORMACION, RES.LATITUD, RES.LONGITUD\n" +
+"FROM RESTAURANTE RES, REST_FAV FAV\n" +
+"WHERE (fav.id_usuario=1 AND fav.id_restaurante = res.id_restaurante)")){
+            while(resultSet.next()) {
+                String nombre = resultSet.getString("NOMBRE");
+                String direccion = resultSet.getString("DIRECCION");
+                String informacion = resultSet.getString("INFORMACION");
+                String latitud = resultSet.getNString("LATITUD");
+                String longitud = resultSet.getNString("LONGITUD");
+                restaurantesFavoritos.add(new Restaurante(nombre,direccion,informacion,latitud,longitud));
             }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
     }
     
