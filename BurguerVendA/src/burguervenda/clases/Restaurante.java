@@ -16,7 +16,7 @@ public class Restaurante {
     
     private String nombre;
     private String direccion;
-    private boolean favorito;
+    private int id;
     private String infoApertura;
     private String latitud;
     private String longitud;
@@ -24,10 +24,10 @@ public class Restaurante {
     private ArrayList<Restaurante> restaurantes = new ArrayList<>();
     private ArrayList<Restaurante> restaurantesFavoritos = new ArrayList<>();
     
-    public Restaurante(String name, String dir, String info, String lat, String lon){
+    public Restaurante(int ids,String name, String dir, String info, String lat, String lon){
         this.nombre = name;
         this.direccion = dir;
-        this.favorito = false;
+        this.id = ids;
         this.infoApertura = info;
         this.latitud = lat;
         this.longitud = lon;
@@ -40,15 +40,15 @@ public class Restaurante {
     private void cargarRestaurantes(){
         try(Connection connection = ConeccionDataBase.getConection();
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT NOMBRE, DIRECCION, INFORMACION, LATITUD,LONGITUD\n" +
-"FROM RESTAURANTE")){
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM RESTAURANTE")){
             while(resultSet.next()) {
+                int id = resultSet.getInt("ID_RESTAURANTE");
                 String nombre = resultSet.getString("NOMBRE");
                 String direccion = resultSet.getString("DIRECCION");
                 String informacion = resultSet.getString("INFORMACION");
                 String latitud = resultSet.getNString("LATITUD");
                 String longitud = resultSet.getNString("LONGITUD");
-                restaurantes.add(new Restaurante(nombre,direccion,informacion,latitud,longitud));
+                restaurantes.add(new Restaurante(id,nombre,direccion,informacion,latitud,longitud));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -57,27 +57,30 @@ public class Restaurante {
     
     public void añadirFavoritos(Restaurante res){
         try(Connection connection = ConeccionDataBase.getConection();
-            Statement statement = connection.createStatement();
-            PreparedStatement preparedStatment = connection.prepareStatement("INSERT INTO RESTAURANTE VALUES (?,?,?,?,?)");){
+            PreparedStatement preparedStatment = connection.prepareStatement("INSERT INTO REST_FAV (ID_REST_FAV, ID_USUARIO, ID_RESTAURANTE) VALUES (SEC_USUARIO.NEXTVAL, ?, ?)");){
+            preparedStatment.setInt(1, 1);
+            preparedStatment.setInt(2, res.getId());
+            preparedStatment.executeUpdate();
     }
         catch (SQLException ex) {
-            Logger.getLogger(Restaurante.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
     }
     
     private void cargarFavoritos() {
         try(Connection connection = ConeccionDataBase.getConection();
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT RES.NOMBRE, RES.DIRECCION, RES.INFORMACION, RES.LATITUD, RES.LONGITUD\n" +
+            ResultSet resultSet = statement.executeQuery("SELECT res.id_restaurante,  RES.NOMBRE, RES.DIRECCION, RES.INFORMACION, RES.LATITUD, RES.LONGITUD\n" +
 "FROM RESTAURANTE RES, REST_FAV FAV\n" +
 "WHERE (fav.id_usuario=1 AND fav.id_restaurante = res.id_restaurante)")){
             while(resultSet.next()) {
+                int id = resultSet.getInt("ID_RESTAURANTE");
                 String nombre = resultSet.getString("NOMBRE");
                 String direccion = resultSet.getString("DIRECCION");
                 String informacion = resultSet.getString("INFORMACION");
                 String latitud = resultSet.getNString("LATITUD");
                 String longitud = resultSet.getNString("LONGITUD");
-                restaurantesFavoritos.add(new Restaurante(nombre,direccion,informacion,latitud,longitud));
+                restaurantesFavoritos.add(new Restaurante(id,nombre,direccion,informacion,latitud,longitud));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -87,6 +90,14 @@ public class Restaurante {
     @Override
     public String toString() {
         return nombre;
+    }
+    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
     
     public ArrayList<Restaurante> getRestaurantesFavoritos() {
@@ -120,15 +131,7 @@ public class Restaurante {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
-
-    public boolean isFavorito() {
-        return favorito;
-    }
-
-    public void setFavorito(boolean favorito) {
-        this.favorito = favorito;
-    }
-
+    
     public String getInfoApertura() {
         return infoApertura;
     }

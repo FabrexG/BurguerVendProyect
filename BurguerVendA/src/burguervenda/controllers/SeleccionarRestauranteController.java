@@ -124,12 +124,13 @@ public class SeleccionarRestauranteController implements Initializable {
     @FXML
     void seleccionarRestaurante(ActionEvent event) throws IOException {
         if(ckbxFavoritos.isSelected()) {
-            restFavs.add(seleccion);
             if(cbFavoritos.getItems().contains(seleccion)) {
                 Alert alerta = new Alert(AlertType.ERROR,"Este restaurante ya se encuentra en favoritos",ButtonType.OK);
                 alerta.show();
                 return;
             } else {
+               Restaurante res = seleccion;
+               res.añadirFavoritos(seleccion);
                cbFavoritos.getItems().add(seleccion); 
             }
             ckbxFavoritos.setSelected(false);

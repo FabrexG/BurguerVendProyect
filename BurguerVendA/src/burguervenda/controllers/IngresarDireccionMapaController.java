@@ -87,7 +87,7 @@ public class IngresarDireccionMapaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         WebEngine webEngine = wb_mapa.getEngine();
-        File file = new File("src/burguervenda/elementosweb/MapaRestaurantes.html");
+        File file = new File("src/burguervenda/elementosweb/MapaLocalizacion.html");
         webEngine.load(file.toURI().toString());
     }    
     

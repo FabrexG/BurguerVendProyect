@@ -15,7 +15,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -71,13 +73,39 @@ public class SeleccionarRestauranteMapaController implements Initializable {
     }
 
     @FXML
-    void btnSelectUbiOnAction(ActionEvent event) {
-
+    void btnSelectUbiOnAction(ActionEvent event) throws IOException {
+        if(seleccion == null) {
+            Alert alerta = new Alert(Alert.AlertType.ERROR,"Ingrese un restaurante",ButtonType.YES);
+            alerta.setTitle("Error al escoger restaurante");
+            alerta.show();
+            return;
+        }
+        cbEligeRestaurante.setDisable(false);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/burguervenda/vistas/RecogerPedidoProceso.fxml"));
+        Parent root = loader.load();
+        RecogerPedidoProcesoController controller = loader.getController();
+        controller.setResElegido(seleccion);
+        anchorPane.getChildren().setAll(root);
     }
 
     @FXML
-    void mostrarInfo(ActionEvent event) {
-
+    void mostrarInfo(ActionEvent event) throws IOException {
+        seleccion=cbEligeRestaurante.getSelectionModel().getSelectedItem();
+        if(seleccion!=null) {
+            double lat = Double.parseDouble(seleccion.getLatitud());
+            double longi = Double.parseDouble(seleccion.getLongitud());
+            wb_mapa.getEngine().executeScript("showPosition(" + lat + ", " + longi + ");");
+        }
+    }
+    void cargarMapa(double lat, double longi){
+        WebEngine webEngine = wb_mapa.getEngine();
+        File file = new File("src/burguervenda/elementosweb/MapaRestaurantes.html");
+        webEngine.load(file.toURI().toString());
+        webEngine.documentProperty().addListener((obs, oldDoc, newDoc) -> {
+        if (newDoc != null) {
+            webEngine.executeScript("showPosition(" + lat + ", " + longi + ");");
+        }
+    });
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -85,10 +113,9 @@ public class SeleccionarRestauranteMapaController implements Initializable {
         restList=res.getRestaurantes();
         restFavs=res.getRestaurantesFavoritos();
         cbEligeRestaurante.getItems().addAll(restList);
-        WebEngine webEngine = wb_mapa.getEngine();
-        File file = new File("src/burguervenda/elementosweb/MapaRestaurantes.html");
-        webEngine.load(file.toURI().toString());
-        
+        double latitude = 19.316731283508194; 
+        double longitude = -99.05956592511772;
+        cargarMapa(latitude,longitude);
     }
     
     

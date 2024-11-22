@@ -20,34 +20,31 @@
 <div id="mapid"></div>
 <script>
 
-var mapa;
-function showPosition(lat, long) {
-    var locale = [lat, long];
+function showPosition() {
+    var locale = [19.277047694727152, -99.03720266255208];
     initMap(locale);
 }
 
 function showError(error) {
     console.log("Error en la geolocalización: " + error.message);
+    // Puedes definir una ubicación por defecto si hay un error
     var defaultLocation = [19.3611325, -99.073557];
     initMap(defaultLocation);
 }
 
 function initMap(locale) {
-    if(mapa) {
-        mapa.remove();
-    }
-    mapa = L.map('mapid').setView(locale, 16);
+    var mapa = L.map('mapid').setView(locale, 16);
     var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
     var osmAttrib = 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
     var osm = new L.TileLayer(osmUrl, {
-        maxZoom: 19,
+        maxZoom: 16,
         attribution: osmAttrib
     });
     osm.addTo(mapa);
     var marcador = L.marker(locale).addTo(mapa);
     marcador.bindPopup('<p>Estamos en el edificio A</p><br/><image src="EdificioA.png"/>');
 }
-
+showPosition();
 </script>
 </body>
 </html>
