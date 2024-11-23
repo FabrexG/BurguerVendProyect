@@ -7,7 +7,9 @@
     -fx-padding: 30px;
     -fx-spacing: 25px;
 }
-
+#hamburguesasHBox {
+    -fx-spacing: 10px; /* Espacio entre los elementos del HBox */
+}
 .anchor-pane {
     -fx-background-color: white;
     -fx-border-radius: 15px;
@@ -85,18 +87,6 @@
     -fx-scale: 0.95; /* Efecto de escalado al presionar */
 }
 
-#btnR1, #btnR2, #btnR3 {
-    -fx-background-color: linear-gradient(to bottom, #dc3545, #c82333);
-}
-
-#btnR1:hover, #btnR2:hover, #btnR3:hover {
-    -fx-background-color: linear-gradient(to bottom, #c82333, #b01e2c);
-}
-
-#btnR1:pressed, #btnR2:pressed, #btnR3:pressed {
-    -fx-background-color: linear-gradient(to bottom, #b01e2c, #a01a28);
-}
-
 /* Animaciones para las image views */
 .image-view {
     -fx-border-radius: 8px;
@@ -112,7 +102,75 @@
 }
 
 .tooltip {
-    -fx-background-color: #f0f0f0;
-    -fx-text-fill: #333333;
-    -fx-font-size: 12px;
+    -fx-background-color: #ff99cc; /* Rosa suave */
+    -fx-text-fill: white; /* Texto blanco */
+    -fx-font-size: 14px;
+    -fx-padding: 5px 10px; /* Relleno alrededor del texto */
+    -fx-border-radius: 5px; /* Bordes redondeados */
+    -fx-background-radius: 5px; /* Fondo redondeado */
 }
+
+
+/* Estilo general para ScrollPane */
+.scroll-pane {
+    -fx-background-color: #ffe6f0; /* Fondo rosa claro */
+    -fx-border-color: #ff99cc; /* Borde rosa oscuro */
+    -fx-border-radius: 10px; /* Bordes redondeados */
+    -fx-background-radius: 10px;
+}
+/* Estilo general para ScrollPane */
+.scroll-pane {
+    -fx-background-color: #ffe6f0; /* Fondo rosa claro */
+    -fx-border-color: #ff99cc; /* Borde rosa oscuro */
+    -fx-border-radius: 10px; /* Bordes redondeados */
+    -fx-background-radius: 10px;
+}
+
+/* Estilo específico para spLista */
+#spLista {
+    -fx-background-color: #fdf5f8; /* Fondo más claro para spLista */
+    -fx-border-color: #ffb3d9; /* Borde rosa más suave */
+    -fx-border-radius: 8px; /* Bordes ligeramente menos redondeados */
+    -fx-background-radius: 8px;
+}
+
+/* Barra de desplazamiento horizontal para spLista */
+#spLista .scroll-bar:horizontal {
+    -fx-background-color: transparent; /* Fondo transparente */
+}
+
+#spLista .scroll-bar:horizontal .thumb {
+    -fx-background-color: #ff80bf; /* Deslizante con un tono rosa intermedio */
+    -fx-background-radius: 5px;
+}
+
+/* HBox dentro de cualquier ScrollPane */
+HBox {
+    -fx-padding: 10;
+    -fx-spacing: 10;
+    -fx-background-color: #fff0f6; /* Fondo rosa muy suave */
+    -fx-border-color: #ff99cc; /* Borde rosa */
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-font-size: 13px;             /* Tamaño de la fuente */
+    -fx-font-family: "Arial", sans-serif;  /* Fuente de tipo Arial */
+    -fx-text-fill: #000000;          /* Color del texto negro */
+}
+
+/* Botón general */
+ .scroll-pane Button {
+    -fx-background-color: #ff99cc;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5px;
+}
+
+.scroll-pane Button:hover {
+    -fx-background-color: #ff66b2;
+}
+
+.scroll-pane Button:pressed {
+    -fx-background-color: #ff3380;
+}
+
+

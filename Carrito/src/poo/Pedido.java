@@ -32,9 +32,9 @@ public class Pedido {
      * @throws IllegalStateException Si se intenta agregar más de 3 hamburguesas.
      */
     public void agregarHamburguesa(Hamburguesa hamburguesa) {
-        if (this.hamburguesas.size() >= 3) {
-            throw new IllegalStateException("No se pueden agregar más de 3 hamburguesas por pedido.");
-        }
+        //if (this.hamburguesas.size() >= 3) {
+           // throw new IllegalStateException("No se pueden agregar más de 3 hamburguesas por pedido.");
+        //}
         this.hamburguesas.add(hamburguesa);
     }
 

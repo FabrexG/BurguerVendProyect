@@ -208,7 +208,7 @@ public class PagarPedidoController implements Initializable {
     // Método para convertir número a letras
     private String convertirNumeroALetras(double numero) {
         if (numero == 0) {
-            return "Cero pesos 00/100 MXN";
+            return "Cero pesos MXN";
         } else if (numero < 0) {
             return "Menos " + convertirNumeroALetras(-numero);
         }

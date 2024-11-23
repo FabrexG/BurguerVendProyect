@@ -6,15 +6,15 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="720.0" prefWidth="480.0" spacing="20.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CarritoController">
+<VBox alignment="CENTER" prefHeight="720.0" prefWidth="480.0" spacing="20.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CarritoController">
 
    <stylesheets>
       <URL value="@styles.css" />  </stylesheets>
@@ -25,24 +25,20 @@
    <children>
       <AnchorPane fx:id="panControll" prefHeight="885.0" prefWidth="676.0">
          <children>
-            <Label layoutX="154.0" layoutY="50.0" prefHeight="18.0" prefWidth="126.0" text="Numero Pedido" AnchorPane.leftAnchor="153.0" AnchorPane.rightAnchor="135.0" AnchorPane.topAnchor="49.0">
+            <Label layoutX="159.0" layoutY="55.0" prefHeight="18.0" prefWidth="126.0" text="Numero Pedido" AnchorPane.leftAnchor="159.0" AnchorPane.rightAnchor="133.79999999999995" AnchorPane.topAnchor="55.0">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="txtPedido" alignment="TOP_CENTER" layoutX="156.0" layoutY="81.0" prefHeight="24.0" prefWidth="122.0" AnchorPane.leftAnchor="155.0" AnchorPane.rightAnchor="137.0">
+            <TextField fx:id="txtPedido" alignment="TOP_CENTER" layoutX="149.0" layoutY="80.0" prefHeight="24.0" prefWidth="122.0" AnchorPane.leftAnchor="149.0" AnchorPane.rightAnchor="147.79999999999995">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor></TextField>
-            <Label layoutX="64.0" layoutY="185.0" prefHeight="18.0" prefWidth="104.0" text="Descripcion" AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="248.0">
+            <Label layoutX="15.0" layoutY="123.0" prefHeight="18.0" prefWidth="104.0" text="Descripcion" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="306.59999999999997">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <TextArea fx:id="txtDescripcion1" layoutX="19.0" layoutY="218.0" prefHeight="92.0" prefWidth="357.0" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="202.0">
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor></TextArea>
             <DatePicker fx:id="dateFecha" layoutX="257.0" layoutY="615.0" prefHeight="42.0" prefWidth="143.0" AnchorPane.leftAnchor="256.0" AnchorPane.rightAnchor="15.0">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
@@ -52,37 +48,25 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <ImageView fx:id="img1" fitHeight="92.0" fitWidth="119.0" layoutX="241.0" layoutY="222.0" pickOnBounds="true" preserveRatio="true">
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor></ImageView>
-            <TextArea fx:id="txtDescripcion2" layoutX="18.0" layoutY="330.0" prefHeight="92.0" prefWidth="357.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="202.0">
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor></TextArea>
-            <TextArea fx:id="txtDescripcion3" layoutX="18.0" layoutY="439.0" prefHeight="92.0" prefWidth="357.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="201.0">
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor></TextArea>
-            <ImageView fx:id="img3" fitHeight="92.0" fitWidth="119.0" layoutX="243.0" layoutY="443.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="img2" fitHeight="92.0" fitWidth="119.0" layoutX="243.0" layoutY="334.0" pickOnBounds="true" preserveRatio="true" />
             <TextField fx:id="txtTotal" layoutX="127.0" layoutY="568.0" prefHeight="52.0" prefWidth="106.0">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor></TextField>
             <Label layoutX="55.0" layoutY="588.0" text="Total" />
-            <Button fx:id="btnR1" layoutX="372.0" layoutY="266.0" mnemonicParsing="false" onAction="#remover1" prefHeight="36.0" prefWidth="39.0" text="X" />
-            <Button fx:id="btnR2" layoutX="372.0" layoutY="388.0" mnemonicParsing="false" onAction="#remover2" prefHeight="36.0" prefWidth="39.0" text="X" />
-            <Button fx:id="btnR3" layoutX="372.0" layoutY="497.0" mnemonicParsing="false" onAction="#remover3" prefHeight="36.0" prefWidth="39.0" text="X" />
-            <Button fx:id="btnA2" layoutX="372.0" layoutY="342.0" mnemonicParsing="false" onAction="#Agregar2" prefHeight="36.0" prefWidth="39.0" text="+" />
-            <Button fx:id="btnA3" layoutX="372.0" layoutY="451.0" mnemonicParsing="false" onAction="#Agregar3" prefHeight="36.0" prefWidth="39.0" text="+" />
-            <Button fx:id="btnA1" layoutX="372.0" layoutY="220.0" mnemonicParsing="false" onAction="#Agregar1" prefHeight="36.0" prefWidth="39.0" text="+" />
             <Button fx:id="btnPagar" layoutX="33.0" layoutY="630.0" mnemonicParsing="false" onAction="#btnPagar_OnClick" text="Pagar" />
-            <ImageView fitHeight="135.0" fitWidth="124.0" layoutX="16.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../img/Mascota.png" />
-               </image>
-            </ImageView>
+            <ScrollPane fx:id="spLista" fitToHeight="false" fitToWidth="false" hbarPolicy="ALWAYS" layoutX="11.0" layoutY="159.0" prefHeight="403.0" prefWidth="419.0" vbarPolicy="NEVER">
+               <content>
+                  <HBox fx:id="hamburguesasHBox" spacing="10">
+                     <children>
+                        <Button fx:id="btnAgregar" mnemonicParsing="false" onAction="#agregarHamburguesa" text="+">
+                        <tooltip>
+                           <Tooltip text="Haz clic para realizar el pago de tu pedido" />
+                        </tooltip>
+                        </Button>
+                     </children>
+                  </HBox>
+               </content>
+            </ScrollPane>
          </children>
       </AnchorPane>
    </children>
