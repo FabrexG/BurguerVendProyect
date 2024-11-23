@@ -60,7 +60,7 @@
                      <children>
                         <Button fx:id="btnAgregar" mnemonicParsing="false" onAction="#agregarHamburguesa" text="+">
                         <tooltip>
-                           <Tooltip text="Haz clic para realizar el pago de tu pedido" />
+                           <Tooltip text="Haz clic para agregar nueva hamburguesa" />
                         </tooltip>
                         </Button>
                      </children>
