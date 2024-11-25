@@ -16,12 +16,13 @@
                     <children>
                         <ComboBox fx:id="ide_pregunta" layoutX="50.0" layoutY="185.0" prefHeight="30.0" prefWidth="220.0" promptText="Elige" styleClass="head-label" stylesheets="@diseñoQuejas.css" /> 
                         <TextArea fx:id="descripcionTextArea" layoutX="50.0" layoutY="233.0" prefHeight="100.0" prefWidth="220.0" styleClass="textfield" />
-                        <Button layoutX="121.0" layoutY="350.0" onAction="#enviarQuejaSugerencia" styleClass="login-btn" text="Enviar" />
+                        <Button layoutX="213.0" layoutY="356.0" onAction="#enviarQuejaSugerencia" styleClass="login-btn" text="Enviar" />
                   <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="85.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@QyS.jpg" />
                      </image>
-                  </ImageView> 
+                  </ImageView>
+                  <Button layoutX="50.0" layoutY="358.0" mnemonicParsing="false" onAction="#salirDelPrograma" styleClass="login-btn" stylesheets="@diseñoQuejas.css" text="Salir" /> 
                     </children>
                 </AnchorPane>
             <AnchorPane layoutX="300.0" prefHeight="400.0" prefWidth="306.0" styleClass="gradient" stylesheets="@diseñoQuejas.css">
