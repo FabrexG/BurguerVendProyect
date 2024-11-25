@@ -33,7 +33,15 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
+
+import org.knowm.xchart.PieChart;
+import org.knowm.xchart.PieChartBuilder;
+import org.knowm.xchart.BitmapEncoder;
+import org.knowm.xchart.BitmapEncoder.BitmapFormat;
+
 
 /**
  * Controlador para la ventana de PagarPedido.
@@ -110,7 +118,6 @@ public class PagarPedidoController implements Initializable {
             PdfFont font = PdfFontFactory.createFont(StandardFonts.HELVETICA);
             PdfFont boldFont = PdfFontFactory.createFont(StandardFonts.HELVETICA_BOLD);
 
-
             // Color de fondo rosa claro
             DeviceRgb colorRosaClaro = new DeviceRgb(255, 228, 225); // Rosa claro
 
@@ -138,12 +145,13 @@ public class PagarPedidoController implements Initializable {
             document.add(new Paragraph(numeroPedidoText));
 
             // Fecha y hora
-            java.time.format.DateTimeFormatter formatter = java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
             Text fechaHoraText = new Text("Fecha y hora: " + pedido.getFechaPedido().format(formatter))
                     .setFont(font)
                     .setFontSize(12);
             document.add(new Paragraph(fechaHoraText).setMarginBottom(10));
 
+            // Iterar sobre hamburguesas
             for (Hamburguesa hamburguesa : pedido.getHamburguesas()) {
                 DeviceRgb colorHamburguesa = new DeviceRgb(200, 200, 200); // Gris claro
                 Text nombreHamburguesa = new Text(hamburguesa.getNombre())
@@ -153,7 +161,7 @@ public class PagarPedidoController implements Initializable {
                         .setFontColor(ColorConstants.BLACK);
                 document.add(new Paragraph(nombreHamburguesa).setMarginBottom(5));
 
-                // Añadir ingredientes con nombre, cantidad y costo
+                // Ingredientes
                 document.add(new Paragraph("Ingredientes:").setFont(font).setFontSize(12));
                 for (Ingrediente ingrediente : hamburguesa.getIngredientes()) {
                     Text ingredienteText = new Text(ingrediente.getCantidad() + " " + ingrediente.getNombre() + " - $" + String.format("%.2f", ingrediente.getCosto()) + " c/u")
@@ -162,7 +170,7 @@ public class PagarPedidoController implements Initializable {
                     document.add(new Paragraph(ingredienteText));
                 }
 
-                // Añadir extras con nombre, cantidad y costo
+                // Extras
                 document.add(new Paragraph("Extras:").setFont(font).setFontSize(12));
                 for (Extra extra : hamburguesa.getExtras()) {
                     Text extraText = new Text(extra.getCantidad() + " " + extra.getNombre() + " - $" + String.format("%.2f", extra.getCosto()) + " c/u")
@@ -171,14 +179,19 @@ public class PagarPedidoController implements Initializable {
                     document.add(new Paragraph(extraText));
                 }
 
-                // Formatear el costo con dos decimales
                 Text costoHamburguesa = new Text("Costo: $" + String.format("%.2f", hamburguesa.calcularCosto()))
                         .setFont(boldFont)
                         .setFontSize(12);
                 document.add(new Paragraph(costoHamburguesa).setMarginBottom(10));
             }
 
-            // Formatear el total con dos decimales y resaltar
+            // Agregar gráfica de conteo de ingredientes y extras
+            String graphPath = generarGraficaIngredientesExtras(pedido);
+            ImageData graphData = ImageDataFactory.create(graphPath);
+            Image graphImage = new Image(graphData);
+            graphImage.scaleToFit(400, 300);
+            document.add(graphImage);
+
             double total = pedido.calcularTotal();
             Text totalText = new Text("Total a pagar: $" + String.format("%.2f", total) + " MXN")
                     .setFont(boldFont)
@@ -187,22 +200,41 @@ public class PagarPedidoController implements Initializable {
                     .setBackgroundColor(new DeviceRgb(34, 139, 34)); // Verde oscuro
             document.add(new Paragraph(totalText).setMarginTop(10).setTextAlignment(TextAlignment.CENTER));
 
-            // Agregar total en letras
-            Text totalLetrasText = new Text("(" + convertirNumeroALetras(total) + ")")
-                    .setFont(font)
-                    .setFontSize(12)
-                    .setTextAlignment(TextAlignment.CENTER);
-            document.add(new Paragraph(totalLetrasText));
-
-            // Cerrar el documento PDF
             document.close();
-
-            // Abrir el PDF automáticamente
             Desktop.getDesktop().open(new File("ticket_compra.pdf"));
 
         } catch (IOException e) {
             System.err.println("Error al generar o abrir el ticket en PDF: " + e.getMessage());
         }
+    }
+
+    // Método para generar gráfica de ingredientes y extras
+    private String generarGraficaIngredientesExtras(Pedido pedido) {
+        Map<String, Integer> conteoIngredientes = new HashMap<>();
+        Map<String, Integer> conteoExtras = new HashMap<>();
+
+        for (Hamburguesa hamburguesa : pedido.getHamburguesas()) {
+            for (Ingrediente ingrediente : hamburguesa.getIngredientes()) {
+                conteoIngredientes.merge(ingrediente.getNombre(), ingrediente.getCantidad(), Integer::sum);
+            }
+            for (Extra extra : hamburguesa.getExtras()) {
+                conteoExtras.merge(extra.getNombre(), extra.getCantidad(), Integer::sum);
+            }
+        }
+
+        PieChart chart = new PieChartBuilder().width(800).height(600).title("Conteo Ingredientes y Extras").build();
+
+        conteoIngredientes.forEach((nombre, cantidad) -> chart.addSeries(nombre + " (Ingrediente)", cantidad));
+        conteoExtras.forEach((nombre, cantidad) -> chart.addSeries(nombre + " (Extra)", cantidad));
+
+        String graphPath = "grafica_ticket.png";
+        try {
+            BitmapEncoder.saveBitmap(chart, graphPath, BitmapFormat.PNG);
+        } catch (IOException e) {
+            System.err.println("Error al generar gráfica: " + e.getMessage());
+        }
+
+        return graphPath;
     }
 
     // Método para convertir número a letras
