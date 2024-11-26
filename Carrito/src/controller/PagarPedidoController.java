@@ -185,13 +185,7 @@ public class PagarPedidoController implements Initializable {
                 document.add(new Paragraph(costoHamburguesa).setMarginBottom(10));
             }
 
-            // Agregar gráfica de conteo de ingredientes y extras
-            String graphPath = generarGraficaIngredientesExtras(pedido);
-            ImageData graphData = ImageDataFactory.create(graphPath);
-            Image graphImage = new Image(graphData);
-            graphImage.scaleToFit(400, 300);
-            document.add(graphImage);
-
+            // Total en números
             double total = pedido.calcularTotal();
             Text totalText = new Text("Total a pagar: $" + String.format("%.2f", total) + " MXN")
                     .setFont(boldFont)
@@ -200,6 +194,20 @@ public class PagarPedidoController implements Initializable {
                     .setBackgroundColor(new DeviceRgb(34, 139, 34)); // Verde oscuro
             document.add(new Paragraph(totalText).setMarginTop(10).setTextAlignment(TextAlignment.CENTER));
 
+            // Total en letras
+            String totalEnLetras = convertirNumeroALetras(total);
+            Text totalLetrasText = new Text("(" + totalEnLetras + ")")
+                    .setFont(font)
+                    .setFontSize(12);
+            document.add(new Paragraph(totalLetrasText).setMarginTop(5).setTextAlignment(TextAlignment.CENTER));
+
+            // Agregar gráfica de conteo de ingredientes y extras
+            String graphPath = generarGraficaIngredientesExtras(pedido);
+            ImageData graphData = ImageDataFactory.create(graphPath);
+            Image graphImage = new Image(graphData);
+            graphImage.scaleToFit(400, 300);
+            document.add(graphImage);
+
             document.close();
             Desktop.getDesktop().open(new File("ticket_compra.pdf"));
 
@@ -207,6 +215,7 @@ public class PagarPedidoController implements Initializable {
             System.err.println("Error al generar o abrir el ticket en PDF: " + e.getMessage());
         }
     }
+
 
     // Método para generar gráfica de ingredientes y extras
     private String generarGraficaIngredientesExtras(Pedido pedido) {
