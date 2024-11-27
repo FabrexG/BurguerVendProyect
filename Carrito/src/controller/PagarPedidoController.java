@@ -217,11 +217,12 @@ public class PagarPedidoController implements Initializable {
     }
 
 
-    // Método para generar gráfica de ingredientes y extras
+    // Método para generar gráfica de ingredientes y extras con porcentajes combinados
     private String generarGraficaIngredientesExtras(Pedido pedido) {
         Map<String, Integer> conteoIngredientes = new HashMap<>();
         Map<String, Integer> conteoExtras = new HashMap<>();
 
+        // Sumar cantidades de ingredientes y extras
         for (Hamburguesa hamburguesa : pedido.getHamburguesas()) {
             for (Ingrediente ingrediente : hamburguesa.getIngredientes()) {
                 conteoIngredientes.merge(ingrediente.getNombre(), ingrediente.getCantidad(), Integer::sum);
@@ -231,11 +232,26 @@ public class PagarPedidoController implements Initializable {
             }
         }
 
-        PieChart chart = new PieChartBuilder().width(800).height(600).title("Conteo Ingredientes y Extras").build();
+        // Calcular el total combinado de ingredientes y extras
+        int totalCombinado = conteoIngredientes.values().stream().mapToInt(Integer::intValue).sum()
+                + conteoExtras.values().stream().mapToInt(Integer::intValue).sum();
 
-        conteoIngredientes.forEach((nombre, cantidad) -> chart.addSeries(nombre + " (Ingrediente)", cantidad));
-        conteoExtras.forEach((nombre, cantidad) -> chart.addSeries(nombre + " (Extra)", cantidad));
+        // Crear gráfica circular
+        PieChart chart = new PieChartBuilder().width(800).height(600).title("Distribución de Ingredientes y Extras").build();
 
+        // Agregar ingredientes con porcentajes
+        conteoIngredientes.forEach((nombre, cantidad) -> {
+            double porcentaje = (cantidad / (double) totalCombinado) * 100;
+            chart.addSeries(String.format("%s (Ingrediente) - %.1f%%", nombre, porcentaje), cantidad);
+        });
+
+        // Agregar extras con porcentajes
+        conteoExtras.forEach((nombre, cantidad) -> {
+            double porcentaje = (cantidad / (double) totalCombinado) * 100;
+            chart.addSeries(String.format("%s (Extra) - %.1f%%", nombre, porcentaje), cantidad);
+        });
+
+        // Guardar la gráfica como archivo PNG
         String graphPath = "grafica_ticket.png";
         try {
             BitmapEncoder.saveBitmap(chart, graphPath, BitmapFormat.PNG);
@@ -245,6 +261,8 @@ public class PagarPedidoController implements Initializable {
 
         return graphPath;
     }
+
+
 
     // Método para convertir número a letras
     private String convertirNumeroALetras(double numero) {
