@@ -90,5 +90,14 @@ public class IngresarDireccionMapaController implements Initializable {
         File file = new File("src/burguervenda/elementosweb/MapaLocalizacion.html");
         webEngine.load(file.toURI().toString());
     }    
-    
+   
+    @FXML
+    void sinNumero(ActionEvent event) {
+        if(cbSinNumero.isSelected()){
+            tfNumero.setDisable(true);
+        }
+        else {
+            tfNumero.setDisable(false);
+        }
+    }
 }

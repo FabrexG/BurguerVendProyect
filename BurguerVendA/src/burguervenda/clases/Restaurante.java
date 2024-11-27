@@ -5,8 +5,6 @@
 package burguervenda.clases;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -42,13 +40,13 @@ public class Restaurante {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM RESTAURANTE")){
             while(resultSet.next()) {
-                int id = resultSet.getInt("ID_RESTAURANTE");
-                String nombre = resultSet.getString("NOMBRE");
-                String direccion = resultSet.getString("DIRECCION");
-                String informacion = resultSet.getString("INFORMACION");
-                String latitud = resultSet.getNString("LATITUD");
-                String longitud = resultSet.getNString("LONGITUD");
-                restaurantes.add(new Restaurante(id,nombre,direccion,informacion,latitud,longitud));
+                int ids = resultSet.getInt("ID_RESTAURANTE");
+                String nom = resultSet.getString("NOMBRE");
+                String dir = resultSet.getString("DIRECCION");
+                String info = resultSet.getString("INFORMACION");
+                String lat= resultSet.getNString("LATITUD");
+                String longi = resultSet.getNString("LONGITUD");
+                restaurantes.add(new Restaurante(ids,nom,dir,info,lat,longi));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();

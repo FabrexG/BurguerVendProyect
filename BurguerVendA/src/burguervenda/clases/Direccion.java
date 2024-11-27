@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package burguervenda.clases;
-
+import java.sql.*;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -23,7 +24,42 @@ public class Direccion {
         this.piso = pi;
         this.indicaciones = ind;
     }
-
+    
+    public Direccion() {
+        cargarDirecciones();
+    }
+    
+    private void cargarDirecciones() {
+        try(Connection connection = ConeccionDataBase.getConection();
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT DIRECCION, NUMERO, PISO_INFO, INDICACIONES\n" +
+"FROM DIRECCION")) {
+            while(resultSet.next()) {
+                String dir = resultSet.getString("DIRECCION");
+                String num = resultSet.getString("NUMERO");
+                String info = resultSet.getString("PISO_INFO");
+                String indi = resultSet.getString("INDICACIONES");
+                direcciones.add(new Direccion(dir,num,info,indi));
+            }
+        } catch(SQLException ex){
+            ex.printStackTrace();
+        }
+    }
+    
+    public void guardarDireccion(String dir, String num, String info, String indi) {
+        try(Connection connection = ConeccionDataBase.getConection();
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO DIRECCION (ID_DIRECCION, ID_USUARIO, DIRECCION, NUMERO, PISO_INFO, INDICACIONES) VALUES (SEC_DIRECCION.NEXTVAL, ?, ?, ?, ?, ?)");) {
+            preparedStatement.setInt(1, 1);
+            preparedStatement.setString(2, dir.toUpperCase());
+            preparedStatement.setString(3, num);
+            preparedStatement.setString(4, info.toUpperCase());
+            preparedStatement.setString(5,indi.toUpperCase());
+            preparedStatement.executeUpdate();
+        } catch(SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
     public String getDireccion() {
         return direccion;
     }

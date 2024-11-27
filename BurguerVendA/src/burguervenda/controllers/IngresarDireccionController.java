@@ -4,8 +4,10 @@
  */
 package burguervenda.controllers;
 
+import burguervenda.clases.Direccion;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -44,7 +47,13 @@ public class IngresarDireccionController implements Initializable {
     private Button btnSelectUbi;
 
     @FXML
-    private CheckBox cbSinNumero;
+    private ComboBox<Direccion> cbDirecciones;
+
+    @FXML
+    private CheckBox ckbxGuardarDireccion;
+
+    @FXML
+    private CheckBox ckbxSinNumero;
 
     @FXML
     private Label lbDireccion;
@@ -66,6 +75,10 @@ public class IngresarDireccionController implements Initializable {
 
     @FXML
     private TextField tfPiso;
+    
+    Direccion seleccion = new Direccion();
+    
+    ArrayList<Direccion> restaurantes = new ArrayList<>(); 
 
     @FXML
     void btnBurguerDeliveryOnAction(ActionEvent event) throws IOException {
@@ -84,6 +97,17 @@ public class IngresarDireccionController implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("/burguervenda/vistas/IngresarDireccionMapa.fxml"));
         anchorPane.getChildren().setAll(root);
     }
+    
+     @FXML
+    void completarInfo(ActionEvent event) {
+        seleccion = cbDirecciones.getSelectionModel().getSelectedItem();
+        if(seleccion != null) {
+            tfDireccion.setText(seleccion.getDireccion());
+            tfNumero.setText(seleccion.getNumero());
+            tfPiso.setText(seleccion.getPiso());
+            tfIndicaciones.setText(seleccion.getIndicaciones());
+        }
+    }
 
     @FXML
     void ingresarDireccion(ActionEvent event) throws IOException {
@@ -95,4 +119,13 @@ public class IngresarDireccionController implements Initializable {
         // TODO
     }    
     
+    @FXML
+    void sinNumero(ActionEvent event) {
+        if(ckbxSinNumero.isSelected()){
+            tfNumero.setDisable(true);
+        }
+        else {
+            tfNumero.setDisable(false);
+        }
+    }
 }

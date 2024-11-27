@@ -39,7 +39,7 @@
             <Label fx:id="lbDireccion" layoutX="15.0" layoutY="286.0" prefHeight="17.0" prefWidth="397.0" text="Numero:" />
             <Label fx:id="lbInfo" layoutX="15.0" layoutY="349.0" prefHeight="17.0" prefWidth="397.0" text="Piso, puerta, escalera:" />
             <TextField fx:id="tfNumero" layoutX="17.0" layoutY="312.0" prefHeight="25.0" prefWidth="275.0" promptText="Ayudanos a encontrar tu casa" />
-            <CheckBox fx:id="cbSinNumero" layoutX="317.0" layoutY="316.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="90.0" text="Sin numero" />
+            <CheckBox fx:id="cbSinNumero" layoutX="317.0" layoutY="316.0" mnemonicParsing="false" onAction="#sinNumero" prefHeight="17.0" prefWidth="90.0" text="Sin numero" />
             <TextField fx:id="tfPuerta" layoutX="17.0" layoutY="376.0" prefHeight="25.0" prefWidth="392.0" promptText="Ayudanos a reconocer tu casa" />
             <Text layoutX="15.0" layoutY="428.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Indiaciones adicionales para el repartidor:" wrappingWidth="392.0" />
             <TextField fx:id="tfIndicaciones" layoutX="17.0" layoutY="439.0" prefHeight="25.0" prefWidth="392.0" promptText="Ayudanos a entregar tu pedido" />

@@ -67,7 +67,9 @@ public class SeleccionarRestauranteController implements Initializable {
     private ComboBox<Restaurante> cbFavoritos;
     
     ArrayList<Restaurante> restList = new ArrayList<>();
+    
     ArrayList<Restaurante> restFavs = new ArrayList<>();
+    
     Restaurante seleccion;
     /**
      * Initializes the controller class.

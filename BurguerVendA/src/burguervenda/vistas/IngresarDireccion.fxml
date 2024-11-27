@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -32,19 +33,21 @@
          </graphic>
       </Button>
       <Button fx:id="btnSelectUbi" layoutX="27.0" layoutY="640.0" mnemonicParsing="false" onAction="#btnSelectUbiOnAction" prefHeight="25.0" prefWidth="428.0" styleClass="botonesGrandes" stylesheets="@../estilos/EstiloPantallas.css" text="Seleccionar una ubicación" />
-      <AnchorPane fx:id="anchPaneInfo" layoutX="35.0" layoutY="197.0" prefHeight="390.0" prefWidth="430.0">
+      <AnchorPane fx:id="anchPaneInfo" layoutX="35.0" layoutY="212.0" prefHeight="401.0" prefWidth="430.0">
          <children>
-            <Button fx:id="btnContinuar" layoutX="24.0" layoutY="304.0" mnemonicParsing="false" onAction="#ingresarDireccion" prefHeight="25.0" prefWidth="392.0" styleClass="littleButton" stylesheets="@../estilos/EstiloPantallas.css" text="Continuar" />
-            <Label fx:id="lbNombre" layoutX="22.0" layoutY="20.0" prefHeight="17.0" prefWidth="397.0" text="Direccion:" />
-            <Label fx:id="lbDireccion" layoutX="22.0" layoutY="84.0" prefHeight="17.0" prefWidth="397.0" text="Numero:" />
-            <Label fx:id="lbInfo" layoutX="22.0" layoutY="147.0" prefHeight="17.0" prefWidth="397.0" text="Piso, puerta, escalera:" />
-            <TextField fx:id="tfDireccion" layoutX="22.0" layoutY="45.0" prefHeight="25.0" prefWidth="392.0" promptText="Ayudanos a localizar tu casa" />
-            <TextField fx:id="tfNumero" layoutX="24.0" layoutY="110.0" prefHeight="25.0" prefWidth="275.0" promptText="Ayudanos a encontrar tu casa" />
-            <CheckBox fx:id="cbSinNumero" layoutX="324.0" layoutY="114.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="90.0" text="Sin numero" />
-            <TextField fx:id="tfPiso" layoutX="24.0" layoutY="174.0" prefHeight="25.0" prefWidth="392.0" promptText="Ayudanos a reconocer tu casa" />
-            <Text layoutX="22.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Indiaciones adicionales para el repartidor:" wrappingWidth="392.0" />
-            <TextField fx:id="tfIndicaciones" layoutX="24.0" layoutY="237.0" prefHeight="25.0" prefWidth="392.0" promptText="Ayudanos a entregar tu pedido" />
+            <Button fx:id="btnContinuar" layoutX="19.0" layoutY="353.0" mnemonicParsing="false" onAction="#ingresarDireccion" prefHeight="25.0" prefWidth="392.0" styleClass="littleButton" stylesheets="@../estilos/EstiloPantallas.css" text="Continuar" />
+            <Label fx:id="lbNombre" layoutX="17.0" layoutY="42.0" prefHeight="17.0" prefWidth="397.0" text="Direccion:" />
+            <Label fx:id="lbDireccion" layoutX="17.0" layoutY="106.0" prefHeight="17.0" prefWidth="397.0" text="Numero:" />
+            <Label fx:id="lbInfo" layoutX="17.0" layoutY="169.0" prefHeight="17.0" prefWidth="397.0" text="Piso, puerta, escalera:" />
+            <TextField fx:id="tfDireccion" layoutX="17.0" layoutY="67.0" prefHeight="25.0" prefWidth="392.0" promptText="Ayudanos a localizar tu casa" />
+            <TextField fx:id="tfNumero" layoutX="19.0" layoutY="132.0" prefHeight="25.0" prefWidth="275.0" promptText="Ayudanos a encontrar tu casa" />
+            <CheckBox fx:id="ckbxSinNumero" layoutX="319.0" layoutY="136.0" mnemonicParsing="false" onAction="#sinNumero" prefHeight="17.0" prefWidth="90.0" text="Sin numero" />
+            <TextField fx:id="tfPiso" layoutX="19.0" layoutY="196.0" prefHeight="25.0" prefWidth="392.0" promptText="Ayudanos a reconocer tu casa" />
+            <Text layoutX="17.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Indiaciones adicionales para el repartidor:" wrappingWidth="392.0" />
+            <TextField fx:id="tfIndicaciones" layoutX="19.0" layoutY="259.0" prefHeight="25.0" prefWidth="392.0" promptText="Ayudanos a entregar tu pedido" />
+            <CheckBox fx:id="ckbxGuardarDireccion" layoutX="19.0" layoutY="309.0" mnemonicParsing="false" text="Guadar dirección" />
          </children>
       </AnchorPane>
+      <ComboBox fx:id="cbDirecciones" layoutX="54.0" layoutY="200.0" onAction="#completarInfo" prefHeight="25.0" prefWidth="392.0" promptText="Direcciones" />
    </children>
 </AnchorPane>
