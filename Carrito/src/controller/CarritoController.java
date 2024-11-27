@@ -20,6 +20,7 @@
 
     import java.awt.event.ActionEvent;
     import java.net.URL;
+    import java.sql.PreparedStatement;
     import java.sql.ResultSet;
     import java.sql.SQLException;
     import java.time.LocalDate;
@@ -144,6 +145,35 @@
         }
 
 
+        private String obtenerRutaImagen(String nombreHamburguesa) {
+            String rutaImagen = null;
+
+            try {
+                // Conectar a la base de datos
+                conn = new ConectaBD();
+                conn.conectarBDOracle();
+
+                // Consultar la ruta de la imagen en la tabla Hamburguesa
+                String sql = "SELECT rutaImagen FROM HamburguesaImagen WHERE nombre = ?";
+                PreparedStatement pstmt = conn.cn.prepareStatement(sql);
+                pstmt.setString(1, nombreHamburguesa);
+
+                ResultSet rs = pstmt.executeQuery();
+                if (rs.next()) {
+                    rutaImagen = rs.getString("rutaImagen");
+                } else {
+                    System.err.println("No se encontró una imagen para la hamburguesa: " + nombreHamburguesa);
+                }
+
+                // Cerrar recursos
+                rs.close();
+                pstmt.close();
+            } catch (SQLException e) {
+                System.err.println("Error al obtener la ruta de la imagen: " + e.getMessage());
+            }
+
+            return rutaImagen;// != null ? rutaImagen : "/img/default.png"; // Ruta por defecto si no se encuentra
+        }
 
         private Hamburguesa crearNuevaHamburguesa() {
             Hamburguesa nuevaHamburguesa = new Hamburguesa();
@@ -165,10 +195,11 @@
                     // Generar nombre y costo base aleatorios
                     String nombre = generarNombreAleatorio();
                     double costoBase = generarCostoBaseAleatorio();
+                    String nombreImagen = obtenerRutaImagen(nombre);
 
                     nuevaHamburguesa.setNombre(nombre);
                     nuevaHamburguesa.setCostoBase(costoBase);
-                    nuevaHamburguesa.setImagen(new Image(obtenerRutaImagenAleatoria()));
+                    nuevaHamburguesa.setImagen(new Image(nombreImagen));
 
                     // Insertar la hamburguesa en la base de datos
                     String sql = "INSERT INTO Hamburguesa (nombre, costoBase, rutaImagen) " +
@@ -280,8 +311,8 @@
 
 
         private String generarNombreAleatorio() {
-            List<String> nombres = List.of("Hamburguesa Clásica", "Hamburguesa Doble", "Hamburguesa con Queso",
-                    "Hamburguesa de Pollo", "Hamburguesa Vegetariana", "Hamburguesa Especial");
+            List<String> nombres = List.of("Hamburguesa Pollo", "Hamburguesa a la Plancha", "Hamburguesa Res",
+                    "Hamburguesa Vegana");
             Random random = new Random();
             int indice = random.nextInt(nombres.size());
             return nombres.get(indice);
