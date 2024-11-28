@@ -14,7 +14,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -78,7 +80,7 @@ public class IngresarDireccionController implements Initializable {
     
     Direccion seleccion = new Direccion();
     
-    ArrayList<Direccion> restaurantes = new ArrayList<>(); 
+    ArrayList<Direccion> direcciones = new ArrayList<>(); 
 
     @FXML
     void btnBurguerDeliveryOnAction(ActionEvent event) throws IOException {
@@ -111,12 +113,31 @@ public class IngresarDireccionController implements Initializable {
 
     @FXML
     void ingresarDireccion(ActionEvent event) throws IOException {
+        if(tfDireccion.getText().isEmpty() || tfPiso.getText().isEmpty() || tfIndicaciones.getText().isEmpty()) {
+            Alert alerta = new Alert(Alert.AlertType.ERROR,"Favor de rellenar los todos los campos",ButtonType.OK);
+            alerta.show();
+            return;
+        }
+        if(ckbxGuardarDireccion.isSelected()) {
+            if(cbDirecciones.getItems().contains(seleccion)) {
+                Alert alerta = new Alert(Alert.AlertType.ERROR,"Esta direccion ya se encuentra en guardados",ButtonType.OK);
+                alerta.show();
+                limpiarFormulario();
+                return;
+            } else {
+                seleccion.guardarDireccion(tfDireccion.getText(), tfNumero.getText(), tfPiso.getText(), tfIndicaciones.getText());
+                cbDirecciones.getItems().add(new Direccion(tfDireccion.getText(), tfNumero.getText(), tfPiso.getText(), tfIndicaciones.getText()));
+            }
+            ckbxGuardarDireccion.setSelected(false);
+        }
         Parent root = FXMLLoader.load(getClass().getResource("/burguervenda/vistas/MonitorearPedido.fxml"));
         anchorPane.getChildren().setAll(root);
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        Direccion dir = new Direccion();
+        direcciones = dir.getDirecciones();
+        cbDirecciones.getItems().addAll(direcciones);
     }    
     
     @FXML
@@ -127,5 +148,14 @@ public class IngresarDireccionController implements Initializable {
         else {
             tfNumero.setDisable(false);
         }
+    }
+    
+    private void limpiarFormulario() {
+        tfDireccion.setText("");
+        tfNumero.setText("");
+        tfIndicaciones.setText("");
+        tfPiso.setText("");
+        ckbxSinNumero.setSelected(false);
+        ckbxGuardarDireccion.setSelected(false);
     }
 }

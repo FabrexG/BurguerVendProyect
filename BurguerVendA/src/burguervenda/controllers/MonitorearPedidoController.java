@@ -92,7 +92,7 @@ public class MonitorearPedidoController implements Initializable {
             protected Void call() throws Exception {
                 for (int i = 1; i <= 100 && running; i++) {
                     updateProgress(i, 100);
-                    Thread.sleep(50);
+                    Thread.sleep(75);
                 }
                 return null;
             }

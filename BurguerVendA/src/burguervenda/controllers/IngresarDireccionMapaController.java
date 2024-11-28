@@ -13,7 +13,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -81,6 +83,11 @@ public class IngresarDireccionMapaController implements Initializable {
 
     @FXML
     void ingresarDireccion(ActionEvent event) throws IOException {
+        if(tfPuerta.getText().isEmpty() || tfIndicaciones.getText().isEmpty()) {
+            Alert alerta = new Alert(Alert.AlertType.ERROR,"Favor de rellenar los todos los campos",ButtonType.OK);
+            alerta.show();
+            return;
+        }
         Parent root = FXMLLoader.load(getClass().getResource("/burguervenda/vistas/MonitorearPedido.fxml"));
         anchorPane.getChildren().setAll(root);
     }
