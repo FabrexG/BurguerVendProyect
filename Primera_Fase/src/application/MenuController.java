@@ -23,6 +23,8 @@ public class MenuController{
     private VBox VboxSola;
 
     @FXML
+    private Button btnVisualizar;
+    @FXML
     private Button btnSalir;
     @FXML
     private AnchorPane principal;
@@ -71,6 +73,22 @@ public class MenuController{
             e.printStackTrace();
         }
 
+
+    }
+    @FXML
+    void btnVisualizar_OneClick(MouseEvent event) {
+    	try {
+            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("ElegirGrafica.fxml"));
+            Parent loginPane = loader.load();
+            Stage stage = (Stage) principal.getScene().getWindow();
+            stage.setScene(new Scene(loginPane));
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Éxito");
+            alert.setContentText("Escogiste La Opcion De Ver Graficas\n");
+            alert.showAndWait();
+          } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 

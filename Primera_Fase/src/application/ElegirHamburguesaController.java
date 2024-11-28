@@ -17,8 +17,15 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 //import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import conexion.ConectarBD;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import javax.swing.JOptionPane;
+
 
 public class ElegirHamburguesaController {
+	ConectarBD con = new ConectarBD();
 	
 	
 	
@@ -106,6 +113,7 @@ public class ElegirHamburguesaController {
     int precio6;
     
     
+    
  // Inicializar precios al cargar la interfaz
     
     @FXML
@@ -131,26 +139,60 @@ public class ElegirHamburguesaController {
         return 0; 
     }
     
+    private int insertarHamburguesa(String nombre, int precioBase, int precioFinal) {
+        String consulta = "INSERT INTO Hamburguesa (id_Hamburguesa, nombre, precio_base, precio_final) VALUES (seq_id_Hamburguesa.NEXTVAL, ?, ?, ?)";
+         int id = -1;
+
+        try {
+            con.conectarBDOracle();
+            PreparedStatement stmt = con.cn.prepareStatement(consulta, new String[] {"id_Hamburguesa"});
+            stmt.setString(1, nombre);
+            stmt.setInt(2, precioBase);
+            stmt.setInt(3, precioFinal);
+            
+            stmt.executeUpdate();
+            System.out.println("Hamburguesa insertada correctamente.");
+
+            // Obtener el ID generado
+            con.rs = stmt.getGeneratedKeys();
+            if (con.rs.next()) {
+                id = con.rs.getInt(1);
+                System.out.println("Este es el ID generado: " +id);
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al insertar la hamburguesa: " + e.getMessage());
+        }
+        return id;
+
+        
+}
     
+   
     
 
     @FXML
     void vbox1One_Click(MouseEvent event) {
     	 try {
+    		 
     		 String etiqueta = lblHamburguesa1.getText();
     		 String ingredientes =("1 Carne,Lechuga,jitomate,cebolla,carne,queso amariilo,pepinillos");
              FXMLLoader loader = new FXMLLoader(this.getClass().getResource("PersonalizarHamburguesa.fxml"));
              Parent loginPane = loader.load();
              Stage stage = (Stage) pane.getScene().getWindow();
              stage.setScene(new Scene(loginPane));
+             // Insertar la hamburguesa en la base de datos
+             int idHamburguesa = insertarHamburguesa(etiqueta, precio1, precio1);
              Alert alert = new Alert(AlertType.INFORMATION);
              alert.setTitle("Éxito");
-             alert.setContentText("Has Escogido La Hamburguesa: \n"+etiqueta);
+             alert.setContentText("Has Escogido La Hamburguesa: \n"+etiqueta+"id es correspondiente  "+idHamburguesa);
              alert.showAndWait();
              PersonalizarHamburguesaController controller = loader.getController();
              controller.setPrecioHamburguesa(precio1);//Ocupa El Precio1
              controller.setNombre(etiqueta);
              controller.setIngredientes(ingredientes);
+             controller.setIdHamburguesa(idHamburguesa);
+             
+             
              
            } catch (IOException e) {
              e.printStackTrace();
@@ -167,6 +209,8 @@ public class ElegirHamburguesaController {
             Parent loginPane = loader.load();
             Stage stage = (Stage) pane.getScene().getWindow();
             stage.setScene(new Scene(loginPane));
+             // Insertar la hamburguesa en la base de datos
+            int idHamburguesa = insertarHamburguesa(etiqueta, precio2, precio2);
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Éxito");
             alert.setContentText("Has Escogido La Hamburguesa: \n"+etiqueta);
@@ -175,6 +219,7 @@ public class ElegirHamburguesaController {
             controller.setPrecioHamburguesa(precio2);//Ocupa El Precio2
             controller.setNombre(etiqueta);
             controller.setIngredientes(ingredientes);
+            controller.setIdHamburguesa(idHamburguesa);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -191,6 +236,8 @@ public class ElegirHamburguesaController {
             Parent loginPane = loader.load();
             Stage stage = (Stage) pane.getScene().getWindow();
             stage.setScene(new Scene(loginPane));
+            // Insertar la hamburguesa en la base de datos
+            int idHamburguesa = insertarHamburguesa(etiqueta, precio3, precio3);
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Éxito");
             alert.setContentText("Has Escogido La Hamburguesa: \n"+etiqueta);
@@ -199,6 +246,7 @@ public class ElegirHamburguesaController {
             controller.setPrecioHamburguesa(precio3);//Ocupa El Precio3
             controller.setNombre(etiqueta);
             controller.setIngredientes(ingredientes);
+            controller.setIdHamburguesa(idHamburguesa);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -215,6 +263,8 @@ public class ElegirHamburguesaController {
             Parent loginPane = loader.load();
             Stage stage = (Stage) pane.getScene().getWindow();
             stage.setScene(new Scene(loginPane));
+            // Insertar la hamburguesa en la base de datos
+            int idHamburguesa = insertarHamburguesa(etiqueta, precio4, precio4);
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Éxito");
             alert.setContentText("Has Escogido La Hamburguesa: \n"+etiqueta);
@@ -223,6 +273,7 @@ public class ElegirHamburguesaController {
             controller.setPrecioHamburguesa(precio4);//Ocupa El Precio4
             controller.setNombre(etiqueta);
             controller.setIngredientes(ingredientes);
+            controller.setIdHamburguesa(idHamburguesa);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -239,6 +290,8 @@ public class ElegirHamburguesaController {
             Parent loginPane = loader.load();
             Stage stage = (Stage) pane.getScene().getWindow();
             stage.setScene(new Scene(loginPane));
+            // Insertar la hamburguesa en la base de datos
+            int idHamburguesa = insertarHamburguesa(etiqueta, precio5, precio5);
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Éxito");
             alert.setContentText("Has Escogido La Hamburguesa: \n"+etiqueta);
@@ -247,6 +300,7 @@ public class ElegirHamburguesaController {
             controller.setPrecioHamburguesa(precio5);//Ocupa El Precio5
             controller.setNombre(etiqueta);
             controller.setIngredientes(ingredientes);
+            controller.setIdHamburguesa(idHamburguesa);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -263,6 +317,8 @@ public class ElegirHamburguesaController {
             Parent loginPane = loader.load();
             Stage stage = (Stage) pane.getScene().getWindow();
             stage.setScene(new Scene(loginPane));
+         // Insertar la hamburguesa en la base de datos
+            int idHamburguesa = insertarHamburguesa(etiqueta, precio6, precio6);
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Éxito");
             alert.setContentText("Has Escogido La Hamburguesa: \n"+etiqueta);
@@ -271,6 +327,7 @@ public class ElegirHamburguesaController {
             controller.setPrecioHamburguesa(precio6);//Ocupa El Precio6
             controller.setNombre(etiqueta);
             controller.setIngredientes(ingredientes);
+            controller.setIdHamburguesa(idHamburguesa);
         } catch (IOException e) {
             e.printStackTrace();
         }

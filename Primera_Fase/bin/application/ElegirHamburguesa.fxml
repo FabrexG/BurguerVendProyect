@@ -139,7 +139,7 @@
                   <Insets left="18.0" top="10.0" />
                </VBox.margin>
             </ImageView>
-            <Label fx:id="lblHamburguesa6" alignment="CENTER" prefHeight="17.0" prefWidth="164.0" text="Whopper con queso">
+            <Label fx:id="lblHamburguesa6" alignment="CENTER" prefHeight="17.0" prefWidth="164.0" text="Whopper Sensilla">
                <font>
                   <Font size="14.0" />
                </font>

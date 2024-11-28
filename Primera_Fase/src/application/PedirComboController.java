@@ -1,8 +1,8 @@
 package application;
 
 import java.io.IOException;
-
-
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,8 +15,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import conexion.ConectarBD;
 
 public class PedirComboController {
+	ConectarBD con = new ConectarBD();
 
     @FXML
     private Label lblCombo1;
@@ -99,7 +101,35 @@ public class PedirComboController {
         }
         return 0; // Devuelve 0 si hay un error
     }
+    private int insertarCombo(String nombre, int precioBase, int precioFinal) {
+        String consulta = "INSERT INTO Combo (id_Combo, nombre, precio_base, precio_final) VALUES (seq_id_Combo.NEXTVAL, ?, ?, ?)";
+         int id = -1;
+
+        try {
+            con.conectarBDOracle();
+            PreparedStatement stmt = con.cn.prepareStatement(consulta, new String[] {"id_Combo"});
+            stmt.setString(1, nombre);
+            stmt.setInt(2, precioBase);
+            stmt.setInt(3, precioFinal);
+            
+            stmt.executeUpdate();
+            System.out.println("Combo Insertado Correctamente.");
+
+            // Obtener el ID generado
+            con.rs = stmt.getGeneratedKeys();
+            if (con.rs.next()) {
+                id = con.rs.getInt(1);
+                System.out.println("Este es el ID generado: " +id);
+            }
+        } catch (SQLException e) {
+            System.err.println("Error Al Insertar El Combo: " + e.getMessage());
+        }
+        return id;
+
+        
+}
     
+
 
 	@FXML
     void vBoxCombo1_OnClick(MouseEvent event) {
@@ -111,6 +141,7 @@ public class PedirComboController {
             Parent loginPane = loader.load();
             Stage stage = (Stage) principal.getScene().getWindow();
             stage.setScene(new Scene(loginPane));
+            int idCombo = insertarCombo(etiqueta, precio1, precio1);
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Éxito");
             alert.setContentText("Has Escogido El: \n"+etiqueta);
@@ -119,6 +150,7 @@ public class PedirComboController {
             controller.setPrecioCombo(precio1); // Usa precio1 aquí
             controller.setNombre(etiqueta);
             controller.setIngredientes(ingredientes);
+            controller.setIdCombo(idCombo);
           } catch (IOException e) {
             e.printStackTrace();
         }
@@ -134,6 +166,7 @@ public class PedirComboController {
             Parent loginPane = loader.load();
             Stage stage = (Stage) principal.getScene().getWindow();
             stage.setScene(new Scene(loginPane));
+            int idCombo = insertarCombo(etiqueta, precio2, precio2);
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Éxito");
             alert.setContentText("Has Escogido El: \n"+etiqueta);
@@ -142,6 +175,7 @@ public class PedirComboController {
             controller.setPrecioCombo(precio2); // Usa precio2 aquí
             controller.setNombre(etiqueta);
             controller.setIngredientes(ingredientes);
+            controller.setIdCombo(idCombo);
           } catch (IOException e) {
             e.printStackTrace();
         }
@@ -159,6 +193,7 @@ public class PedirComboController {
             Parent loginPane = loader.load();
             Stage stage = (Stage) principal.getScene().getWindow();
             stage.setScene(new Scene(loginPane));
+            int idCombo = insertarCombo(etiqueta, precio3, precio3);
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Éxito");
             alert.setContentText("Has Escogido El: \n"+etiqueta);
@@ -167,6 +202,7 @@ public class PedirComboController {
             controller.setPrecioCombo(precio3); // Usa precio3 aquí
             controller.setNombre(etiqueta);
             controller.setIngredientes(ingredientes);
+            controller.setIdCombo(idCombo);
           } catch (IOException e) {
             e.printStackTrace();
         }
@@ -184,6 +220,7 @@ public class PedirComboController {
             Parent loginPane = loader.load();
             Stage stage = (Stage) principal.getScene().getWindow();
             stage.setScene(new Scene(loginPane));
+            int idCombo = insertarCombo(etiqueta, precio4, precio4);
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Éxito");
             alert.setContentText("Has Escogido El: \n"+etiqueta);
@@ -192,6 +229,7 @@ public class PedirComboController {
             controller.setPrecioCombo(precio4); // Usa precio1 aquí
             controller.setNombre(etiqueta);
             controller.setIngredientes(ingredientes);
+            controller.setIdCombo(idCombo);
           } catch (IOException e) {
             e.printStackTrace();
         }
@@ -209,6 +247,7 @@ public class PedirComboController {
             Parent loginPane = loader.load();
             Stage stage = (Stage) principal.getScene().getWindow();
             stage.setScene(new Scene(loginPane));
+            int idCombo = insertarCombo(etiqueta, precio5, precio5);
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Éxito");
             alert.setContentText("Has Escogido El: \n"+etiqueta);
@@ -217,6 +256,7 @@ public class PedirComboController {
             controller.setPrecioCombo(precio5); // Usa precio1 aquí
             controller.setNombre(etiqueta);
             controller.setIngredientes(ingredientes);
+            controller.setIdCombo(idCombo);
           } catch (IOException e) {
             e.printStackTrace();
         }

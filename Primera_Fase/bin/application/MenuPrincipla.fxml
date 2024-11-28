@@ -49,5 +49,6 @@
          </children>
       </VBox>
       <Button fx:id="btnSalir" layoutX="474.0" layoutY="406.0" mnemonicParsing="false" onMouseClicked="#btnSalir_OneClick" prefHeight="25.0" prefWidth="91.0" text="Salir " />
+      <Button fx:id="btnVisualizar" layoutX="70.0" layoutY="394.0" mnemonicParsing="false" onMouseClicked="#btnVisualizar_OneClick" text="Visualizar Graficas" />
    </children>
 </AnchorPane>
