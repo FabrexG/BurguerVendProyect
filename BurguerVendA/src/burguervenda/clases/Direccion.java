@@ -100,5 +100,8 @@ public class Direccion {
         this.direcciones = direcciones;
     }
     
-    
+    @Override
+    public String toString() {
+        return direccion;
+    }
 }

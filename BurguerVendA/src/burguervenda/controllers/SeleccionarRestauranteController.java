@@ -77,8 +77,8 @@ public class SeleccionarRestauranteController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Restaurante res = new Restaurante();
-        restList=res.getRestaurantes();
-        restFavs=res.getRestaurantesFavoritos();
+        restList = res.getRestaurantes();
+        restFavs = res.getRestaurantesFavoritos();
         cbEligeRestaurante.getItems().addAll(restList);
         cbFavoritos.getItems().addAll(restFavs);
     }   
