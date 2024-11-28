@@ -30,3 +30,41 @@
     -fx-background-color: #FF3B65;
     -fx-text-fill:#FFFFFF;
 }
+/* Estilo general para la tabla */
+.table-view {
+    -fx-background-color: #F9D8E7; /* Fondo rosa pastel */
+    -fx-border-color: #F1A1C8;    /* Borde rosa pastel más oscuro */
+    -fx-border-width: 2;
+    -fx-font-size: 14px;
+    -fx-font-family: "Arial";
+}
+
+/* Estilo para las filas */
+.table-row-cell {
+    -fx-background-color: transparent; /* Fondo transparente para las filas */
+    -fx-text-fill: #F1A1C8;             /* Texto rosa pastel oscuro */
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #F2B8D5; /* Fondo rosa pastel al pasar el ratón */
+}
+
+/* Estilo para las celdas */
+.table-cell {
+    -fx-padding: 10px; /* Relleno dentro de las celdas */
+    -fx-text-fill: #F1A1C8; /* Texto rosa pastel oscuro */
+}
+
+/* Estilo para las cabeceras de las columnas */
+.table-column-header {
+    -fx-background-color: #F2B8D5; /* Fondo rosa pastel suave para las cabeceras */
+    -fx-text-fill: #FFFFFF; /* Texto blanco en las cabeceras */
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+}
+
+/* Estilo para las filas seleccionadas */
+.table-row-cell:selected {
+    -fx-background-color: #F1A1C8; /* Fondo rosa pastel más oscuro para las filas seleccionadas */
+    -fx-text-fill: #FFFFFF; /* Texto blanco para las filas seleccionadas */
+}

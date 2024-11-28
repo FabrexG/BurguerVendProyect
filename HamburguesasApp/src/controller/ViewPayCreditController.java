@@ -42,6 +42,12 @@ public class ViewPayCreditController {
 		anchorPane.getChildren().setAll(pay);
     }
 
+    public void deshabilitarBotones() {
+        btnVisa.setDisable(true);
+        btnMaster.setDisable(true);
+        btnRegresar.setDisable(true);
+    }
+    
 
     
     
