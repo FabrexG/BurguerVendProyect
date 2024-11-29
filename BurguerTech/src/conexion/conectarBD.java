@@ -1,33 +1,28 @@
 package conexion;
 
-//liberias de conexion
-import java.sql.Connection; //Establecer conexion a DB
-import java.sql.DriverManager;  //Enlace de conexion entre BD y Java
-import java.sql.Statement;  //Genera sentencias SQL
-import java.sql.ResultSet;  //Establece resultado final de datos
-import java.sql.SQLException;   //Tratamiento de errores DB
-import javafx.scene.control.Alert;
-/**
- *
- * @author achit
- */
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 public class conectarBD {
-    
     public Connection cn;
-    public Statement stmt;
-    public ResultSet rs;
-    
-    //Metodo para conectar a la base de datos 
-    public void conectarBDOracle() throws SQLException{
-    
-        DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
-        
-        cn = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:XE", "burguervend", "burguer123");
-        stmt=cn.createStatement();
-        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-        alerta.setTitle("Envio exitoso");
-        alerta.setHeaderText(null);
-        alerta.setContentText("Se ha almacenado con exito tu Queja/Sugerencia");
-        alerta.showAndWait();
+
+    /**
+     * Método para conectar a la base de datos Oracle.
+     */
+    public void conectarBDOracle() {
+        String url = "jdbc:oracle:thin:@localhost:1521:XE"; // Cambia por tu configuración
+        String usuario = "burguervend"; // Usuario de la base de datos
+        String contraseña = "burguer123"; // Contraseña de la base de datos
+
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver"); // Cargar el driver
+            cn = DriverManager.getConnection(url, usuario, contraseña);
+            System.out.println("Conexión exitosa a la base de datos Oracle.");
+        } catch (ClassNotFoundException e) {
+            System.err.println("Error al cargar el driver de Oracle: " + e.getMessage());
+        } catch (SQLException e) {
+            System.err.println("Error al conectar a la base de datos: " + e.getMessage());
+        }
     }
 }

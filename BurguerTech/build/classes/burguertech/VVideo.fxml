@@ -5,29 +5,27 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.media.MediaView?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="gradient" stylesheets="@diseñoQuejas.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.insertaVideo">
-   <children>
-      <Label layoutX="92.0" layoutY="36.0" text="Bienvenido al Sistema de Quejas y Sugerencias">
-         <font>
-            <Font name="System Bold" size="19.0" />
-         </font>
-      </Label>
-      <Label layoutX="65.0" layoutY="64.0" text="Por favor inserta tu Video sobre tu Queja o Sugerencia">
-         <font>
-            <Font name="System Bold" size="19.0" />
-         </font>
-      </Label>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="65.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@insertaVideo.jpg" />
-         </image>
-      </ImageView>
-      <MediaView fx:id="mediaView" fitHeight="200.0" fitWidth="200.0" layoutX="352.0" layoutY="104.0" />
-      <Button fx:id="btnSeleccionarVideo" layoutX="387.0" layoutY="304.0" mnemonicParsing="false" onAction="#seleccionarVideo" styleClass="login-btn" stylesheets="@diseñoQuejas.css" text="Seleccionar Video" />
-      <Button fx:id="btnVideo" layoutX="87.0" layoutY="304.0" mnemonicParsing="false" onAction="#insertaVideo" styleClass="login-btn" stylesheets="@diseñoQuejas.css" text="Sube tu video" />
-      <Button fx:id="btnRegresar" layoutX="14.0" layoutY="351.0" mnemonicParsing="false" onMouseClicked="#regresar" styleClass="white-form" stylesheets="@diseñoQuejas.css" text="Regresar" />
-   </children>
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="gradient" stylesheets="@diseñoQuejas.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.InsertaVideo">
+    <children>
+        <Label layoutX="92.0" layoutY="36.0" text="Bienvenido al Sistema de Quejas y Sugerencias">
+            <font>
+                <Font name="System Bold" size="19.0" />
+            </font>
+        </Label>
+        <Label layoutX="65.0" layoutY="64.0" text="Por favor inserta tu Video sobre tu Queja o Sugerencia">
+            <font>
+                <Font name="System Bold" size="19.0" />
+            </font>
+        </Label>
+        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="65.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@insertaVideo.jpg" />
+            </image>
+        </ImageView>
+        <Button fx:id="btnSeleccionarVideo" layoutX="387.0" layoutY="304.0" mnemonicParsing="false" onAction="#seleccionarVideo" styleClass="login-btn" stylesheets="@diseñoQuejas.css" text="Seleccionar Video" />
+        <Button fx:id="btnVideo" layoutX="87.0" layoutY="304.0" mnemonicParsing="false" onAction="#insertaVideo" styleClass="login-btn" stylesheets="@diseñoQuejas.css" text="Sube tu video" />
+        <Button fx:id="btnRegresar" layoutX="14.0" layoutY="351.0" mnemonicParsing="false" onMouseClicked="#regresar" styleClass="white-form" stylesheets="@diseñoQuejas.css" text="Regresar" />
+    </children>
 </AnchorPane>

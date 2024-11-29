@@ -199,8 +199,8 @@ public class VQuejasController implements Initializable {
 
         // Configurar la hora de ejecución para las 09:59 PM
         Calendar calendario = Calendar.getInstance();
-        calendario.set(Calendar.HOUR_OF_DAY, 21);
-        calendario.set(Calendar.MINUTE, 59);
+        calendario.set(Calendar.HOUR_OF_DAY, 12);
+        calendario.set(Calendar.MINUTE, 40);
         calendario.set(Calendar.SECOND, 0);
 
         // Programar la tarea para que se ejecute cada día a la misma hora
