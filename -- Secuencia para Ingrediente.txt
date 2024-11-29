@@ -1,0 +1,121 @@
+-- Secuencia para Ingrediente
+CREATE SEQUENCE seq_id_Ingrediente
+START WITH 1
+INCREMENT BY 1
+NOCACHE;
+
+-- Secuencia para Extra
+CREATE SEQUENCE seq_id_Extra
+START WITH 1
+INCREMENT BY 1
+NOCACHE;
+
+-- Secuencia para Hamburguesa
+CREATE SEQUENCE seq_id_Hamburguesa
+START WITH 1
+INCREMENT BY 1
+NOCACHE;
+
+-- Secuencia para Combo
+CREATE SEQUENCE seq_id_Combo
+START WITH 1
+INCREMENT BY 1
+NOCACHE;
+
+
+CREATE SEQUENCE seq_id_PedidoH
+START WITH 1
+INCREMENT BY 1
+NOCACHE;
+
+CREATE SEQUENCE seq_id_PedidoC
+START WITH 1
+INCREMENT BY 1
+NOCACHE;
+Select *FROM hamburguesa;
+
+CREATE TABLE Ingrediente (
+    id_Ingrediente INT,
+    nombre VARCHAR2(255) NOT NULL,
+    cantidad NUMBER NOT NULL,
+    CONSTRAINT Ingrediente_id_Ingrediente_PK PRIMARY KEY (id_Ingrediente)
+);
+
+-- Tabla Extra
+CREATE TABLE Extra (
+    id_Extra INT,
+    nombre VARCHAR2(100) NOT NULL,
+    costo_extra NUMBER NOT NULL,
+    cantidad NUMBER NOT NULL,
+    CONSTRAINT Extra_id_Extra_PK PRIMARY kEY (id_Extra)
+);
+
+-- Tabla Hamburguesa
+CREATE TABLE Hamburguesa (
+    id_Hamburguesa INT NOT NULL,
+    nombre VARCHAR2(200) NOT NULL,
+    precio_base NUMBER NOT NULL,
+    precio_final NUMBER,
+    CONSTRAINT Hamburguesa_id_Hamburguesa_PK PRIMARY KEY (id_Hamburguesa)
+);
+
+-- Tabla intermedia Hamburguesa_Ingrediente
+CREATE TABLE Ing_Hambu (
+    id_Hamburguesa INT NOT NULL,
+    id_Ingrediente INT NOT NULL,
+    cantidad NUMBER NOT NULL, -- Cantidad específica de este ingrediente en la hamburguesa
+    CONSTRAINT Ing_Hambu_PK PRIMARY KEY (id_Hamburguesa, id_Ingrediente),
+    CONSTRAINT Ing_Hambu_Hamburguesa_FK FOREIGN KEY (id_Hamburguesa) REFERENCES Hamburguesa(id_Hamburguesa),
+    CONSTRAINT Ing_Hambu_Ingrediente_FK FOREIGN KEY (id_Ingrediente) REFERENCES Ingrediente(id_Ingrediente)
+);
+
+CREATE TABLE H_Extra (
+    id_Hamburguesa INT NOT NULL,
+    id_Extra INT NOT NULL,
+    cantidad NUMBER NOT NULL, -- Cantidad de este extra en la hamburguesa
+    CONSTRAINT H_Extra_PK PRIMARY KEY (id_Hamburguesa, id_Extra),
+    CONSTRAINT H_Extra_Hamburguesa_FK FOREIGN KEY (id_Hamburguesa) REFERENCES Hamburguesa(id_Hamburguesa),
+    CONSTRAINT H_Extra_Extra_FK FOREIGN KEY (id_Extra) REFERENCES Extra(id_Extra)
+);
+CREATE TABLE Combo (
+    id_Combo INT NOT NULL,
+    nombre VARCHAR2(100) NOT NULL,
+    precio_base NUMBER NOT NULL,
+    precio_final NUMBER,
+    CONSTRAINT Combo_id_Combo_PK PRIMARY KEY (id_Combo)
+);
+CREATE TABLE Combo_Ing (
+    id_Combo INT NOT NULL,
+    id_Ingrediente INT NOT NULL,
+    cantidad NUMBER NOT NULL, -- Cantidad de este ingrediente en el combo
+    CONSTRAINT Combo_Ing_PK PRIMARY KEY (id_Combo, id_Ingrediente),
+    CONSTRAINT Combo_Ing_Combo_FK FOREIGN KEY (id_Combo) REFERENCES Combo(id_Combo),
+    CONSTRAINT Combo_Ing_Ingrediente_FK FOREIGN KEY (id_Ingrediente) REFERENCES Ingrediente(id_Ingrediente)
+);
+
+CREATE TABLE Combo_Extra (
+    id_Combo INT NOT NULL,
+    id_Extra INT NOT NULL,
+    cantidad NUMBER NOT NULL, -- Cantidad de este extra en el combo
+    CONSTRAINT Combo_Extra_PK PRIMARY KEY (id_Combo, id_Extra),
+    CONSTRAINT Combo_Extra_Combo_FK FOREIGN KEY (id_Combo) REFERENCES Combo(id_Combo),
+    CONSTRAINT Combo_Extra_Extra_FK FOREIGN KEY (id_Extra) REFERENCES Extra(id_Extra)
+);
+
+
+CREATE TABLE PedidosH (
+    id_Pedido INT NOT NULL,
+    id_Hamburguesa INT NOT NULL,
+    cantidad INT DEFAULT 1,
+    CONSTRAINT Pedidos_id_Pedido_PK PRIMARY KEY (id_Pedido),
+    CONSTRAINT Pedidos_Hamburguesa_FK FOREIGN KEY (id_Hamburguesa) REFERENCES Hamburguesa(id_Hamburguesa)
+);
+
+
+CREATE TABLE PedidosC (
+    id_Pedido INT NOT NULL,
+    id_Combo INT NOT NULL,
+    cantidad INT DEFAULT 1,
+    CONSTRAINT PedidosC_id_Pedido_PK PRIMARY KEY (id_Pedido), -- Nuevo nombre único
+    CONSTRAINT PedidosC_Combo_FK FOREIGN KEY (id_Combo) REFERENCES Combo(id_Combo) -- Nuevo nombre único
+);
